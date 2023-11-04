@@ -1,8 +1,78 @@
+/* start globale rules */
+
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --main-color: #3e42b1;
+  --second-color: #68389f;
+  --third-color: #d0bbe7;
+  --background-color: #ecf3f8;
+  --main-font-color: #030508;
+  --main-paragraph-color: #848484;
+  --main-hover-color: #0647A8;
+  --btns-hover--color: #D2D2D2;
+  --main-transition: all 0.3s ease-in-out;
+}
 
 body {
   font-family: 'Amiri', serif;
-
 }
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Small screens (up to 767px) */
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* Medium screens (768px - 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 85%;
+  }
+}
+
+/* Large screens (992px and up) */
+@media only screen and (min-width: 992px) {
+  .container {
+    width: 80%;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+section {
+  margin-top: 11rem;
+}
+
+/* Small screens (up to 767px) */
+@media only screen and (max-width: 767px) {
+  section {
+    margin-top: 6rem;
+  }
+}
+
+/* end globale rules */
