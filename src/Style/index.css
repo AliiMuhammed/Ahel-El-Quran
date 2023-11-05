@@ -102,6 +102,24 @@ section {
   font-weight: 500;
 }
 
+@media only screen and (min-width: 1170px)and (max-width:1443px) {
+  .main-btn {
+
+    padding: 0.7rem 1.5rem;
+
+  }
+}
+
+@media only screen and (min-width: 992px)and (max-width:1169px) {
+  .main-btn {
+
+    padding: 0.7rem 1rem;
+
+  }
+}
+
+
+
 .main-btn:hover {
   border-color: var(--main-color);
   background-color: transparent;
@@ -118,4 +136,35 @@ section {
   border-color: transparent;
   background-color: var(--background-color);
   color: var(--second-font-color);
+}
+
+@media only screen and (max-width: 991px) {
+
+
+  .main-btn:hover {
+    border-color: var(--third-color);
+    background-color: transparent;
+    color: var(--second-font-color);
+  }
+
+  .main-btn.second-btn {
+    border-color: transparent;
+    background-color: var(--background-color);
+    color: var(--second-font-color);
+  }
+
+  .main-btn.second-btn:hover {
+    border-color: var(--third-color);
+    background-color: transparent;
+    color: var(--second-font-color);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .main-btn {
+
+    padding: 0.7rem 2rem;
+
+  }
 }

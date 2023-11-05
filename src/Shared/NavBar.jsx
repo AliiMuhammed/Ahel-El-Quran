@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../Style/navBar.css";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../Assets/logos/لوجو2.png";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
+import { FaBarsStaggered } from "react-icons/fa6";
+
 const NavBar = () => {
   const [navScroll, setNavScroll] = useState(false);
 
@@ -24,59 +26,116 @@ const NavBar = () => {
 
   const navClass = navScroll ? "nav-scroll" : "";
 
+  const [show, setShow] = useState("");
+  const handelShow = () => {
+    setShow(show === "" ? "show" : "");
+    setShowDrop("");
+  };
+
+  const navRef = useRef(null);
+
+  const handleDocumentClick = (e) => {
+    if (navRef.current && !navRef.current.contains(e.target)) {
+      setShow("");
+      setShowDrop("");
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
+
+  const [showDrop, setShowDrop] = useState("");
+
+  const handelDrop = () => {
+    setShowDrop(showDrop === "" ? "show" : "");
+  };
+
   return (
     <header>
-      <nav className={navClass}>
+      <nav className={navClass} ref={navRef}>
         <div className="container">
-          <Link to={"/"} className="logo-link">
+          <Link
+            to={"/"}
+            onClick={() => {
+              setShow("");
+            }}
+            className="logo-link"
+          >
             <img src={logo} alt="logo" />
           </Link>
-          <div className="nav-links">
+          <div className={`nav-links ${show}`}>
             <ul className="links">
               <li className="link">
                 <div className="nav-link">
-                  <NavLink to={"/"}>الرئيسية</NavLink>
+                  <NavLink onClick={handelShow} to={"/"}>
+                    الرئيسية
+                  </NavLink>
                 </div>
               </li>
-              <li className="link menu">
+              <li className="link menu" onClick={handelDrop} ref={navRef}>
                 <span>
                   <AiFillCaretDown /> الأقسام
                 </span>
-                <div className="drop-down">
+                <div className={`drop-down ${showDrop}`}>
                   <ul className="drop-down-list">
                     <li className="drop-link">
-                      <NavLink to={""}>القرآن الكريم</NavLink>
+                      <NavLink onClick={handelShow} to={""}>
+                        القرآن الكريم
+                      </NavLink>
                     </li>
                     <li className="drop-link">
-                      <NavLink to={""}>الراديو</NavLink>
+                      <NavLink onClick={handelShow} to={""}>
+                        الراديو
+                      </NavLink>
                     </li>
                     <li className="drop-link">
-                      <NavLink to={""}>بث مباشر</NavLink>
+                      <NavLink onClick={handelShow} to={""}>
+                        بث مباشر
+                      </NavLink>
                     </li>
                   </ul>
                 </div>
               </li>
               <li className="link">
                 <div className="nav-link">
-                  <NavLink to={"/aboutUs"}>من نحن</NavLink>
+                  <NavLink onClick={handelShow} to={"/aboutUs"}>
+                    من نحن
+                  </NavLink>
                 </div>
               </li>
               <li className="link">
                 <div className="nav-link">
-                  <NavLink to={"contactUs"}>تواصل معنا</NavLink>
+                  <NavLink onClick={handelShow} to={"contactUs"}>
+                    تواصل معنا
+                  </NavLink>
                 </div>
               </li>
             </ul>
           </div>
 
-          <div className="nav-btns">
-            <Link to={""} className="main-btn">
+          <div className={`nav-btns ${show}`}>
+            <Link onClick={handelShow} to={""} className="main-btn">
               تسجيل الدخول
             </Link>
-            <Link to={""} className="main-btn second-btn">
+            <Link onClick={handelShow} to={""} className="main-btn second-btn">
               الأشتراك
             </Link>
           </div>
+
+          <button
+            className="toggle-btn"
+            onClick={(e) => {
+              handelShow();
+              e.stopPropagation(); // Prevent event propagation
+            }}
+          >
+            {!show ? <FaBarsStaggered /> : <AiOutlineClose />}
+          </button>
         </div>
       </nav>
     </header>

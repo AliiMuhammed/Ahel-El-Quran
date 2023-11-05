@@ -25,6 +25,13 @@ nav .container {
     justify-content: space-between;
 }
 
+/*medium*/
+@media only screen and (min-width: 992px)and (max-width:1443px) {
+    nav .container {
+        width: 95%;
+    }
+}
+
 nav .container .logo-link {
     width: 200px;
 
@@ -32,6 +39,14 @@ nav .container .logo-link {
 
 nav .container .logo-link img {
     width: 100%;
+}
+
+nav .container .nav-links {
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
 }
 
 nav .container .nav-links .links {
@@ -42,8 +57,29 @@ nav .container .nav-links .links {
     color: var(--main-font-color);
 }
 
+@media only screen and (min-width: 992px)and (max-width:1155px) {
+    nav .container .nav-links .links {
+
+        font-size: 1.2rem;
+
+    }
+}
+
+
+
+
+
+
 nav .container .nav-links .links .link:not(:last-of-type) {
     margin-left: 3rem;
+}
+
+.nav-links .links .link {
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
 }
 
 .nav-links .links .link a {
@@ -89,6 +125,17 @@ nav .container .nav-btns {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+@media only screen and (min-width: 767px)and (max-width:991px) {
+    nav .container .nav-btns {
+        justify-content: space-around;
+    }
 }
 
 nav .container .nav-btns a:not(:last-of-type) {
@@ -106,6 +153,8 @@ nav .container .nav-btns a:not(:last-of-type) {
 
 .link.menu span {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .drop-down {
@@ -122,7 +171,7 @@ nav .container .nav-btns a:not(:last-of-type) {
     z-index: -1;
 }
 
-.link.menu:hover .drop-down {
+.drop-down.show {
     opacity: 1;
     top: 100%;
     z-index: 100;
@@ -161,4 +210,100 @@ nav .container .nav-btns a:not(:last-of-type) {
 .drop-down .drop-down-list .drop-link a:hover {
     margin-right: 0.5rem;
     color: var(--btns-hover--color);
+}
+
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+
+
+@media only screen and (max-width:991px) {
+    .nav-links {
+
+        position: absolute;
+        background-color: var(--main-color);
+        width: 100%;
+        right: 100%;
+        top: 100%;
+    }
+
+    .nav-links .links {
+        flex-direction: column;
+
+    }
+
+    .nav-links .links .link {
+        width: 100%;
+        margin: 0 !important;
+        padding: 1rem 2rem;
+    }
+
+    .nav-links .links .link .nav-link {
+        padding: 0;
+    }
+
+    .nav-links .links .link .nav-link a {
+        display: block;
+        width: 100%;
+        color: var(--second-font-color);
+        padding: 0;
+    }
+
+    .nav-links .links .link .nav-link a::after {
+        background-color: transparent;
+    }
+
+    .nav-links .links .link:hover {
+        padding-right: 2.5rem;
+        background-color: #287b56;
+    }
+
+
+    .nav-links .links .link span {
+        display: block;
+        width: 100%;
+        color: var(--second-font-color);
+    }
+
+    .drop-down {
+        width: 100%;
+        left: 0;
+    }
+
+    .drop-down .drop-down-list .drop-link a {
+        padding: 0 2rem;
+
+
+    }
+
+    nav .container .nav-btns {
+        position: absolute;
+        background-color: var(--main-color);
+        width: 100%;
+        right: 100%;
+        top: calc(100% + 307.7px);
+        padding: 1rem 2rem;
+    }
+
+    nav .container .nav-btns a:not(:last-of-type) {
+        margin-left: 0rem;
+    }
+
+    .toggle-btn {
+        display: block;
+    }
+}
+
+nav .container .nav-btns.show {
+    right: 0%;
+}
+
+.nav-links.show {
+    right: 0%;
 }
