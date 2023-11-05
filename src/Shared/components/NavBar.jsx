@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Style/navBar.css";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../Assets/logos/لوجو2.png";
-import { AiFillCaretDown, AiOutlineClose } from "react-icons/ai";
+import logo from "../../Assets/logos/لوجو2.png";
+import {  AiOutlineClose } from "react-icons/ai";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { FaAngleDown } from "react-icons/fa";
 
 const NavBar = () => {
   const [navScroll, setNavScroll] = useState(false);
@@ -79,7 +80,7 @@ const NavBar = () => {
               </li>
               <li className="link menu" onClick={handelDrop} ref={navRef}>
                 <span>
-                  <AiFillCaretDown /> الأقسام
+                  الأقسام <FaAngleDown />
                 </span>
                 <div className={`drop-down ${showDrop}`}>
                   <ul className="drop-down-list">

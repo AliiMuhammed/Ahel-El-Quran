@@ -149,6 +149,7 @@ nav .container .nav-btns a:not(:last-of-type) {
 
 .link.menu svg {
     margin: 0 5px;
+    margin-top: 10px;
 }
 
 .link.menu span {
@@ -169,6 +170,11 @@ nav .container .nav-btns a:not(:last-of-type) {
     -o-transition: var(--main-transition);
     opacity: 0;
     z-index: -1;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
 }
 
 .drop-down.show {
@@ -266,7 +272,7 @@ nav .container .nav-btns a:not(:last-of-type) {
 
 
     .nav-links .links .link span {
-        display: block;
+        display: flex;
         width: 100%;
         color: var(--second-font-color);
     }
