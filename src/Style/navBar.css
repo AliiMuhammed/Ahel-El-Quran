@@ -7,9 +7,9 @@ nav {
     transition: box-shadow 0.3s ease;
     -webkit-transition: box-shadow 0.3s ease;
     -moz-transition: box-shadow 0.3s ease;
-    -webkit-transition: box-shadow 0.3s ease;
     -ms-transition: box-shadow 0.3s ease;
     -o-transition: box-shadow 0.3s ease;
+    z-index: 10000;
 }
 
 .nav-scroll {
@@ -52,18 +52,23 @@ nav .container .nav-links .links .link:not(:last-of-type) {
 
 }
 
-.nav-links .links .link {
+.nav-links .links .link .nav-link {
     overflow: hidden;
     padding: 10px 0;
 }
 
-.nav-links .links .link a::after {
+.nav-links .links .link .nav-link a {
+    padding: 10px 0;
+
+}
+
+.nav-links .links .link .nav-link a::after {
     position: absolute;
     content: "";
     background-color: var(--main-color);
     height: 2px;
     width: 100%;
-    top: 95%;
+    top: 85%;
     left: 100%;
     transition: var(--main-transition);
     -webkit-transition: var(--main-transition);
@@ -88,4 +93,72 @@ nav .container .nav-btns {
 
 nav .container .nav-btns a:not(:last-of-type) {
     margin-left: 1rem;
+}
+
+.link.menu {
+    position: relative;
+    padding: 10px 0;
+}
+
+.link.menu svg {
+    margin: 0 5px;
+}
+
+.link.menu span {
+    cursor: pointer;
+}
+
+.drop-down {
+    background-color: var(--main-color);
+    position: absolute;
+    width: 200px;
+    top: calc(100% + 10px);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    opacity: 0;
+    z-index: -1;
+}
+
+.link.menu:hover .drop-down {
+    opacity: 1;
+    top: 100%;
+    z-index: 100;
+}
+
+.drop-down .drop-down-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem 0;
+}
+
+.drop-down .drop-down-list .drop-link:not(:last-child) {
+    border-bottom: 1px solid var(--third-color);
+    padding: 1rem 0;
+}
+
+.drop-down .drop-down-list .drop-link {
+    padding: 1rem 0;
+}
+
+.drop-down .drop-down-list .drop-link a {
+    padding: 0 1rem;
+    width: 100%;
+    display: block;
+    color: var(--second-font-color);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+
+}
+
+.drop-down .drop-down-list .drop-link a:hover {
+    margin-right: 0.5rem;
+    color: var(--btns-hover--color);
 }
