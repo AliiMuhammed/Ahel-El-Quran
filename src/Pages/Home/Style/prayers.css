@@ -1,0 +1,92 @@
+.prayers-section .container {
+    background-color: var(--main-color);
+    padding: 3rem;
+    color: var(--second-font-color);
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+    background-image: url(../../../Assets/Home/bg-prayers.png);
+
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.prayers-section .container .prayers-time {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.prayers-section .container .prayers-time .date {
+    font-size: 1.5rem;
+    color: var(--btns-hover--color);
+}
+
+.prayers-section .container .prayers-time .date .day {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--second-font-color);
+}
+
+.prayers-section .container .prayers-time .date .day svg {
+    margin-left: 1rem;
+    font-size: 2.3rem;
+}
+
+.prayers-section .container .city {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+
+.prayers-section .container .city h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.prayers-section .container .city .time {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prayers-section .container .city .time span {
+    margin-left: 1rem;
+}
+
+.prayers-section .container .prayers-cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.prayers-section .container .prayers-cards .prayer-card {
+    background-color: #144931;
+    padding: 2rem 2.5rem;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+    text-align: center;
+    margin: 1rem;
+}
+
+.prayers-section .container .prayers-cards .prayer-card h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
