@@ -72,11 +72,20 @@ a {
 }
 
 section {
-  margin-top: 11rem;
+  margin-top: 4rem;
+}
+
+.first-sectoin {
+  margin-top: 7.5rem;
+  height: 100vh;
 }
 
 /* Small screens (up to 767px) */
 @media only screen and (max-width: 767px) {
+  .first-sectoin {
+    margin-top: 7.5rem;
+  }
+
   section {
     margin-top: 6rem;
   }
