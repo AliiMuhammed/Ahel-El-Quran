@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainHeader from "../../../Shared/components/MainHeader";
 
 const Prayers = () => {
+    useEffect(() => {
+      
+    })
   return (
     
       <section className="prayers-section">
@@ -10,6 +13,9 @@ const Prayers = () => {
             smHeader={"مواقيت الصلاة"}
             Header={"مواقيت الصلاة للمسلمين"}
           />
+          <div className="prayers-time">
+
+          </div>
         </div>
       </section>
 
