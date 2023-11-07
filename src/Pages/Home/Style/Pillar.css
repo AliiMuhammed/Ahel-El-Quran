@@ -1,0 +1,39 @@
+.Pillar-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .Pillar-dif {
+    margin-top: -0.5rem;
+    font-size: 1.5rem;
+    color: var(--main-paragraph-color);
+    text-align: center;
+}
+
+.container .Pillars-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 1.5rem;
+}
+
+.container .Pillars-cards .Pillar-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .Pillars-cards .Pillar-card .Pillar-img {
+    width: 325px;
+}
+
+.container .Pillars-cards .Pillar-card .Pillar-img img {
+    width: 100%;
+}
+
+.container .Pillars-cards .Pillar-card h1 {
+    font-size: 2rem;
+    color: var(--main-color);
+}
