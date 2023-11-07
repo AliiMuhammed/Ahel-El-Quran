@@ -5,7 +5,7 @@ import img2 from "../../../Assets/Home/الصلاة.png";
 import img3 from "../../../Assets/Home/الزكاة.png";
 import img4 from "../../../Assets/Home/الصوم.png";
 import img5 from "../../../Assets/Home/الحج.png";
-import "../Style/Pillar.css"
+import "../Style/Pillar.css";
 const Pillars = () => {
   return (
     <section className="Pillar-section">
@@ -22,31 +22,31 @@ const Pillars = () => {
             <div className="Pillar-img">
               <img src={img1} alt="" />
             </div>
-            <h1>الشهادتين</h1>
+            <h1>الشَّهادتيْنِ</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
               <img src={img2} alt="" />
             </div>
-            <h1>إقامة الصَّلاة</h1>
+            <h1>إِقامة الصَّلَاة</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
               <img src={img3} alt="" />
             </div>
-            <h1>إيتاءُ الزكاة</h1>
+            <h1>إِيتَاء الزَّكَاة</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
               <img src={img4} alt="" />
             </div>
-            <h1>صومُ رمضَان</h1>
+            <h1>صَوْم رَمَضان</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
               <img src={img5} alt="" />
             </div>
-            <h1>حجُّ البيت</h1>
+            <h1>حجُّ البيْتِ</h1>
           </div>
         </div>
       </div>
