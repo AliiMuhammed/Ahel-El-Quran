@@ -110,7 +110,7 @@ const Prayers = () => {
         <div className="prayers-cards">
           {times.map((time, index) => {
             return (
-              <div key={time} className="prayer-card">
+            <div key={time} className="prayer-card">
                 <h1>{prayers[index]}</h1>
                 <span>{time}</span>
               </div>
