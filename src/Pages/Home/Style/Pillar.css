@@ -13,8 +13,12 @@
 }
 
 .container .Pillars-cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(5, 1fr); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     margin-top: 1.5rem;
 }
 
@@ -23,10 +27,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 0.5rem 0;
 }
 
 .container .Pillars-cards .Pillar-card .Pillar-img {
-    width: 300px;
+    width: 290px;
 }
 
 .container .Pillars-cards .Pillar-card .Pillar-img img {
@@ -34,6 +39,6 @@
 }
 
 .container .Pillars-cards .Pillar-card h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--main-color);
 }
