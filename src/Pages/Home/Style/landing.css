@@ -1,16 +1,10 @@
 .landing-section {
-    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-@media only screen and (max-width: 991px) {
-    .landing-section {
-        height: 60vh;
 
-    }
-}
 
 
 
