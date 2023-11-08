@@ -32,7 +32,6 @@ body {
   font-family: 'Cairo', sans-serif;
   direction: rtl;
   color: var(--main-font-color);
-  height: 1000vh;
 }
 
 .container {
@@ -77,7 +76,6 @@ section {
 
 .first-sectoin {
   margin-top: 7.5rem;
-  height: 100vh;
 }
 
 /* Small screens (up to 767px) */
@@ -109,6 +107,7 @@ section {
   -o-transition: var(--main-transitin);
   border: 2px solid transparent;
   font-weight: 500;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 1170px)and (max-width:1443px) {
@@ -150,19 +149,19 @@ section {
 @media only screen and (max-width: 991px) {
 
 
-  .main-btn:hover {
+  .main-btn.sm:hover {
     border-color: var(--third-color);
     background-color: transparent;
     color: var(--second-font-color);
   }
 
-  .main-btn.second-btn {
+  .main-btn.second-btn.sm {
     border-color: transparent;
     background-color: var(--background-color);
     color: var(--second-font-color);
   }
 
-  .main-btn.second-btn:hover {
+  .main-btn.second-btn.sm:hover {
     border-color: var(--third-color);
     background-color: transparent;
     color: var(--second-font-color);

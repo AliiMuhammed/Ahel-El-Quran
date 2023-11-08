@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../Style/navBar.css";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../Assets/logos/لوجو2.png";
-import {  AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa";
 
@@ -120,10 +120,14 @@ const NavBar = () => {
           </div>
 
           <div className={`nav-btns ${show}`}>
-            <Link onClick={handelShow} to={""} className="main-btn">
+            <Link onClick={handelShow} to={""} className="main-btn sm">
               تسجيل الدخول
             </Link>
-            <Link onClick={handelShow} to={""} className="main-btn second-btn">
+            <Link
+              onClick={handelShow}
+              to={""}
+              className="main-btn second-btn sm"
+            >
               الأشتراك
             </Link>
           </div>

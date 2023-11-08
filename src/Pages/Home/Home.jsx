@@ -5,11 +5,11 @@ import Prayers from "./components/prayers times/Prayers";
 import Pillars from "./components/Pillars";
 const Home = () => {
   return (
-    <section>
+    <div>
       <Landing />
       <Pillars />
       <Prayers />
-    </section>
+    </div>
   );
 };
 

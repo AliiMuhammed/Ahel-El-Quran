@@ -82,7 +82,7 @@ const Prayers = () => {
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 
   return (
-    <section className="prayers-section">
+    <section className="prayers-section" name="prayers-time">
       <MainHeader
         smHeader={"مواقيت الصلاة"}
         Header={"مواقيت الصلاة للمسلمين"}
@@ -110,7 +110,7 @@ const Prayers = () => {
         <div className="prayers-cards">
           {times.map((time, index) => {
             return (
-            <div key={time} className="prayer-card">
+              <div key={time} className="prayer-card">
                 <h1>{prayers[index]}</h1>
                 <span>{time}</span>
               </div>
