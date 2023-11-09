@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import landingImg from "../../../Assets/Home/landing.png";
 import "../Style/landing.css";
-import { Link as ScrollLink, Element, Events, scroll } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 
 const Landing = () => {
   return (

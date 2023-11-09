@@ -296,7 +296,7 @@ nav .container .nav-btns a:not(:last-of-type) {
         background-color: var(--main-color);
         width: 100%;
         right: 100%;
-        top: calc(100% + 307.7px);
+        top: calc(100% + 305px);
         padding: 1rem 2rem;
     }
 

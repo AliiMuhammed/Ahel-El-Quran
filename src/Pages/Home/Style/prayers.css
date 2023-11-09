@@ -8,13 +8,27 @@
     -ms-border-radius: var(--main-border-radius);
     -o-border-radius: var(--main-border-radius);
     background-image: url(../../../Assets/Home/bg-prayers.png);
-
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 70%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .prayers-section .container {
+        padding: 2rem;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .prayers-section .container {
+        padding: 1.5rem;
+        width: 90%;
+    }
 }
 
 .prayers-section .container .prayers-time {
@@ -27,6 +41,13 @@
     color: var(--btns-hover--color);
 }
 
+@media only screen and (max-width: 767px) {
+
+    .prayers-section .container .prayers-time .date {
+        font-size: 1.3rem;
+    }
+}
+
 .prayers-section .container .prayers-time .date .day {
     font-size: 2rem;
     display: flex;
@@ -35,9 +56,22 @@
     color: var(--second-font-color);
 }
 
+@media only screen and (max-width: 767px) {
+    .prayers-section .container .prayers-time .date .day {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+}
+
 .prayers-section .container .prayers-time .date .day svg {
     margin-left: 1rem;
-    font-size:3.5rem;
+    font-size: 3.5rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .prayers-section .container .prayers-time .date .day svg {
+        font-size: 2.5rem;
+    }
 }
 
 .prayers-section .container .city {
@@ -50,9 +84,21 @@
     margin-bottom: 3rem;
 }
 
+@media only screen and (max-width: 767px) {
+    .prayers-section .container .city {
+        margin-bottom: 2rem;
+    }
+}
+
 .prayers-section .container .city h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .prayers-section .container .city h1 {
+        font-size: 2rem;
+    }
 }
 
 .prayers-section .container .city .time {
@@ -84,6 +130,21 @@
     -o-border-radius: var(--main-border-radius);
     text-align: center;
     margin: 1rem;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .prayers-section .container .prayers-cards .prayer-card {
+        margin: 1rem 0;
+        width: calc(50% - 1rem);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .prayers-section .container .prayers-cards .prayer-card {
+        width: 100%;
+        padding: 1.5rem;
+
+    }
 }
 
 .prayers-section .container .prayers-cards .prayer-card h1 {
