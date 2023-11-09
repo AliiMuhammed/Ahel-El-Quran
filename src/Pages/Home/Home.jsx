@@ -3,12 +3,14 @@ import "./Style/home.css";
 import Landing from "./components/Landing";
 import Prayers from "./components/prayers times/Prayers";
 import Pillars from "./components/Pillars";
+import Ayah from "./components/Ayah";
 const Home = () => {
   return (
     <div>
       <Landing />
-      <Pillars />
       <Prayers />
+      <Ayah />
+      <Pillars />
     </div>
   );
 };
