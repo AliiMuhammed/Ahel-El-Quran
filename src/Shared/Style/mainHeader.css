@@ -11,3 +11,8 @@
 .main-header  h1 {
     font-size: 2.7rem;
 }
+@media only screen and (max-width: 767px) {
+    .main-header  h1 {
+        font-size: 2rem;
+    }
+}

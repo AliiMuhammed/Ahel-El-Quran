@@ -83,39 +83,41 @@ const Prayers = () => {
 
   return (
     <section className="prayers-section" name="prayers-time">
-      <MainHeader
-        smHeader={"مواقيت الصلاة"}
-        Header={"مواقيت الصلاة للمسلمين"}
-      />
       <div className="container">
-        <div className="prayers-time">
-          <div className="date">
-            <div className="day">
-              <FaCalendarDay />
-              {dayNameInArabic}
-            </div>
-            <div className="full-date">
-              <ArabicDate />
-              <ArabicHijriDate />
-            </div>
-          </div>
-        </div>
-        <div className="city">
-          <h1>مواقيت الصلاة في القاهرة - مصر</h1>
-          <div className="time">
-            <span>الساعة الآن</span>
-            <ArabicClock />
-          </div>
-        </div>
-        <div className="prayers-cards">
-          {times.map((time, index) => {
-            return (
-              <div key={time} className="prayer-card">
-                <h1>{prayers[index]}</h1>
-                <span>{time}</span>
+        <MainHeader
+          smHeader={"مواقيت الصلاة"}
+          Header={"مواقيت الصلاة للمسلمين"}
+        />
+        <div className="bg-div">
+          <div className="prayers-time">
+            <div className="date">
+              <div className="day">
+                <FaCalendarDay />
+                {dayNameInArabic}
               </div>
-            );
-          })}
+              <div className="full-date">
+                <ArabicDate />
+                <ArabicHijriDate />
+              </div>
+            </div>
+          </div>
+          <div className="city">
+            <h1>مواقيت الصلاة في القاهرة - مصر</h1>
+            <div className="time">
+              <span>الساعة الآن</span>
+              <ArabicClock />
+            </div>
+          </div>
+          <div className="prayers-cards">
+            {times.map((time, index) => {
+              return (
+                <div key={time} className="prayer-card">
+                  <h1>{prayers[index]}</h1>
+                  <span>{time}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
