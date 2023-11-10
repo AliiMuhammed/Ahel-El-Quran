@@ -168,8 +168,8 @@ nav .container .nav-btns a:not(:last-of-type) {
     -moz-transition: var(--main-transition);
     -ms-transition: var(--main-transition);
     -o-transition: var(--main-transition);
-    opacity: 0;
     z-index: -1;
+    opacity: 0;
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -182,12 +182,14 @@ nav .container .nav-btns a:not(:last-of-type) {
     opacity: 1;
     top: 100%;
     z-index: 100;
+}
 
-
+.drop-down.show .drop-down-list {
+    display: flex;
 }
 
 .drop-down .drop-down-list {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     height: 100%;
