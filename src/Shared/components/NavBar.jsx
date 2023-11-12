@@ -128,7 +128,7 @@ const NavBar = () => {
               to={""}
               className="main-btn second-btn sm"
             >
-              الأشتراك
+              مستخدم جديد
             </Link>
           </div>
 
