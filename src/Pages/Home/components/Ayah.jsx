@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import MainHeader from "../../../Shared/components/MainHeader";
 import axios from "axios";
 import "../Style/ayah.css";
+
 const Ayah = () => {
   const getRandomNumber = (seed) => {
     const min = 1;
@@ -18,6 +19,12 @@ const Ayah = () => {
 
   const [ayah, setAyah] = useState(null);
   const [tafseer, setTafseer] = useState(null);
+  const [counter, setCounter] = useState(1);
+  const [prevDate, setPrevDate] = useState({
+    year: null,
+    month: null,
+    day: null,
+  });
   const getAyah = (RandomNumber) => {
     axios
       .get(`https://api.alquran.cloud/v1/ayah/${RandomNumber}/ar.husary`)
@@ -28,6 +35,7 @@ const Ayah = () => {
         console.log(err);
       });
   };
+
   const getTafseer = (RandomNumber) => {
     axios
       .get(`https://api.alquran.cloud/v1/ayah/${RandomNumber}/ar.muyassar`)
@@ -40,13 +48,35 @@ const Ayah = () => {
   };
 
   useEffect(() => {
-    const currentDate = new Date();
-    const seed = currentDate.getDate();
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    // Check if the day, month, or year has changed
+    if (
+      prevDate.year !== year ||
+      prevDate.month !== month ||
+      prevDate.day !== day
+    ) {
+      // Increment the counter and update the previous date values
+      setCounter((prevCounter) => {
+        if (prevCounter === 6236) {
+          // Reset the counter to 1 if it reaches 6236
+          return 1;
+        } else {
+          return prevCounter + 1;
+        }
+      });
+      setPrevDate({ year, month, day });
+    }
+
+    const seed = counter;
     const RandomNumber = getRandomNumber(seed);
     getAyah(RandomNumber);
     getTafseer(RandomNumber);
-  }, []);
-
+    console.log(seed)
+  }, [counter]);
   function convertToArabicNumber(englishNumber) {
     const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
     const englishNumberString = englishNumber.toString();
