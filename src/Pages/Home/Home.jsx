@@ -4,6 +4,7 @@ import Landing from "./components/Landing";
 import Prayers from "./components/prayers times/Prayers";
 import Pillars from "./components/Pillars";
 import Ayah from "./components/Ayah";
+import Notifications from "../Notifications";
 const Home = () => {
   return (
     <div>
@@ -11,6 +12,7 @@ const Home = () => {
       <Prayers />
       <Ayah />
       <Pillars />
+      <Notifications />
     </div>
   );
 };
