@@ -90,6 +90,7 @@
 @media only screen and (max-width: 991px) {
     .landing-section .container .left h1 {
         font-size: 2rem;
+        line-height: 1.6;
     }
 }
 
@@ -103,6 +104,7 @@
 @media only screen and (max-width: 991px) {
     .landing-section .container .left p {
         font-size: 1.2rem;
+        line-height: 1.6;
     }
 }
 
