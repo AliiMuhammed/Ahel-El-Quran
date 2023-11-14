@@ -10,7 +10,7 @@
 
 @media only screen and (max-width: 767px) {
   .prayers-section .container {
-    width: 90%;
+    width: 95%;
   }
 }
 
@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 767px) {
   .prayers-section .container .bg-div {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 }
 
@@ -134,13 +134,17 @@
 .prayers-section .container .bg-div .prayers-cards .prayer-card {
   background-color: #144931;
   padding: 2rem 2.5rem;
-  border-radius: var(--main-border-radius);
-  -webkit-border-radius: var(--main-border-radius);
-  -moz-border-radius: var(--main-border-radius);
-  -ms-border-radius: var(--main-border-radius);
-  -o-border-radius: var(--main-border-radius);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
   text-align: center;
-  margin: 1rem;
+  margin: 1rem ;
+}
+
+.prayers-section .container .bg-div .prayers-cards .prayer-card span {
+  font-size: 1.2rem;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -152,12 +156,29 @@
 
 @media only screen and (max-width: 767px) {
   .prayers-section .container .bg-div .prayers-cards .prayer-card {
-    width: 100%;
-    padding: 1.5rem;
+    width: 80%;
+    padding: 1.2rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
   }
+  .prayers-section .container .bg-div .prayers-cards .prayer-card span {
+    font-size: 1rem;
+  }
+  
 }
 
 .prayers-section .container .bg-div .prayers-cards .prayer-card h1 {
   font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .prayers-section .container .bg-div .prayers-cards .prayer-card h1 {
+    font-size: 1.8rem;
+
+  }
 }

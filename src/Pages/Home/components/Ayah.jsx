@@ -20,11 +20,11 @@ const Ayah = () => {
   const [ayah, setAyah] = useState(null);
   const [tafseer, setTafseer] = useState(null);
   const [counter, setCounter] = useState(1);
-  const [prevDate, setPrevDate] = useState({
-    year: null,
-    month: null,
-    day: null,
-  });
+  const prevDate = {
+    year: parseInt(localStorage.getItem("year")),
+    month: parseInt(localStorage.getItem("month")),
+    day: parseInt(localStorage.getItem("day")),
+  };
   const getAyah = (RandomNumber) => {
     axios
       .get(`https://api.alquran.cloud/v1/ayah/${RandomNumber}/ar.husary`)
@@ -46,13 +46,17 @@ const Ayah = () => {
         console.log(err);
       });
   };
-
   useEffect(() => {
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
 
+    if (localStorage.getItem("year") === null) {
+      localStorage.setItem("year", year);
+      localStorage.setItem("month", month);
+      localStorage.setItem("day", day);
+    }
     // Check if the day, month, or year has changed
     if (
       prevDate.year !== year ||
@@ -63,20 +67,23 @@ const Ayah = () => {
       setCounter((prevCounter) => {
         if (prevCounter === 6236) {
           // Reset the counter to 1 if it reaches 6236
+          localStorage.setItem("ayahCounter", counter.toString());
+
           return 1;
         } else {
+          localStorage.setItem("ayahCounter", counter.toString());
+
           return prevCounter + 1;
         }
       });
-      setPrevDate({ year, month, day });
     }
 
-    const seed = counter;
+    const seed = parseInt(localStorage.getItem("ayahCounter"));
     const RandomNumber = getRandomNumber(seed);
     getAyah(RandomNumber);
     getTafseer(RandomNumber);
-    console.log(seed)
-  }, [counter]);
+    console.log(seed);
+  }, []);
   function convertToArabicNumber(englishNumber) {
     const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
     const englishNumberString = englishNumber.toString();
@@ -174,7 +181,7 @@ const Ayah = () => {
         <Modal.Header>
           <Modal.Title>تفسير الآيه</Modal.Title>
         </Modal.Header>
-        <Modal.Body scrollable>
+        <Modal.Body scrollable="true">
           <div className="tafseer">
             <p className="ayah-tafseer">
               {tafseer !== null && tafseer.text}
