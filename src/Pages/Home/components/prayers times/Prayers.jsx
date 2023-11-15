@@ -16,7 +16,7 @@ const Prayers = () => {
 
   useEffect(() => {
     axios
-      .get("http://api.aladhan.com/v1/timingsByCity/formattedDate", {
+      .get("https://api.aladhan.com/v1/timingsByCity/formattedDate", {
         params: {
           city: "cairo",
           country: "Egypt",
