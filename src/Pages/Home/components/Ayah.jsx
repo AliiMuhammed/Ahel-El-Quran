@@ -29,11 +29,6 @@ const Ayah = () => {
       return parseInt(storedCounter);
     }
   });
-  const prevDate = {
-    year: parseInt(localStorage.getItem("year")),
-    month: parseInt(localStorage.getItem("month")),
-    day: parseInt(localStorage.getItem("day")),
-  };
   const getAyah = (RandomNumber) => {
     axios
       .get(`https://api.alquran.cloud/v1/ayah/${RandomNumber}/ar.husary`)
