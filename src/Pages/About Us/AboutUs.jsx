@@ -3,9 +3,13 @@ import "./style/aboutUs.css";
 import MainHeading from "../../Shared/components/MainHeading";
 import infoSection from "../../Assets/About us/websit info.jpg";
 const AboutUs = () => {
+  const navigate = {
+    الرئيسية: "/",
+    نحن: "/aboutUs",
+  };
   return (
     <section className="about-section">
-      <MainHeading title={"من نحن"} />
+      <MainHeading title={"من نحن"} breadcrumb={navigate} />
       <section className="about-website">
         <div className="container">
           <div className="left">
