@@ -125,7 +125,10 @@ const Ayah = () => {
   return (
     <section className="ayah-section">
       <div className="container">
-        <MainHeader Header={"آيات من القرآن الكريم"} smHeader={"آيه اليوم"} />
+        <MainHeader
+          Header={"آيات مِن اَلقُرآن اَلكرِيم"}
+          smHeader={"آية اليوْم"}
+        />
         <div className="content">
           <h1>بِسْمِ اللَّهِ اَلرَّحْمَنِ الرَّحِيمِ</h1>
           <div className="ayah">

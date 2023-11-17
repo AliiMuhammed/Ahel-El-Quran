@@ -2,14 +2,16 @@ import React from "react";
 import "./style/aboutUs.css";
 import MainHeading from "../../Shared/components/MainHeading";
 import infoSection from "../../Assets/About us/websit info.jpg";
+import MainHeader from "./../../Shared/components/MainHeader";
+import developer from "../../Assets/About us/me.png";
 const AboutUs = () => {
-  const navigate = {
+  const breadcrumb = {
     الرئيسية: "/",
     نحن: "/aboutUs",
   };
   return (
     <section className="about-section">
-      <MainHeading title={"من نحن"} breadcrumb={navigate} />
+      <MainHeading title={"من نحن"} breadcrumb={breadcrumb} />
       <section className="about-website">
         <div className="container">
           <div className="left">
@@ -28,6 +30,17 @@ const AboutUs = () => {
               يُمكنك تنظيم يومك وأوقات عبادتك، حيث يوفر لك أوقات الصلوات الدقيقة
               لتسهيل أداء فرائضك الدينية في الوقت المحدد.
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="developer-info">
+        <MainHeader
+          smHeader={"عن اَلمُطور"}
+          Header={"تم تطوير الموقع بواسطة"}
+        />
+        <div className="container">
+          <div className="right">
+            <img src={developer} alt="developerImg" />
           </div>
         </div>
       </section>

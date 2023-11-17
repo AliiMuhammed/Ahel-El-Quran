@@ -85,8 +85,8 @@ const Prayers = () => {
     <section className="prayers-section" name="prayers-time">
       <div className="container">
         <MainHeader
-          smHeader={"مواقيت الصلاة"}
-          Header={"مواقيت الصلاة للمسلمين"}
+          smHeader={"مَواقِيت الصَّلَاة"}
+          Header={"مَواقِيت الصَّلَاة لِلْمسْلمين"}
         />
         <div className="bg-div">
           <div className="prayers-time">
