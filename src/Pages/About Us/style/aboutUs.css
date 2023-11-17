@@ -49,19 +49,118 @@
     color: var(--main-color);
     margin-bottom: 2rem;
     font-size: 3rem;
+    font-weight: 600;
 }
+
 @media only screen and (max-width: 767px) {
     .about-section .about-website .container .right h1 {
-      
+
         font-size: 2.3rem;
     }
 }
+
 .about-section .about-website .container .right p {
     font-size: 1.3rem;
     line-height: 1.5;
+    color: var(--main-paragraph-color);
+
 }
 
 .about-section .about-website .container .right p span {
     color: var(--main-color);
     font-weight: 700;
+}
+
+
+
+
+.developer-info .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 991px) {
+    .developer-info .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .developer-info .container {
+        text-align: center;
+    }
+}
+
+.developer-info .container .right {
+    width: 100%;
+}
+
+.developer-info .container .right img {
+    width: 90%;
+    display: block;
+    margin-inline: auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .developer-info .container .right img {
+        width: 100%;
+
+    }
+}
+
+.developer-info .container .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.developer-info .container .left h1 {
+    font-size: 3rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.developer-info .container .left p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--main-paragraph-color);
+
+}
+
+.developer-info .container .left .icons {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.developer-info .container .left .icons a {
+    margin-left: 2rem;
+    color: var(--main-paragraph-color);
+    font-size: 2rem;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+.developer-info .container .left .icons a:hover {
+    color: var(--main-color);
+}
+
+@media only screen and (max-width: 767px) {
+    .developer-info .container .left .icons {
+        justify-content: space-evenly;
+
+    }
+
+    .developer-info .container .left .icons a {
+        margin-left: 0rem;
+
+    }
 }
