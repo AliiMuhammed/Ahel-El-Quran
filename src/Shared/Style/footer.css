@@ -2,6 +2,8 @@ footer {
     margin-top: 7rem;
     padding-top: 2rem;
     background-image: url(../../Assets/Home/bg4.png);
+    background-position: center;
+    background-size: cover;
 }
 
 

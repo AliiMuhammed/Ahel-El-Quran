@@ -1,0 +1,58 @@
+.notfound {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notfound .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    text-align: center;
+    background-image: url(../../../Assets/Home/bg4.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+}
+
+.notfound .container .logo {
+    width: 45%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .notfound .container {
+
+        height: 65%;
+
+    }
+    .notfound .container .logo {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .notfound .container .logo {
+        width: 75%;
+    }
+}
+
+.notfound .container .logo img {
+    width: 100%;
+}
+
+.notfound .container h1 {
+    margin-bottom: 3rem;
+    line-height: 1.5;
+}

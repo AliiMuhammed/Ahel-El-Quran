@@ -91,6 +91,11 @@ const NavBar = () => {
                     </li>
                     <li className="drop-link">
                       <NavLink onClick={handelShow} to={""}>
+                        الأذكار
+                      </NavLink>
+                    </li>
+                    <li className="drop-link">
+                      <NavLink onClick={handelShow} to={""}>
                         الراديو
                       </NavLink>
                     </li>

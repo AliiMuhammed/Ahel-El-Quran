@@ -1,0 +1,47 @@
+.about-section {}
+
+.about-section .about-website {}
+
+.about-section .about-website .container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.about-section .about-website .container .left {
+    width: 100%;
+}
+
+.about-section .about-website .container .left img {
+    width: 85%;
+    margin: 0 auto;
+    display: block;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+}
+
+.about-section .about-website .container .right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.about-section .about-website .container .right h1 {
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+
+.about-section .about-website .container .right p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.about-section .about-website .container .right p span {
+    color: var(--main-color);
+    font-weight: 700;
+}
