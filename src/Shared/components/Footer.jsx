@@ -16,7 +16,7 @@ const Footer = () => {
     <footer>
       <div className="top">
         <div className="container">
-          <div className="col">
+          <div className="footer-col">
             <div className="logo">
               <img src={logo} alt="logo" />
             </div>
@@ -28,7 +28,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col">
+          <div className="footer-col">
             <h2>روابط سريعة</h2>
             <ul className="links-footer">
               <li>
@@ -42,7 +42,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col">
+          <div className="footer-col">
             <h2>الأقسام</h2>
             <ul className="links-footer">
               <li>
@@ -63,10 +63,10 @@ const Footer = () => {
       </div>
       <div className="bottom">
         <div className="container">
-          <div className="col">
-            جميع الحقوق محفوظة &copy; {newArabicDate} - أهل القرآن
+          <div className="footer-col">
+            جميع الحقوق محفوظة &copy; {newArabicDate}
           </div>
-          <div className="col">
+          <div className="footer-col">
             <div className="icons">
               <Link
                 to={
@@ -87,8 +87,8 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="col">
-            تم تطويره بواسطة <span>علي محمد</span>
+          <div className="footer-col">
+            تم تطويره بواسطة <span>@علي محمد</span>
           </div>
         </div>
       </div>
