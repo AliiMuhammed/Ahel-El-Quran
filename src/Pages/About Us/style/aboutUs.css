@@ -17,24 +17,51 @@
 }
 
 .about-section .about-website .container .left {
-    width: 100%;
-}
-
-.about-section .about-website .container .left img {
-    width: 85%;
-    margin: 0 auto;
-    display: block;
+    width: 90%;
     border-radius: var(--main-border-radius);
     -webkit-border-radius: var(--main-border-radius);
     -moz-border-radius: var(--main-border-radius);
     -ms-border-radius: var(--main-border-radius);
     -o-border-radius: var(--main-border-radius);
+    overflow: hidden;
+    margin: 0 auto;
+    display: block;
+}
+
+.about-section .about-website .container .left img {
+    width: 100%;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+
+.about-section .about-website .container .left img:hover {
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }
 
 @media only screen and (max-width: 767px) {
-    .about-section .about-website .container .left img {
+    .about-section .about-website .container .left {
         width: 100%;
-
     }
 }
 
