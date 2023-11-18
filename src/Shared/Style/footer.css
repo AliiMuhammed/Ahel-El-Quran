@@ -152,7 +152,7 @@ footer .bottom .footer-col .icons a:hover {
 }
 
 .developer-link {
-    color: #a1a1a1;
+    color: var(--third-color);
     font-weight: 700;
     padding-right: 0.4rem;
 }
