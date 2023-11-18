@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import MainHeader from "../../../Shared/components/MainHeader";
 import axios from "axios";
 import "../Style/ayah.css";
+import Accordion from "react-bootstrap/Accordion";
 
 const Ayah = () => {
   const getRandomNumber = (seed) => {
@@ -191,11 +192,28 @@ const Ayah = () => {
                 </>
               )}
             </div>
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header className="tafser-title">
+                  تفسير الآية
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div className="tafseer">
+                    <p className="ayah-tafseer">
+                      {tafseer !== null && tafseer.text}
+                      <span>
+                        {tafseer !== null && `( ${tafseer.edition.name} )`}
+                      </span>
+                    </p>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </div>
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose} size="lg" centered>
+      {/* <Modal show={show} onHide={handleClose} size="lg" centered  scrollable={true}>
         <Modal.Header>
           <Modal.Title>تفسير الآيه</Modal.Title>
         </Modal.Header>
@@ -210,13 +228,12 @@ const Ayah = () => {
         <Modal.Footer>
           <button
             className="main-btn close-btn"
-            variant="secondary"
             onClick={handleClose}
           >
             إِغلَاق
           </button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </section>
   );
 };
