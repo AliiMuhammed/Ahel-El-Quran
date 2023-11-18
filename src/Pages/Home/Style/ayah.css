@@ -141,29 +141,7 @@
 @media only screen and (max-width: 767px) {
 
     .tafseer .ayah-tafseer {
-
+        
         text-align: center;
     }
 }
-
-.tafser-title.accordion-header button {
-    font-size: 1.3rem;
-    color: var(--main-color);
-    background-color: transparent !important;
-}
-
-.tafser-title.accordion-header .accordion-button:focus {
-    border-color: var(--main-color) !important;
-    box-shadow: 1px 0px 11px 5px rgba(37, 133, 90, 0.25) !important;
-    -webkit-box-shadow: 1px 0px 11px 5px rgba(37, 133, 90, 0.25) !important;
-    -moz-box-shadow: 1px 0px 11px 5px rgba(37, 133, 90, 0.25) !important;
-}
-
-.tafser-title.accordion-header .accordion-button:not(.collapsed) {
-    background-color: var(--third-color);
-}
-
-.tafser-title.accordion-header button::after {
-    margin-right: 0.5rem !important;
-}
-
