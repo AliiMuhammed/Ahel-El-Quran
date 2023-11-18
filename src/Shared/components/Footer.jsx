@@ -55,7 +55,7 @@ const Footer = () => {
                 <Link to={"/"}>الراديو</Link>
               </li>
               <li>
-                <Link to={"/"}>بث مباشر</Link>
+                <Link to={"/live"}>البث المباشر</Link>
               </li>
             </ul>
           </div>

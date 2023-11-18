@@ -100,8 +100,8 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="drop-link">
-                      <NavLink onClick={handelShow} to={""}>
-                        بث مباشر
+                      <NavLink onClick={handelShow} to={"/live"}>
+                        البث المباشر
                       </NavLink>
                     </li>
                   </ul>
