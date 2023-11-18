@@ -210,7 +210,6 @@ const Ayah = () => {
         <Modal.Footer>
           <button
             className="main-btn close-btn"
-            variant="secondary"
             onClick={handleClose}
           >
             إِغلَاق
