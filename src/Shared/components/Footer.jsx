@@ -46,7 +46,7 @@ const Footer = () => {
             <h2>الأقسام</h2>
             <ul className="links-footer">
               <li>
-                <Link to={"/"}>القرآن الكريم</Link>
+                <Link to={"/quran"}>القرآن الكريم</Link>
               </li>
               <li>
                 <Link to={"/"}>الأذكار</Link>

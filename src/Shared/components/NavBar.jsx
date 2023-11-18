@@ -85,7 +85,7 @@ const NavBar = () => {
                 <div className={`drop-down ${showDrop}`}>
                   <ul className="drop-down-list">
                     <li className="drop-link">
-                      <NavLink onClick={handelShow} to={""}>
+                      <NavLink onClick={handelShow} to={"/quran"}>
                         القرآن الكريم
                       </NavLink>
                     </li>
