@@ -187,3 +187,23 @@ section {
 
   }
 }
+
+.scroll-to-top.scrollToTop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+  background-color: var(--main-color);
+}
+
+.scroll-to-top.scrollToTop-btn:hover {
+  background-color: var(--background-color);
+}
+
+.scroll-to-top.scrollToTop-btn svg {
+  width: 25px;
+}
