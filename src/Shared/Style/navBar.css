@@ -9,7 +9,7 @@ nav {
     -moz-transition: box-shadow 0.3s ease;
     -ms-transition: box-shadow 0.3s ease;
     -o-transition: box-shadow 0.3s ease;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .nav-scroll {

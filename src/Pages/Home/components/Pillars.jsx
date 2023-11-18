@@ -11,8 +11,8 @@ const Pillars = () => {
     <section className="Pillar-section">
       <div className="container">
         <MainHeader
-          smHeader={"أركان الإسلام"}
-          Header={"أركان الإسلام الخمسة"}
+          smHeader={"أَركَان الإسْلام"}
+          Header={"أَركَان الإسْلام الخمْسة"}
         />
         <p className="Pillar-dif">
           مصطلح إسلامي يطلق على الأسس الخمسة التي يبنى عليها دين الإسلام.

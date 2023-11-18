@@ -150,3 +150,9 @@ footer .bottom .footer-col .icons a:hover {
         margin-bottom: 1rem;
     }
 }
+
+.developer-link {
+    color: #a1a1a1;
+    font-weight: 700;
+    padding-right: 0.4rem;
+}

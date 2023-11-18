@@ -88,7 +88,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer-col">
-            تم تطويره بواسطة <span>@علي محمد</span>
+            تم تطويره بواسطة
+            <Link to="/aboutUs#about-me" className="developer-link">@على محمد</Link>
           </div>
         </div>
       </div>
