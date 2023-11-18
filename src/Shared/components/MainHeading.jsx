@@ -7,6 +7,7 @@ const translationMap = {
   نحن: "من نحن",
   تواصل: "تواصل معنا",
   بث: "البث المباشر",
+  القرآن: "القرآن الكريم",
 };
 
 const MainHeading = ({ title, breadcrumb }) => {

@@ -207,3 +207,18 @@ section {
 .scroll-to-top.scrollToTop-btn svg {
   width: 25px;
 }
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.spinner-container .spinner-loader {
+
+  border: 6px solid var(--main-color);
+  border-left-color: transparent;
+  width: 80px;
+  height: 80px;
+}
