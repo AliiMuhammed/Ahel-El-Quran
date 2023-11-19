@@ -26,7 +26,7 @@ nav .container {
 }
 
 /*medium*/
-@media only screen and (min-width: 992px)and (max-width:1506px) {
+@media only screen and (min-width: 992px)and (max-width:1536px) {
     nav .container {
         width: 95%;
     }

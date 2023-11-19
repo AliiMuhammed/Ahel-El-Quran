@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Live from "./Pages/Live Tv/Live";
 import Quran from "./Pages/Quran/Quran";
+import Reader from "./Pages/Single Reader/Reader";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
       {
         path: "/quran",
         element: <Quran />,
+      },
+      {
+        path: "/reader",
+        element: <Reader />,
       },
     ],
     errorElement: <NotFound />,
