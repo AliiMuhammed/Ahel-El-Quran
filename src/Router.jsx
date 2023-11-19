@@ -28,7 +28,7 @@ export const routes = createBrowserRouter([
         element: <Quran />,
       },
       {
-        path: "/reader",
+        path: "/reader/:readerName",
         element: <Reader />,
       },
     ],

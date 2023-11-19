@@ -1,0 +1,80 @@
+.readers {}
+
+/* .readers .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.readers .container .readers-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.readers .container .letter-collection {
+    margin: 5rem 0;
+}
+
+.readers .container .letter-collection .one-letter {
+    background-color: var(--background-color);
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-bottom-left-radius: 0px;
+    font-size: 1.3rem;
+    color: var(--second-font-color);
+    font-weight: bold;
+}
+
+.readers .container .readers-cards .reader-card a {
+    background-color: var(--main-color);
+    padding: 1rem 2rem;
+    color: var(--second-font-color);
+    width: 100%;
+    display: block;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+    text-align: center;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    border: 2px solid transparent;
+}
+
+.readers .container .readers-cards .reader-card a:hover {
+    border-color: var(--main-color);
+    background-color: transparent;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.search-letters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.search-letters .letter {
+    margin: 1rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-weight: bold;
+    width: fit-content;
+    padding: 1rem 1.5rem;
+}
