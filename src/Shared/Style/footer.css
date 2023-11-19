@@ -17,7 +17,7 @@ footer .top,
 footer .bottom {
     display: flex;
     align-items: center;
-
+    justify-content: center;
 }
 
 footer .top .container,
@@ -31,11 +31,14 @@ footer .bottom .container {
 
 footer .top .container {
     justify-content: space-between;
-
+    width:60%;
 }
 
 @media only screen and (max-width: 767px) {
-
+    footer .top .container {
+        justify-content: space-between;
+        width:100%;
+    }
     footer .top .container,
     footer .bottom .container {
         display: grid;
@@ -43,7 +46,13 @@ footer .top .container {
         align-items: center;
     }
 }
-
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    footer .top .container {
+        justify-content: space-between;
+        width:100%;
+    }
+  }
+  
 footer .top .container .footer-col {
     margin: 0 1rem;
     display: flex;
