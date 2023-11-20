@@ -223,13 +223,20 @@ section {
   height: 80px;
 }
 
-.alert-section .container {
+.alert-div  {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.alert-section .container div {
-  width: 100%;
+.alert-div  div {
+  width:65%;
   text-align: center;
+}
+
+@media only screen and (max-width: 991px) {
+  .alert-div  div {
+    width:100%;
+    
+  }
 }

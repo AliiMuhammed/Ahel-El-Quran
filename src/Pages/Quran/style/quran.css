@@ -30,6 +30,12 @@
     width: 100%;
 }
 
+@media only screen and (max-width: 767px) {
+    .readers .container .letter-collection {
+        margin: 3rem 0;
+    }
+}
+
 .readers .container .letter-collection .one-letter {
     background-color: var(--background-color);
     width: fit-content;
@@ -80,7 +86,7 @@
 
 @media only screen and (max-width: 991px) {
     .search-letters {
-        margin-top: 0;
+        margin-top: 1.5rem;
         width: 100%;
     }
 }
@@ -128,8 +134,28 @@
     -o-transition: var(--main-transition);
 }
 
+@media only screen and (max-width: 991px) {
+    .search-box input {
+
+        padding: 0.7rem ;
+
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .search-box input {
+
+        width: 100%;
+
+    }
+}
+
 .search-box input:focus {
     background-color: var(--third-color);
+}
+
+.search-box input[type="search"]::-webkit-search-cancel-button {
+    cursor: pointer;
 }
 
 .search-box button {
@@ -139,4 +165,16 @@
     padding: 1rem;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+@media only screen and (max-width: 991px) {
+    .search-box button {
+
+        padding: 0.7rem;
+
+    }
+}
+
+.search-results {
+    width: 100%;
 }

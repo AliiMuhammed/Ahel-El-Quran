@@ -8,6 +8,7 @@ import Loader from "../../Shared/components/Loader";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { FaSearch } from "react-icons/fa";
+import Alert from "./../../Shared/components/Alert";
 
 const Quran = () => {
   const [readers, setReaders] = useState({
@@ -16,6 +17,7 @@ const Quran = () => {
     errMsg: null,
   });
   const [letters, setLetters] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     setReaders({ ...readers, loading: true });
@@ -83,9 +85,9 @@ const Quran = () => {
     return (
       <section className="quran-section">
         <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
-        <section className="readers">
-          <div className="container">{readers.errMsg}</div>
-        </section>
+        <div className="container">
+          <Alert msg={readers.errMsg} variant={"danger"} />
+        </div>
       </section>
     );
   }
@@ -101,7 +103,19 @@ const Quran = () => {
     acc[firstLetter].push(reader);
     return acc;
   }, {});
+  const handleSearch = (e) => {
+    setSearchInput(e.target.value);
+  };
 
+  const filteredReaders = Object.keys(groupedReaders).reduce((acc, key) => {
+    acc[key] = groupedReaders[key].filter((reader) =>
+      reader.name
+        .toLowerCase()
+        .replace(/[إأ]/g, "ا")
+        .includes(searchInput.toLowerCase().replace(/[إأ]/g, "ا"))
+    );
+    return acc;
+  }, {});
   return (
     <section className="quran-section">
       <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
@@ -120,50 +134,95 @@ const Quran = () => {
               name=""
               id=""
               placeholder="ادخل اسم القارء ..."
+              value={searchInput}
+              onChange={handleSearch}
             />
           </div>
-          <div className="search-letters">
-            {letters.map((letter) => {
-              return (
-                <ScrollLink
-                  className="main-btn second-btn letter"
-                  activeClass="active"
-                  to={letter}
-                  spy={true}
-                  smooth={true}
-                  offset={-150}
-                  duration={1}
-                  key={letter}
-                >
-                  {letter}
-                </ScrollLink>
-              );
-            })}{" "}
-          </div>
 
-          {letters.map((letter) => (
-            <div className="letter-collection" key={letter}>
-              <h2 className="one-letter" name={letter}>
-                {letter}
-              </h2>
-              <div className="readers-cards">
-                {groupedReaders[letter].map((reader) => (
-                  <div className="reader-card" key={reader.id}>
-                    <Link
-                      key={reader.id}
-                      to={`/reader/${reader.name}`}
-                      className="main-btn"
-                      onClick={() => {
-                        dispatch({ type: "SET_READER_DATA", payload: reader });
-                      }}
-                    >
-                      {reader.name}
-                    </Link>
-                  </div>
-                ))}
+          {/* Filtered Content */}
+          {searchInput && (
+            <div className="search-results">
+              <div className="letter-collection">
+                {Object.keys(filteredReaders).every(
+                  (key) => filteredReaders[key].length === 0
+                ) && (
+                  <Alert
+                    msg={`لا يوجد قارء بهذا الاسم "${searchInput}"`}
+                    variant={"warning"}
+                  />
+                )}
+                <div className="readers-cards">
+                  {Object.keys(filteredReaders).map((letter) =>
+                    filteredReaders[letter].map((reader) => (
+                      <div className="reader-card" key={reader.id}>
+                        <Link
+                          key={reader.id}
+                          to={`/reader/${reader.name}`}
+                          className="main-btn"
+                          onClick={() => {
+                            dispatch({
+                              type: "SET_READER_DATA",
+                              payload: reader,
+                            });
+                          }}
+                        >
+                          {reader.name}
+                        </Link>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
             </div>
-          ))}
+          )}
+          {/* Show All Content */}
+          {!searchInput && (
+            <div className="search-letters">
+              {letters.map((letter) => {
+                return (
+                  <ScrollLink
+                    className="main-btn second-btn letter"
+                    activeClass="active"
+                    to={letter}
+                    spy={true}
+                    smooth={true}
+                    offset={-150}
+                    duration={1}
+                    key={letter}
+                  >
+                    {letter}
+                  </ScrollLink>
+                );
+              })}
+            </div>
+          )}
+          {!searchInput &&
+            Object.keys(groupedReaders).map((letter) => (
+              <div className="letter-collection" key={letter}>
+                <h2 className="one-letter" name={letter}>
+                  {letter}
+                </h2>
+                <div className="readers-cards">
+                  {groupedReaders[letter].map((reader) => (
+                    <div className="reader-card" key={reader.id}>
+                      <Link
+                        key={reader.id}
+                        to={`/reader/${reader.name}`}
+                        className="main-btn"
+                        onClick={() => {
+                          dispatch({
+                            type: "SET_READER_DATA",
+                            payload: reader,
+                          });
+                        }}
+                      >
+                        {reader.name}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
         </div>
       </section>
     </section>
