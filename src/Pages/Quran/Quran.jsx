@@ -7,7 +7,6 @@ import axios from "axios";
 import Loader from "../../Shared/components/Loader";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import Alert from "../../Shared/components/Alert";
 
 const Quran = () => {
   const [readers, setReaders] = useState({
@@ -29,7 +28,21 @@ const Quran = () => {
 
         const uniqueLetters = Array.from(
           new Set(
-            sortedReaders.map((reader) => reader.name.charAt(0).toUpperCase())
+            sortedReaders
+              .map((reader) =>
+                reader.name.charAt(0).toUpperCase().replace(/[إأ]/g, "ا")
+              )
+              .filter((letter, index, self) => {
+                return (
+                  sortedReaders.some(
+                    (reader) =>
+                      reader.name
+                        .charAt(0)
+                        .toUpperCase()
+                        .replace(/[إأ]/g, "ا") === letter
+                  ) && self.indexOf(letter) === index
+                );
+              })
           )
         );
         setLetters(uniqueLetters);
@@ -70,23 +83,24 @@ const Quran = () => {
       <section className="quran-section">
         <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
         <section className="readers">
-          <div className="container">
-            <Alert variant={"danger"} msg={readers.errMsg} />
-          </div>
+          <div className="container">{readers.errMsg}</div>
         </section>
       </section>
     );
   }
 
   const groupedReaders = readers.data.reduce((acc, reader) => {
-    const firstLetter = reader.name.charAt(0).toUpperCase();
+    const firstLetter = reader.name
+      .charAt(0)
+      .toUpperCase()
+      .replace(/[إأ]/g, "ا");
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
     acc[firstLetter].push(reader);
     return acc;
   }, {});
-  console.log(letters);
+
   return (
     <section className="quran-section">
       <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
@@ -112,7 +126,7 @@ const Quran = () => {
                   {letter}
                 </ScrollLink>
               );
-            })}
+            })}{" "}
           </div>
           {letters.map((letter) => (
             <div className="letter-collection" key={letter}>
@@ -125,6 +139,7 @@ const Quran = () => {
                     <Link
                       key={reader.id}
                       to={`/reader/${reader.name}`}
+                      className="main-btn"
                       onClick={() => {
                         dispatch({ type: "SET_READER_DATA", payload: reader });
                       }}
