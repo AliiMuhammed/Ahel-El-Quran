@@ -222,3 +222,14 @@ section {
   width: 80px;
   height: 80px;
 }
+
+.alert-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-section .container div {
+  width: 100%;
+  text-align: center;
+}

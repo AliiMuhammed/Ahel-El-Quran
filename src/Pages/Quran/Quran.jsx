@@ -7,6 +7,7 @@ import axios from "axios";
 import Loader from "../../Shared/components/Loader";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import Alert from "../../Shared/components/Alert";
 
 const Quran = () => {
   const [readers, setReaders] = useState({
@@ -69,7 +70,9 @@ const Quran = () => {
       <section className="quran-section">
         <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
         <section className="readers">
-          <div className="container">{readers.errMsg}</div>
+          <div className="container">
+            <Alert variant={"danger"} msg={readers.errMsg} />
+          </div>
         </section>
       </section>
     );
