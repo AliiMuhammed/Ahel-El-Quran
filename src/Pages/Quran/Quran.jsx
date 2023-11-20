@@ -7,6 +7,7 @@ import axios from "axios";
 import Loader from "../../Shared/components/Loader";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import { FaSearch } from "react-icons/fa";
 
 const Quran = () => {
   const [readers, setReaders] = useState({
@@ -110,6 +111,17 @@ const Quran = () => {
           smHeader={"قُرَّاء اَلقُرآن اَلكرِيم"}
         />
         <div className="container">
+          <div className="search-box">
+            <button className="search-btn">
+              <FaSearch />
+            </button>
+            <input
+              type="search"
+              name=""
+              id=""
+              placeholder="ادخل اسم القارء ..."
+            />
+          </div>
           <div className="search-letters">
             {letters.map((letter) => {
               return (
@@ -128,6 +140,7 @@ const Quran = () => {
               );
             })}{" "}
           </div>
+
           {letters.map((letter) => (
             <div className="letter-collection" key={letter}>
               <h2 className="one-letter" name={letter}>
