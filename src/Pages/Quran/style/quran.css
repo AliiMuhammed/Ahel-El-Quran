@@ -1,81 +1,99 @@
+.readers .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .readers .container .readers-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
 }
 
 @media only screen and (max-width: 767px) {
-  .readers .container .readers-cards {
-    grid-template-columns: repeat(1, 1fr);
-  }
+    .readers .container .readers-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .readers .container .readers-cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+    .readers .container .readers-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
 }
 
 .readers .container .letter-collection {
-  margin: 5rem 0;
+    margin: 5rem 0;
+    width: 100%;
 }
 
 .readers .container .letter-collection .one-letter {
-  background-color: var(--background-color);
-  width: fit-content;
-  padding: 1rem 1.5rem;
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-bottom-left-radius: 0px;
-  font-size: 1.3rem;
-  color: var(--second-font-color);
-  font-weight: bold;
+    background-color: var(--background-color);
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-bottom-left-radius: 0px;
+    font-size: 1.3rem;
+    color: var(--second-font-color);
+    font-weight: bold;
 }
 
 .readers .container .readers-cards .reader-card a {
-  display: block;
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+    display: block;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .readers .container .readers-cards .reader-card a {
-    padding: 1rem;
-  }
+    .readers .container .readers-cards .reader-card a {
+        padding: 1rem;
+    }
 }
 
 @media only screen and (max-width: 767px) {
-  .readers .container .readers-cards .reader-card a {
-    font-size: 1rem;
-  }
+    .readers .container .readers-cards .reader-card a {
+        font-size: 1rem;
+    }
 }
 
 .readers .container .readers-cards .reader-card a:hover {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .search-letters {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    width: 90%;
+}
+
+
+@media only screen and (max-width: 991px) {
+    .search-letters {
+        margin-top: 0;
+        width: 100%;
+    }
 }
 
 .search-letters .letter {
-  margin: 0.5rem;
-  border-radius: 15px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  font-weight: bold;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    font-weight: bold;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0.5rem 1rem;
 }
