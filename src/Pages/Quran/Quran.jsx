@@ -86,7 +86,9 @@ const Quran = () => {
       <section className="quran-section">
         <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
         <div className="container">
-          <Alert msg={readers.errMsg} variant={"danger"} />
+          <div className="section">
+            <Alert msg={readers.errMsg} variant={"danger"} />
+          </div>
         </div>
       </section>
     );
@@ -146,11 +148,11 @@ const Quran = () => {
                 {Object.keys(filteredReaders).every(
                   (key) => filteredReaders[key].length === 0
                 ) && (
-                    <Alert
-                      msg={`لا يوجد قارء بهذا الاسم "${searchInput}"`}
-                      variant={"warning"}
-                    />
-                  )}
+                  <Alert
+                    msg={`لا يوجد قارء بهذا الاسم "${searchInput}"`}
+                    variant={"warning"}
+                  />
+                )}
                 <div className="readers-cards">
                   {Object.keys(filteredReaders).map((letter) =>
                     filteredReaders[letter].map((reader) => (
