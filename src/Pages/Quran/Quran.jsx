@@ -146,11 +146,11 @@ const Quran = () => {
                 {Object.keys(filteredReaders).every(
                   (key) => filteredReaders[key].length === 0
                 ) && (
-                  <Alert
-                    msg={`لا يوجد قارء بهذا الاسم "${searchInput}"`}
-                    variant={"warning"}
-                  />
-                )}
+                    <Alert
+                      msg={`لا يوجد قارء بهذا الاسم "${searchInput}"`}
+                      variant={"warning"}
+                    />
+                  )}
                 <div className="readers-cards">
                   {Object.keys(filteredReaders).map((letter) =>
                     filteredReaders[letter].map((reader) => (
