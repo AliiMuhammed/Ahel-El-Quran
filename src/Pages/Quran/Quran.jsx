@@ -22,7 +22,7 @@ const Quran = () => {
   useEffect(() => {
     setReaders({ ...readers, loading: true });
     axios
-      .get("https://mp3quran.net/api/v3/recent_reads")
+      .get("https://mp3quran.net/api/v3/recent_read")
       .then((res) => {
         const sortedReaders = res.data.reads.sort((a, b) =>
           a.name.localeCompare(b.name)
@@ -86,9 +86,9 @@ const Quran = () => {
       <section className="quran-section">
         <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
         <div className="container">
-          <div className="section">
+          <section>
             <Alert msg={readers.errMsg} variant={"danger"} />
-          </div>
+          </section>
         </div>
       </section>
     );
