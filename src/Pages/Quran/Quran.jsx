@@ -21,44 +21,68 @@ const Quran = () => {
 
   useEffect(() => {
     setReaders({ ...readers, loading: true });
-    axios
-      .get("https://mp3quran.net/api/v3/recent_read")
-      .then((res) => {
-        const sortedReaders = res.data.reads.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
-        setReaders({ ...readers, data: sortedReaders, loading: false });
 
-        const uniqueLetters = Array.from(
-          new Set(
-            sortedReaders
-              .map((reader) =>
-                reader.name.charAt(0).toUpperCase().replace(/[إأ]/g, "ا")
-              )
-              .filter((letter, index, self) => {
-                return (
-                  sortedReaders.some(
-                    (reader) =>
-                      reader.name
-                        .charAt(0)
-                        .toUpperCase()
-                        .replace(/[إأ]/g, "ا") === letter
-                  ) && self.indexOf(letter) === index
-                );
-              })
+    const cachedData = localStorage.getItem("recentReadersData");
+    if (cachedData) {
+      const parsedData = JSON.parse(cachedData);
+      setReaders({ ...readers, data: parsedData, loading: false });
+
+      // Extract unique letters from cached data
+      const uniqueCachedLetters = Array.from(
+        new Set(
+          parsedData.map((reader) =>
+            reader.name.charAt(0).toUpperCase().replace(/[إأ]/g, "ا")
           )
-        );
-        setLetters(uniqueLetters);
-      })
-      .catch((err) => {
-        setReaders({
-          ...readers,
-          loading: false,
-          data: null,
-          errMsg: "عفواً لقد حدث خطأ ما, برجاء اعادة المحاولة لاحقاً",
+        )
+      );
+
+      setLetters(uniqueCachedLetters);
+    } else {
+      axios
+        .get("https://mp3quran.net/api/v3/recent_reads")
+        .then((res) => {
+          const sortedReaders = res.data.reads.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          setReaders({ ...readers, data: sortedReaders, loading: false });
+
+          // Store data in localStorage
+          localStorage.setItem(
+            "recentReadersData",
+            JSON.stringify(sortedReaders)
+          );
+
+          const uniqueLetters = Array.from(
+            new Set(
+              sortedReaders
+                .map((reader) =>
+                  reader.name.charAt(0).toUpperCase().replace(/[إأ]/g, "ا")
+                )
+                .filter((letter, index, self) => {
+                  return (
+                    sortedReaders.some(
+                      (reader) =>
+                        reader.name
+                          .charAt(0)
+                          .toUpperCase()
+                          .replace(/[إأ]/g, "ا") === letter
+                    ) && self.indexOf(letter) === index
+                  );
+                })
+            )
+          );
+          setLetters(uniqueLetters);
+        })
+        .catch((err) => {
+          setReaders({
+            ...readers,
+            loading: false,
+            data: null,
+            errMsg: "عفواً لقد حدث خطأ ما, برجاء اعادة المحاولة لاحقاً",
+          });
+          console.log(err);
         });
-        console.log(err);
-      });
+    }
   }, []);
 
   const dispatch = useDispatch();
