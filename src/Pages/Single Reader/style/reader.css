@@ -1,0 +1,43 @@
+.reader-section .reader-content .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reader-section .reader-content .container .reader-rwaya {
+    width: 50%;
+    background-color: transparent;
+    color: var(--main-color);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-color: var(--main-color);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    outline: none;
+    cursor: pointer;
+}
+
+.reader-section .reader-content .container .reader-rwaya:focus {
+    background-color: var(--third-color);
+    box-shadow: none;
+}
+
+.reader-section .reader-content .container .reader-rwaya:focus option {
+    cursor: pointer;
+}
+
+.reader-section .reader-content .container .reader-rwaya.decorated option:hover {
+    box-shadow: 0 0 10px 100px var(--main-color) inset;
+
+}
+
+.reader-section .reader-content .container .reader-rwaya:focus option:focus {
+    background-color: var(--third-color);
+    color: var(--main-color);
+}
