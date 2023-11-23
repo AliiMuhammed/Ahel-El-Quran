@@ -36,11 +36,7 @@
   box-shadow: none;
 }
 
-.reader-section
-  .reader-content
-  .container
-  .reader-rwaya.decorated
-  option:hover {
+.reader-section .reader-content .container .reader-rwaya.decorated option:hover {
   box-shadow: 0 0 10px 100px var(--main-color) inset;
   cursor: pointer !important;
 }
@@ -79,4 +75,5 @@
   width: 100%;
   position: fixed;
   bottom: 0;
+  direction: ltr;
 }
