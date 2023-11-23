@@ -2,10 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
 
 .reader-section .reader-content .container .reader-rwaya {
-    width: 50%;
+    width: 70%;
     background-color: transparent;
     color: var(--main-color);
     border-radius: 10px;
@@ -23,21 +25,47 @@
     cursor: pointer;
 }
 
+@media only screen and (max-width: 767px) {
+    .reader-section .reader-content .container .reader-rwaya {
+        width: 100%;
+    }
+}
+
 .reader-section .reader-content .container .reader-rwaya:focus {
     background-color: var(--third-color);
     box-shadow: none;
 }
 
-.reader-section .reader-content .container .reader-rwaya:focus option {
-    cursor: pointer;
-}
-
 .reader-section .reader-content .container .reader-rwaya.decorated option:hover {
     box-shadow: 0 0 10px 100px var(--main-color) inset;
-
+    cursor: pointer !important;
 }
 
 .reader-section .reader-content .container .reader-rwaya:focus option:focus {
     background-color: var(--third-color);
     color: var(--main-color);
+}
+
+.reader-section .reader-content .container .surahs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 5rem;
+    width: 100%;
+    text-align: center;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .reader-section .reader-content .container .surahs {
+        margin-top: 3rem;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.3rem;
+    }
+}
+
+.surah-audio {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }

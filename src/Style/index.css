@@ -198,8 +198,14 @@ section {
   -ms-transition: var(--main-transition);
   -o-transition: var(--main-transition);
   background-color: var(--main-color);
+  bottom: 12%;
 }
+@media only screen and (max-width: 767px) {
 
+  .scroll-to-top.scrollToTop-btn {
+    bottom: 15%;
+  }
+}
 .scroll-to-top.scrollToTop-btn:hover {
   background-color: var(--background-color);
 }
@@ -223,20 +229,20 @@ section {
   height: 80px;
 }
 
-.alert-div  {
+.alert-div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.alert-div  div {
-  width:65%;
+.alert-div div {
+  width: 65%;
   text-align: center;
 }
 
 @media only screen and (max-width: 991px) {
-  .alert-div  div {
-    width:100%;
-    
+  .alert-div div {
+    width: 100%;
+
   }
 }
