@@ -1,71 +1,82 @@
 .reader-section .reader-content .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .reader-section .reader-content .container .reader-rwaya {
-    width: 70%;
-    background-color: transparent;
-    color: var(--main-color);
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-color: var(--main-color);
-    transition: var(--main-transition);
-    -webkit-transition: var(--main-transition);
-    -moz-transition: var(--main-transition);
-    -ms-transition: var(--main-transition);
-    -o-transition: var(--main-transition);
-    outline: none;
-    cursor: pointer;
+  width: 70%;
+  background-color: transparent;
+  color: var(--main-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-color: var(--main-color);
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+  outline: none;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {
-    .reader-section .reader-content .container .reader-rwaya {
-        width: 100%;
-    }
+  .reader-section .reader-content .container .reader-rwaya {
+    width: 100%;
+  }
 }
 
 .reader-section .reader-content .container .reader-rwaya:focus {
-    background-color: var(--third-color);
-    box-shadow: none;
+  background-color: var(--third-color);
+  box-shadow: none;
 }
 
-.reader-section .reader-content .container .reader-rwaya.decorated option:hover {
-    box-shadow: 0 0 10px 100px var(--main-color) inset;
-    cursor: pointer !important;
+.reader-section
+  .reader-content
+  .container
+  .reader-rwaya.decorated
+  option:hover {
+  box-shadow: 0 0 10px 100px var(--main-color) inset;
+  cursor: pointer !important;
 }
 
 .reader-section .reader-content .container .reader-rwaya:focus option:focus {
-    background-color: var(--third-color);
-    color: var(--main-color);
+  background-color: var(--third-color);
+  color: var(--main-color);
 }
 
 .reader-section .reader-content .container .surahs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 5rem;
-    width: 100%;
-    text-align: center;
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 5rem;
+  width: 100%;
+  text-align: center;
+  gap: 2rem;
 }
 
 @media only screen and (max-width: 767px) {
+  .reader-section .reader-content .container .surahs {
+    margin-top: 3rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.3rem;
+  }
+}
 
-    .reader-section .reader-content .container .surahs {
-        margin-top: 3rem;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1.3rem;
-    }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .reader-section .reader-content .container .surahs {
+    margin-top: 3.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 .surah-audio {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }

@@ -135,7 +135,7 @@ const Reader = () => {
   const breadcrumb = {
     الرئيسية: "/",
     القرآن: "/quran",
-    القارء: "/reader/:readerName",
+    القارئ: "/reader/:readerName",
   };
 
   const handleSurahSelect = (e) => {
