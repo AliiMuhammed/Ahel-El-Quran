@@ -151,22 +151,33 @@ const Reader = () => {
     .map(Number)
     .map((num) => num.toString().padStart(3, "0"));
 
+  const arabicToEnglish = (arabicNumeral) => {
+    const arabicNumbers = "٠١٢٣٤٥٦٧٨٩";
+    const englishNumbers = "0123456789";
+    return arabicNumeral.replace(/[٠-٩]/g, (match) => {
+      const index = arabicNumbers.indexOf(match);
+      return englishNumbers.charAt(index);
+    });
+  };
   const handleSurahClick = (number) => {
-    setSelectedSurahIndex(number);
+    setSelectedSurahIndex(arabicToEnglish(number));
 
     setSelectedSurahClass(`second-btn-${number}`);
   };
-  const filteredSurahs = surahNamesArabicWithNumbers.filter((surah, index) =>
+
+  const filteredSurahs = surahNamesArabicWithNumbers.filter((surah) =>
     surah.toLowerCase().includes(searchInput.toLowerCase())
   );
 
-  const surahElements = filteredSurahs.map((surah, index) => (
+  const surahElements = filteredSurahs.map((surah) => (
     <div
       className={`surah main-btn ${
-        selectedSurahClass === `second-btn-${index + 1}` ? "second-btn" : ""
+        selectedSurahClass === `second-btn-${surah.split(" - ")[0]}`
+          ? "second-btn"
+          : ""
       }`}
-      key={index + 1}
-      onClick={() => handleSurahClick((index + 1).toString().padStart(3, "0"))}
+      key={surah.split(" - ")[0]}
+      onClick={() => handleSurahClick(surah.split(" - ")[0])}
     >
       {surah}
     </div>
