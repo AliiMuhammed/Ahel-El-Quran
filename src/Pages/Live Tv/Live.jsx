@@ -19,11 +19,11 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube.com/embed/5bRjxlQgK90?autoplay=1"
+            src="https://www.youtube-nocookie.com/embed/Ti1JAF30Uvw?si=4ojs3L7eod3WZy9I"
+            title="YouTube video player"
             frameBorder="0"
-            title="Makkah"
-            allow="encrypted-media"
-            allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
             className="live-window"
           ></iframe>
         </div>
@@ -35,11 +35,11 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube.com/embed/EB0Y1ztWnic?autoplay=1"
+            src="https://www.youtube-nocookie.com/embed/EB0Y1ztWnic?si=2CA7AkGMPu7CuBp0"
+            title="YouTube video player"
             frameBorder="0"
-            title="Madinah"
-            allow="encrypted-media"
-            allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
             className="live-window"
           ></iframe>
         </div>
