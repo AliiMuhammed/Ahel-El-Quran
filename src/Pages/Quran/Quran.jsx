@@ -159,7 +159,7 @@ const Quran = () => {
               type="search"
               name=""
               id=""
-              placeholder="ادخل اسم القارء ..."
+              placeholder="ادخل اسم القارئ ..."
               value={searchInput}
               onChange={handleSearch}
             />
