@@ -160,8 +160,7 @@ const Reader = () => {
     });
   };
   const handleSurahClick = (number) => {
-    setSelectedSurahIndex(arabicToEnglish(number));
-
+    setSelectedSurahIndex(arabicToEnglish(number).toString().padStart(3, "0"));
     setSelectedSurahClass(`second-btn-${number}`);
   };
 
