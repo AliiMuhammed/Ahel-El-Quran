@@ -38,45 +38,47 @@ const AboutUs = () => {
         </div>
       </section>
       <section className="developer-info" id="about-me">
-        <MainHeader
-          smHeader={" عن اَلمُطور "}
-          Header={"تمَّ تَطوِير اَلموْقِع عن طريق"}
-        />
         <div className="container">
-          <div className="left">
-            <h1>على محمد</h1>
-            <p>
-              أنا طالب في السنة الرابعة بكلية الحاسبات والذكاء الاصطناعي في
-              جامعة حلوان. شغفي الرئيسي يكمن في تطوير وتحسين الواجهات الأمامية
-              لمواقع الويب باستخدام React.js. أسعى دائمًا لاستخدام هذه التقنية
-              لخلق تجارب مستخدم مميزة وفعّالة، وأنا متحمس لاكتساب المزيد من
-              المهارات والخبرات في هذا المجال.
-            </p>
-            <div className="contactMe">
-              <h1>تواصل معي</h1>
-              <div className="icons">
-                <Link
-                  to={
-                    "https://api.whatsapp.com/send/?phone=201066567630&text=Hi%20Ali!&type=phone_number&app_absent=0"
-                  }
-                  target="_blank"
-                >
-                  <FaWhatsapp />
-                </Link>
-                <Link to="mailto:ali.muhammed.dev@gmail.com">
-                  <IoMail />
-                </Link>
-                <Link to={"https://www.linkedin.com/in/ali-muhammed-dev/"}>
-                  <FaLinkedinIn />
-                </Link>
-                <Link to={"https://github.com/AliiMuhammed"}>
-                  <FiGithub />
-                </Link>
+          <MainHeader
+            smHeader={" عن اَلمُطور "}
+            Header={"تمَّ تَطوِير اَلموْقِع عن طريق"}
+          />
+          <div className="content">
+            <div className="left">
+              <h1>على محمد</h1>
+              <p>
+                أنا طالب في السنة الرابعة بكلية الحاسبات والذكاء الاصطناعي في
+                جامعة حلوان. شغفي الرئيسي يكمن في تطوير وتحسين الواجهات الأمامية
+                لمواقع الويب باستخدام React.js. أسعى دائمًا لاستخدام هذه التقنية
+                لخلق تجارب مستخدم مميزة وفعّالة، وأنا متحمس لاكتساب المزيد من
+                المهارات والخبرات في هذا المجال.
+              </p>
+              <div className="contactMe">
+                <h1>تواصل معي</h1>
+                <div className="icons">
+                  <Link
+                    to={
+                      "https://api.whatsapp.com/send/?phone=201066567630&text=Hi%20Ali!&type=phone_number&app_absent=0"
+                    }
+                    target="_blank"
+                  >
+                    <FaWhatsapp />
+                  </Link>
+                  <Link to="mailto:ali.muhammed.dev@gmail.com">
+                    <IoMail />
+                  </Link>
+                  <Link to={"https://www.linkedin.com/in/ali-muhammed-dev/"}>
+                    <FaLinkedinIn />
+                  </Link>
+                  <Link to={"https://github.com/AliiMuhammed"}>
+                    <FiGithub />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="right">
-            <img src={developer} alt="developerImg" />
+            <div className="right">
+              <img src={developer} alt="developerImg" />
+            </div>
           </div>
         </div>
       </section>

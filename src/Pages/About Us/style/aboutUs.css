@@ -101,20 +101,20 @@
 
 
 
-.developer-info .container {
+.developer-info .container .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
 @media only screen and (max-width: 991px) {
-    .developer-info .container {
+    .developer-info .container .content {
         grid-template-columns: 1fr;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .developer-info .container {
+    .developer-info .container .content {
         text-align: center;
     }
 }
