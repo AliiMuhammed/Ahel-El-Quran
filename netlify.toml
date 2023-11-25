@@ -2,5 +2,4 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  # Redirect rules specifically for API endpoints
-  conditions = {Path = "!^/api"}
+  conditions = { Source = "!/^\/api\/.*/" }
