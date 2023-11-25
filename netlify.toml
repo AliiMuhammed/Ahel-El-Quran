@@ -1,5 +1,10 @@
+# Redirects for client-side routing and API routes
 [[redirects]]
+  # Redirect all non-file paths to index.html for client-side routing
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = { Source = "!/^\/api\/.*/" }
+  # Exclude API routes from redirection
+  conditions = { Source = "!^\/(api|https://server11.mp3quran.net)\/.*" }
+
+
