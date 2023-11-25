@@ -50,7 +50,7 @@ const ContactUs = () => {
             <div className="left">
               <form action="">
                 <input type="text" placeholder="الاسم" />
-                <input type="text" placeholder="البريد الإلكتروني" />
+                <input type="email" placeholder="البريد الإلكتروني" />
                 <textarea type="text" placeholder="رسالتك" />
                 <input type="submit" value="إرسال" className="main-btn" />
               </form>
