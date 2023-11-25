@@ -2,5 +2,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  # Exclude API routes from redirection
-  conditions = { Source = "!/^\/api\/.*/" }

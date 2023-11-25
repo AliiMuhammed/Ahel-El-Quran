@@ -184,7 +184,7 @@ const Reader = () => {
   const audioElement = () => {
     return (
       <AudioPlayer
-        src={`${reader.moshaf[selectedRwayaIndex].server}/${selectedSurahIndex}.mp3`}
+        src={`${reader.moshaf[selectedRwayaIndex].server}${selectedSurahIndex}.mp3`}
       />
     );
   };
