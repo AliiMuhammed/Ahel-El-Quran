@@ -148,8 +148,7 @@ const Reader = () => {
 
   let surahs_numbers = reader.moshaf[selectedRwayaIndex].surah_list
     .split(",")
-    .map(Number)
-    .map((num) => num.toString().padStart(3, "0"));
+    .map(Number);
 
   const arabicToEnglish = (arabicNumeral) => {
     const arabicNumbers = "٠١٢٣٤٥٦٧٨٩";
@@ -164,23 +163,29 @@ const Reader = () => {
     setSelectedSurahClass(`second-btn-${number}`);
   };
 
-  const filteredSurahs = surahNamesArabicWithNumbers.filter((surah) =>
-    surah.toLowerCase().includes(searchInput.toLowerCase())
-  );
+  const surahElements = surahs_numbers
+    .filter((surahNumber) =>
+      surahNamesArabicWithNumbers[surahNumber - 1]
+        .toLowerCase()
+        .includes(searchInput.toLowerCase())
+    )
+    .map((surahNumber) => {
+      const surah = surahNamesArabicWithNumbers[surahNumber - 1];
+      return (
+        <div
+          className={`surah main-btn ${
+            selectedSurahClass === `second-btn-${surahNumber}`
+              ? "second-btn"
+              : ""
+          }`}
+          key={surahNumber}
+          onClick={() => handleSurahClick(surah.split(" - ")[0])}
+        >
+          {surah}
+        </div>
+      );
+    });
 
-  const surahElements = filteredSurahs.map((surah) => (
-    <div
-      className={`surah main-btn ${
-        selectedSurahClass === `second-btn-${surah.split(" - ")[0]}`
-          ? "second-btn"
-          : ""
-      }`}
-      key={surah.split(" - ")[0]}
-      onClick={() => handleSurahClick(surah.split(" - ")[0])}
-    >
-      {surah}
-    </div>
-  ));
   const audioElement = () => {
     return (
       <AudioPlayer
