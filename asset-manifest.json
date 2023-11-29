@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Ahel-El-Quran/static/css/main.bf8afba3.css",
+    "main.js": "/Ahel-El-Quran/static/js/main.a5e6de44.js",
+    "static/media/landing.png": "/Ahel-El-Quran/static/media/landing.b41ae40db727e729405c.png",
+    "static/media/websit info.jpg": "/Ahel-El-Quran/static/media/websit info.a2c280aa49197d74a460.jpg",
+    "static/media/الحج.png": "/Ahel-El-Quran/static/media/الحج.1c63b447e040448a769d.png",
+    "static/media/الصوم.png": "/Ahel-El-Quran/static/media/الصوم.0d71a4c7c916bd055119.png",
+    "static/media/الصلاة.png": "/Ahel-El-Quran/static/media/الصلاة.78f0dfe68f08bf6843f0.png",
+    "static/media/bg4.png": "/Ahel-El-Quran/static/media/bg4.acb395e5be6758539799.png",
+    "static/media/الزكاة.png": "/Ahel-El-Quran/static/media/الزكاة.e40e1893f4577f1ad004.png",
+    "static/media/me.png": "/Ahel-El-Quran/static/media/me.58c1b45d4b74db9a2f49.png",
+    "static/media/الشهادة2.png": "/Ahel-El-Quran/static/media/الشهادة2.90d76c85e679a0058b25.png",
+    "static/media/bg-prayers.png": "/Ahel-El-Quran/static/media/bg-prayers.47c14a16f545d145c436.png",
+    "static/media/لوجو2.png": "/Ahel-El-Quran/static/media/لوجو2.add1cfe84568d24ee835.png",
+    "index.html": "/Ahel-El-Quran/index.html",
+    "main.bf8afba3.css.map": "/Ahel-El-Quran/static/css/main.bf8afba3.css.map",
+    "main.a5e6de44.js.map": "/Ahel-El-Quran/static/js/main.a5e6de44.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bf8afba3.css",
+    "static/js/main.a5e6de44.js"
+  ]
+}
