@@ -6,8 +6,11 @@
   position: relative;
 }
 
+.reader-section .reader-content .container .search-box input {
+  width: 80%;
+}
+
 .reader-section .reader-content .container .reader-rwaya {
-  width: 50%;
   background-color: transparent;
   color: var(--main-color);
   border-radius: 10px;
@@ -23,7 +26,7 @@
   -o-transition: var(--main-transition);
   outline: none;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -50,7 +53,7 @@
 .reader-section .reader-content .container .surahs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 5rem;
+  margin-top: 3rem;
   width: 100%;
   text-align: center;
   gap: 2rem;
@@ -72,9 +75,47 @@
   }
 }
 
+.surah.main-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.surah.main-btn button,
+.surah.main-btn a {
+  background-color: transparent;
+  border: none;
+  color: var(--second-font-color);
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+
+.surah.main-btn:hover button,
+.surah.main-btn:hover a {
+  color: var(--main-color);
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .surah.main-btn {
+    padding: 0.7rem 1rem;
+  }
+}
+
 .surah-audio {
   width: 100%;
   position: fixed;
   bottom: 0;
   direction: ltr;
 }
+
+/* 
+.surah-audio .audio-element {
+  width: 80%;
+} */

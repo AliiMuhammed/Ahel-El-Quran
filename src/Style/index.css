@@ -200,12 +200,14 @@ section {
   background-color: var(--main-color);
   bottom: 12%;
 }
+
 @media only screen and (max-width: 767px) {
 
   .scroll-to-top.scrollToTop-btn {
     bottom: 15%;
   }
 }
+
 .scroll-to-top.scrollToTop-btn:hover {
   background-color: var(--background-color);
 }
@@ -247,4 +249,25 @@ section {
 
   }
 }
+
+
+
+
+
+.rhap_download-progress,
+.rhap_volume-bar {
+  background-color: #c7dbcc !important;
+}
+
+.rhap_progress-filled,
+.rhap_progress-indicator,
+.rhap_volume-indicator {
+  background-color: var(--main-color) !important;
+}
+
+.rhap_controls-section svg {
+  color: var(--main-color) !important;
+}
+
+
 /* end globale rules */
