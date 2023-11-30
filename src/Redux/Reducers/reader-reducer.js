@@ -1,7 +1,3 @@
-// store.js
-
-import { createStore } from "redux";
-
 const storedReaderData = localStorage.getItem("readerData");
 const initialState = {
   readerData: storedReaderData ? JSON.parse(storedReaderData) : null,
@@ -21,6 +17,4 @@ const readerReducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(readerReducer);
-
-export default store;
+export default readerReducer;

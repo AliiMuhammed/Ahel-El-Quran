@@ -4,7 +4,7 @@ import Footer from "./Shared/components/Footer";
 import MovetoTop from "./Shared/components/MovetoTop";
 import ScrollToTop from "react-scroll-to-top";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./Redux/store";
 function App() {
   return (
     <Provider store={store}>

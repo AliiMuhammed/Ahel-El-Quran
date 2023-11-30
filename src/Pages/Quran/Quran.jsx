@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { FaSearch } from "react-icons/fa";
 import Alert from "./../../Shared/components/Alert";
+import { setReader } from "../../Redux/Actions/Reader";
 
 const Quran = () => {
   const [readers, setReaders] = useState({
@@ -236,10 +237,7 @@ const Quran = () => {
                         to={`/reader/${reader.name}`}
                         className="main-btn"
                         onClick={() => {
-                          dispatch({
-                            type: "SET_READER_DATA",
-                            payload: reader,
-                          });
+                          dispatch(setReader(reader));
                         }}
                       >
                         {reader.name}

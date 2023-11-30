@@ -9,7 +9,9 @@ import {
   FaSearch,
   FaRegPlayCircle,
   FaRegArrowAltCircleDown,
+  FaRegPauseCircle,
 } from "react-icons/fa";
+
 import Alert from "./../../Shared/components/Alert";
 
 const surahNamesArabicWithNumbers = [
@@ -138,6 +140,7 @@ const Reader = () => {
   const [selectedSurahClass, setSelectedSurahClass] = useState("");
   const [isAudioVisible, setIsAudioVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playingSurahIndex, setPlayingSurahIndex] = useState(null); // State to track which Surah is playing
 
   if (!reader) {
     return <section>Reader details not found.</section>;
@@ -171,6 +174,7 @@ const Reader = () => {
     setSelectedSurahClass(`second-btn-${number}`);
     setIsAudioVisible(true);
     setIsPlaying(true);
+    setPlayingSurahIndex(number); // Set the current playing Surah
   };
 
   const surahElements = surahs_numbers
@@ -207,7 +211,11 @@ const Reader = () => {
             onClick={() => handleSurahClick(surah.split(" - ")[0])}
             title="الأستماع الي السورة"
           >
-            <FaRegPlayCircle />
+            {playingSurahIndex === surah.split(" - ")[0] && isPlaying ? (
+              <FaRegPauseCircle />
+            ) : (
+              <FaRegPlayCircle />
+            )}
           </button>
         </div>
       );
