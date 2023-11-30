@@ -192,7 +192,9 @@ const Reader = () => {
         >
           {surah}
           <a
-            href={`${reader.moshaf[selectedRwayaIndex].server}${selectedSurahIndex}.mp3`}
+            href={`${reader.moshaf[selectedRwayaIndex].server}${surahNumber
+              .toString()
+              .padStart(3, "0")}.mp3`}
             download={`${selectedSurahIndex}.mp3`}
             title="تحميل السورة"
             target="_blank"
