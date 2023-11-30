@@ -19,7 +19,7 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/Ti1JAF30Uvw?si=4ojs3L7eod3WZy9I"
+            src="https://www.youtube.com/embed/LqZK4G-uKhE?si=v8IkCSeTFCSfYRF8"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

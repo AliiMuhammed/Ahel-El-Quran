@@ -6,7 +6,15 @@
   position: relative;
 }
 
+.reader-section .reader-content .container .search-box input {
+  width: 80%;
+}
 
+@media only screen and (max-width: 991px) {
+  .reader-section .reader-content .container .search-box input {
+    width: 100%;
+  }
+}
 
 .reader-section .reader-content .container .reader-rwaya {
   background-color: transparent;
