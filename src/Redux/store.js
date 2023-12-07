@@ -1,8 +1,6 @@
-// store.js
+import { createStore } from "redux";
+import rootReducer from "./Reducers/index"; // Import your combined reducers
 
-import { legacy_createStore } from "redux";
-import readerReducer from "./Reducers/reader-reducer";
-
-const store = legacy_createStore(readerReducer);
+const store = createStore(rootReducer);
 
 export default store;

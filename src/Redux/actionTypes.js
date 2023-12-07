@@ -1,0 +1,1 @@
+export const SET_READER_DATA ="SET_READER_DATA"
