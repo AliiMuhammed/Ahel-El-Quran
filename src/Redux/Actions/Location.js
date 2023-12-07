@@ -51,7 +51,7 @@ export const fetchLocation = () => {
               .catch((error) => {
                 dispatch(locationError(error.message));
               });
-          }, 2000); // Wait for 5 seconds before fetching the location
+          }, 2000); 
         },
         (error) => {
           dispatch(locationError(error.message));
