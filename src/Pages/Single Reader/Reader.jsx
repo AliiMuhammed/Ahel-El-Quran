@@ -134,7 +134,8 @@ const surahNamesArabicWithNumbers = [
 const Reader = () => {
   const [searchInput, setSearchInput] = useState("");
 
-  const reader = useSelector((state) => state.readerData);
+  const reader =  JSON.parse(localStorage.getItem("readerData"));
+  console.log(reader)
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
   const [selectedSurahClass, setSelectedSurahClass] = useState("");
@@ -142,7 +143,7 @@ const Reader = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingSurahIndex, setPlayingSurahIndex] = useState(null); // State to track which Surah is playing
 
-  if (!reader) {
+  if (reader ===null) {
     return <section>Reader details not found.</section>;
   }
 

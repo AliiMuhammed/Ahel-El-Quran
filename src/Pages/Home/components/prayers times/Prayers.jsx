@@ -43,7 +43,7 @@ const Prayers = ({ fetchLocation }) => {
   }, []);
 
   useEffect(() => {
-    fetchLocation(); // Dispatch the fetchLocation action on mount
+    fetchLocation(); 
   }, [fetchLocation]);
   const date = new Date();
   const options = { weekday: "long", localeMatcher: "best fit" };
