@@ -1,41 +1,28 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { receiveLocation, locationError } from '../../Redux/Actions/Location'; // Import your action creators
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchLocation } from "../../Redux/Actions/Location"; // Update import
 
-const Location = ({ location, isLoading, error, receiveLocation, locationError }) => {
+const Location = ({
+  location,
+  isLoading,
+  error,
+  fetchLocation, // Update props
+}) => {
   useEffect(() => {
-    const storedLocation = localStorage.getItem('userLocation');
-    if (!location && storedLocation) {
-      const parsedLocation = JSON.parse(storedLocation);
-      receiveLocation(parsedLocation);
-    } else if (!location) {
-      getLocation();
-    }
-  }, [location, receiveLocation]);
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const userLocation = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          };
-          localStorage.setItem('userLocation', JSON.stringify(userLocation));
-          receiveLocation(userLocation);
-        },
-        (error) => {
-          locationError(error.message);
-        }
-      );
-    } else {
-      console.log('Geolocation is not supported by this browser.');
-    }
-  };
+    fetchLocation(); // Dispatch the fetchLocation action on mount
+  }, [fetchLocation]); // Pass fetchLocation as a dependency
 
   return (
     <div>
       {/* Your UI to display location, loading, and errors */}
+      {isLoading && <p>Loading...</p>}
+      {location && (
+        <div>
+          <p>City: {location.city}</p>
+          <p>Country: {location.country}</p>
+        </div>
+      )}
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };
@@ -47,8 +34,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  receiveLocation,
-  locationError,
+  fetchLocation, // Use fetchLocation action
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Location);
