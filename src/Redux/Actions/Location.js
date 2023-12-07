@@ -35,7 +35,7 @@ export const fetchLocation = () => {
                 console.log("Full address data:", data);
 
                 const city =
-                  data.address.city ||
+                  data.address.statew ||
                   data.address.town ||
                   data.address.village ||
                   data.address.county ||
