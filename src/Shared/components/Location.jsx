@@ -6,7 +6,7 @@ const Location = ({
   location,
   isLoading,
   error,
-  fetchLocation, // Update props
+  fetchLocation,
 }) => {
   useEffect(() => {
     fetchLocation(); // Dispatch the fetchLocation action on mount

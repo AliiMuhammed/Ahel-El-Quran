@@ -6,20 +6,26 @@ import { FaCalendarDay } from "react-icons/fa6";
 import ArabicDate from "./components/ArabicDate";
 import ArabicHijriDate from "./components/ArabicHijriDate";
 import "../../Style/prayers.css";
-const Prayers = () => {
+
+import { connect, useSelector } from "react-redux";
+import { fetchLocation } from "../../../../Redux/Actions/Location";
+import Loader from "../../../../Shared/components/Loader";
+const Prayers = ({ fetchLocation }) => {
   const [todayDate, setTodayDate] = useState({
     gregorian: {},
     hijri: {},
     err: null,
   });
   const [prayersTime, setParyersTime] = useState({});
+  let location = useSelector((state) => state.location);
 
   useEffect(() => {
     axios
       .get("https://api.aladhan.com/v1/timingsByCity/formattedDate", {
         params: {
-          city: "cairo",
-          country: "Egypt",
+          city: location.location !== null ? `"${location.city}"` : "Cairo",
+          country:
+            location.location !== null ? `"${location.country}"` : "Egypt",
           method: 5,
         },
       })
@@ -36,6 +42,9 @@ const Prayers = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetchLocation(); // Dispatch the fetchLocation action on mount
+  }, [fetchLocation]);
   const date = new Date();
   const options = { weekday: "long", localeMatcher: "best fit" };
   const dayNameInArabic = date.toLocaleDateString("ar", options);
@@ -102,21 +111,24 @@ const Prayers = () => {
             </div>
           </div>
           <div className="city">
-            <h1>مواقيت الصلاة في القاهرة - مصر</h1>
+            <h1>مواقيت الصلاة في مصر</h1>
             <div className="time">
               <span>الساعة الآن</span>
               <ArabicClock />
             </div>
           </div>
           <div className="prayers-cards">
-            {times.map((time, index) => {
-              return (
-                <div key={time} className="prayer-card">
-                  <h1>{prayers[index]}</h1>
-                  <span>{time}</span>
-                </div>
-              );
-            })}
+            {location.location === null && <Loader />}
+            {!location.isLoading &&
+              location.location !== null &&
+              times.map((time, index) => {
+                return (
+                  <div key={time} className="prayer-card">
+                    <h1>{prayers[index]}</h1>
+                    <span>{time}</span>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -124,4 +136,8 @@ const Prayers = () => {
   );
 };
 
-export default Prayers;
+const mapDispatchToProps = {
+  fetchLocation, // Use fetchLocation action
+};
+
+export default connect(null, mapDispatchToProps)(Prayers);
