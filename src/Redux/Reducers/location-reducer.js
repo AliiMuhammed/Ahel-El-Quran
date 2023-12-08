@@ -1,31 +1,31 @@
-import { REQUEST_LOCATION, RECEIVE_LOCATION, LOCATION_ERROR } from '../Actions/Location';
+import {
+  REQUEST_LOCATION,
+  RECEIVE_LOCATION,
+  LOCATION_ERROR,
+  SET_LOCATION,
+} from "../actionTypes";
 
-const initialState = {
-  location: null,
-  error: null,
-  isLoading: false,
-};
+const storedLocation = JSON.parse(localStorage.getItem("location"));
+const initialState = storedLocation || { latitude: "", longitude: "" };
 
 const locationReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_LOCATION:
-      return {
-        ...state,
-        isLoading: true,
-        error: null,
-      };
+      // Handle request action
+      return state;
+
     case RECEIVE_LOCATION:
-      return {
-        ...state,
-        isLoading: false,
-        location: action.payload,
-      };
+      // Handle receive action
+      return action.payload;
+
     case LOCATION_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload,
-      };
+      // Handle error action
+      return state;
+
+    case SET_LOCATION:
+      // Set location from localStorage
+      return action.payload;
+
     default:
       return state;
   }

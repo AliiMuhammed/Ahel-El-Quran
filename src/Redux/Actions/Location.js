@@ -1,7 +1,9 @@
-export const REQUEST_LOCATION = "REQUEST_LOCATION";
-export const RECEIVE_LOCATION = "RECEIVE_LOCATION";
-export const LOCATION_ERROR = "LOCATION_ERROR";
-
+import {
+  REQUEST_LOCATION,
+  RECEIVE_LOCATION,
+  LOCATION_ERROR,
+  SET_LOCATION,
+} from "../actionTypes";
 export const requestLocation = () => ({
   type: REQUEST_LOCATION,
 });
@@ -16,6 +18,11 @@ export const locationError = (error) => ({
   payload: error,
 });
 
+export const setLocation = (location) => ({
+  type: SET_LOCATION,
+  payload: location,
+});
+
 export const fetchLocation = () => {
   return (dispatch) => {
     dispatch(requestLocation());
@@ -23,9 +30,11 @@ export const fetchLocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          localStorage.setItem("userLatitude", latitude);
-          localStorage.setItem("userLongitude", longitude);
           dispatch(receiveLocation({ latitude, longitude }));
+          localStorage.setItem(
+            "location",
+            JSON.stringify({ latitude, longitude })
+          );
         },
         (error) => {
           dispatch(locationError(error.message));
@@ -33,6 +42,15 @@ export const fetchLocation = () => {
       );
     } else {
       dispatch(locationError("Geolocation is not supported by this browser."));
+    }
+  };
+};
+
+export const loadLocationFromStorage = () => {
+  return (dispatch) => {
+    const storedLocation = JSON.parse(localStorage.getItem("location"));
+    if (storedLocation) {
+      dispatch(setLocation(storedLocation));
     }
   };
 };

@@ -21,9 +21,8 @@ const Prayers = ({ fetchLocation }) => {
   useEffect(() => {
     if (
       location &&
-      location.location &&
-      location.location.latitude &&
-      location.location.longitude
+      location.latitude &&
+      location.longitude
     ) {
       const currentDate = new Date();
       const day = currentDate.getDate().toString().padStart(2, "0");
@@ -34,8 +33,8 @@ const Prayers = ({ fetchLocation }) => {
       axios
         .get(`https://api.aladhan.com/v1/timings`, {
           params: {
-            latitude: location.location.latitude,
-            longitude: location.location.longitude,
+            latitude: location.latitude,
+            longitude: location.longitude,
             date: formattedDate,
             method: 5,
           },
@@ -54,9 +53,7 @@ const Prayers = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  useEffect(() => {
-    fetchLocation();
-  }, [fetchLocation]);
+  console.log(location);
   const date = new Date();
   const options = { weekday: "long", localeMatcher: "best fit" };
   const dayNameInArabic = date.toLocaleDateString("ar", options);
@@ -101,7 +98,8 @@ const Prayers = ({ fetchLocation }) => {
   }
 
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
-
+console.log(times)
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <section className="prayers-section" name="prayers-time">
       <div className="container">
@@ -130,9 +128,12 @@ const Prayers = ({ fetchLocation }) => {
             </div>
           </div>
           <div className="prayers-cards">
-            {location.location === null && <Loader />}
-            {!location.isLoading &&
-              location.location !== null &&
+            {location.latitude === "" &&
+              location.longitude === "" &&
+              isLoading && <Loader />}
+
+            {location.latitude !== "" &&
+              location.longitude !== "" &&
               times.map((time, index) => {
                 return (
                   <div key={time} className="prayer-card">
@@ -141,6 +142,23 @@ const Prayers = ({ fetchLocation }) => {
                   </div>
                 );
               })}
+
+            {!isLoading &&
+              location.latitude === "" &&
+              location.longitude === "" && (
+                <div className="location-req">
+                  <p>الحصول علي موقعك لعرض مواقيت الصلاة حسب منطقتك</p>
+                  <button
+                    onClick={() => {
+                      fetchLocation();
+                      setIsLoading(true);
+                    }}
+                    className="main-btn second-btn location-btn"
+                  >
+                    الحصول علي موقعك
+                  </button>
+                </div>
+              )}
           </div>
         </div>
       </div>
@@ -149,7 +167,7 @@ const Prayers = ({ fetchLocation }) => {
 };
 
 const mapDispatchToProps = {
-  fetchLocation, 
+  fetchLocation,
 };
 
 export default connect(null, mapDispatchToProps)(Prayers);
