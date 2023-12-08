@@ -134,7 +134,7 @@ const surahNamesArabicWithNumbers = [
 const Reader = () => {
   const [searchInput, setSearchInput] = useState("");
 
-  const reader =  JSON.parse(localStorage.getItem("readerData"));
+  const reader =  useSelector((state) => state.reader);
   console.log(reader)
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");

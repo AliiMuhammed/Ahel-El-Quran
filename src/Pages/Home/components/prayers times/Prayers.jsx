@@ -18,32 +18,44 @@ const Prayers = ({ fetchLocation }) => {
   });
   const [prayersTime, setParyersTime] = useState({});
   let location = useSelector((state) => state.location);
-
   useEffect(() => {
-    axios
-      .get("https://api.aladhan.com/v1/timingsByCity/formattedDate", {
-        params: {
-          city: location.location !== null ? `"${location.city}"` : "Cairo",
-          country:
-            location.location !== null ? `"${location.country}"` : "Egypt",
-          method: 5,
-        },
-      })
-      .then((res) => {
-        setTodayDate({
-          ...todayDate,
-          gregorian: res.data.data.date.gregorian,
-          hijri: res.data.data.date.hijri,
+    if (
+      location &&
+      location.location &&
+      location.location.latitude &&
+      location.location.longitude
+    ) {
+      const currentDate = new Date();
+      const day = currentDate.getDate().toString().padStart(2, "0");
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+      const year = currentDate.getFullYear();
+      const formattedDate = `${day}-${month}-${year}`;
+
+      axios
+        .get(`https://api.aladhan.com/v1/timings`, {
+          params: {
+            latitude: location.location.latitude,
+            longitude: location.location.longitude,
+            date: formattedDate,
+            method: 5,
+          },
+        })
+        .then((res) => {
+          setTodayDate({
+            ...todayDate,
+            gregorian: res.data.data.date.gregorian,
+            hijri: res.data.data.date.hijri,
+          });
+          setParyersTime(res.data.data.timings);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        setParyersTime(res.data.data.timings);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    }
+  }, [location]);
 
   useEffect(() => {
-    fetchLocation(); 
+    fetchLocation();
   }, [fetchLocation]);
   const date = new Date();
   const options = { weekday: "long", localeMatcher: "best fit" };
@@ -137,7 +149,7 @@ const Prayers = ({ fetchLocation }) => {
 };
 
 const mapDispatchToProps = {
-  fetchLocation, // Use fetchLocation action
+  fetchLocation, 
 };
 
 export default connect(null, mapDispatchToProps)(Prayers);

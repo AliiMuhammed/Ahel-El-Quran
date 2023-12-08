@@ -1,4 +1,3 @@
-import axios from "axios";
 export const REQUEST_LOCATION = "REQUEST_LOCATION";
 export const RECEIVE_LOCATION = "RECEIVE_LOCATION";
 export const LOCATION_ERROR = "LOCATION_ERROR";
@@ -24,28 +23,9 @@ export const fetchLocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          axios
-            .get(
-              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
-            )
-            .then((response) => {
-              const data = response.data;
-
-              const city =
-                data.address.state ||
-                data.address.town ||
-                data.address.village ||
-                data.address.county ||
-                "Unknown City";
-              const country = data.address.country;
-
-              localStorage.setItem("userCity", city);
-              localStorage.setItem("userCountry", country);
-              dispatch(receiveLocation({ city, country }));
-            })
-            .catch((error) => {
-              dispatch(locationError(error.message));
-            });
+          localStorage.setItem("userLatitude", latitude);
+          localStorage.setItem("userLongitude", longitude);
+          dispatch(receiveLocation({ latitude, longitude }));
         },
         (error) => {
           dispatch(locationError(error.message));
