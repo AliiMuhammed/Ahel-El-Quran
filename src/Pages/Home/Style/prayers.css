@@ -190,9 +190,12 @@
   justify-content: center;
   flex-direction: column;
 }
-.location-req p{
+
+.location-req p {
   margin-bottom: 1rem;
+  text-align: center;
 }
+
 .main-btn.second-btn.location-btn {
   background-color: var(--third-color);
   border: none;
