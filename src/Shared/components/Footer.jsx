@@ -52,7 +52,7 @@ const Footer = () => {
                 <Link to={"/"}>الأذكار</Link>
               </li>
               <li>
-                <Link to={"/"}>الراديو</Link>
+                <Link to={"/radio"}>الراديو</Link>
               </li>
               <li>
                 <Link to={"/live"}>البث المباشر</Link>
