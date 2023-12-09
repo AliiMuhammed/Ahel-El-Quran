@@ -21,28 +21,47 @@ export const Radio = () => {
     url: null,
     playingChannelId: null,
   });
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAudioVisible, setIsAudioVisible] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     setRadio({ ...radio, loading: true });
-    axios
-      .get("https://mp3quran.net/api/v3/radios")
-      .then((res) => {
-        setRadio({
-          loading: false,
-          channels: res.data.radios,
-          errMsg: null,
-        });
-      })
-      .catch((err) => {
-        setRadio({
-          loading: false,
-          channels: null,
-          errMsg: "err.message",
-        });
+
+    const cachedChannels = localStorage.getItem("radioChannels");
+
+    if (cachedChannels) {
+      setRadio({
+        ...radio,
+        channels: JSON.parse(cachedChannels),
+        loading: false,
       });
+    } else {
+      axios
+        .get("https://mp3quran.net/api/v3/radios")
+        .then((res) => {
+          const channelsData = res.data.radios;
+
+          localStorage.setItem("radioChannels", JSON.stringify(channelsData));
+
+          setRadio({
+            ...radio,
+            channels: channelsData,
+            loading: false,
+            errMsg: null,
+          });
+        })
+        .catch((err) => {
+          setRadio({
+            ...radio,
+            loading: false,
+            channels: [],
+            errMsg: "حدث شَيْء مَا خَاطِئ أعدَّ المحاولة لَاحقًا",
+          });
+          console.log(err);
+        });
+    }
   }, []);
 
   const channelElement =
@@ -127,6 +146,10 @@ export const Radio = () => {
               msg={`لا يوجد إذاعة بهذا الاسم "${searchInput}"`}
               variant={"warning"}
             />
+          )}
+
+          {!radio.loading && radio.channels.length === 0 && (
+            <Alert msg={radio.errMsg} variant={"danger"} />
           )}
         </div>
         <div className="radio-audio">{audioElement()}</div>
