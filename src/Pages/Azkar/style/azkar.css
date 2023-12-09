@@ -1,0 +1,119 @@
+.azkar {}
+
+.azkar .container {}
+
+.azkar .container .azkar-container {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
+.azkar .container .azkar-container .side-menu {
+    padding-left: 1rem;
+    border-left: 1px solid var(--main-color);
+}
+
+.azkar .container .azkar-container .side-menu .search-box {
+    margin-top: 0;
+    margin-bottom: 2rem;
+
+}
+
+.azkar .container .azkar-container .side-menu .azkar-names .zker {
+    font-size: 1.2rem;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    padding: 1rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin-bottom: 0.2rem;
+}
+
+.azkar .container .azkar-container .side-menu .azkar-names .zker:hover,
+.azkar .container .azkar-container .side-menu .azkar-names .zker.active {
+    background-color: var(--main-color);
+    cursor: pointer;
+    color: var(--second-font-color);
+}
+
+.azkar-body .title {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-color);
+    font-size: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.azkar-body .play-icon {
+    background-color: transparent;
+    border: none;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+.azkar-body .play-icon:hover {
+    color: var(--main-color);
+}
+
+.single-zekr {
+    font-family: 'Amiri', serif;
+    margin: 1rem 0;
+    padding: 2rem 0;
+    border-bottom: 1px solid #25855a3b;
+    font-size: 1.5rem;
+    color: var(--main-color);
+    line-height: 1.7;
+
+}
+
+.single-zekr .play-icon {
+    padding: 0 0 0.5rem 0.5rem;
+}
+
+.single-zekr .counter-btn {
+    background-color: var(--main-color);
+    padding: 0.2rem 1.3rem;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    border: 2px solid transparent;
+    color: var(--second-font-color);
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+.single-zekr .counter-btn:hover {
+    background-color: var(--second-font-color);
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.single-zekr .counter-btn:disabled {
+    background-color: var(--main-font-color);
+    color: var(--second-font-color);
+}
+
+.single-zekr .counter-btn:disabled:hover {
+    color: var(--second-font-color);
+    background-color: var(--main-color);
+}
