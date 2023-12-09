@@ -135,7 +135,6 @@ const Reader = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const reader =  useSelector((state) => state.reader);
-  console.log(reader)
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
   const [selectedSurahClass, setSelectedSurahClass] = useState("");
@@ -240,7 +239,6 @@ const Reader = () => {
     setSearchInput(input);
   };
 
-  console.log();
 
   return (
     <section className="reader-section">

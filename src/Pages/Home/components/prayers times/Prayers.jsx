@@ -53,7 +53,6 @@ const Prayers = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  console.log(location);
   const date = new Date();
   const options = { weekday: "long", localeMatcher: "best fit" };
   const dayNameInArabic = date.toLocaleDateString("ar", options);
@@ -98,7 +97,6 @@ const Prayers = ({ fetchLocation }) => {
   }
 
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
-console.log(times)
   const [isLoading, setIsLoading] = useState(false);
   return (
     <section className="prayers-section" name="prayers-time">

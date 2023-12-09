@@ -1,0 +1,55 @@
+.radio .container .channels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 4rem;
+    width: 100%;
+    text-align: center;
+    gap: 2rem;
+}
+@media only screen and (max-width: 767px) {
+    .radio .container .channels {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.3rem;
+    }
+  }
+  
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .radio .container .channels {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+  }
+.radio .container .channels .channel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 2rem;
+    cursor: auto;
+}
+
+.radio .container .channels .channel .play-btn {
+    color: var(--second-font-color);
+    background-color: transparent;
+    border: none;
+    margin-right: 0.5rem;
+    transition: var(--main-);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+.radio .container .channels .channel:hover .play-btn {
+    color: var(--main-color);
+}
+
+.radio .container .channels .channel .play-btn svg {
+    font-size: 1.3rem;
+}
+
+.radio-audio {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    direction: ltr;
+}

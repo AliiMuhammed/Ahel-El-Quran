@@ -147,11 +147,11 @@ const Quran = () => {
     <section className="quran-section">
       <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
       <section className="readers">
+        <div className="container">
         <MainHeader
           Header={"اِستمَع إِلى اَلقُرآن اَلكرِيم بِصَوت"}
           smHeader={"قُرَّاء اَلقُرآن اَلكرِيم"}
         />
-        <div className="container">
           <div className="search-box">
             <button className="search-btn">
               <FaSearch />

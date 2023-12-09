@@ -29,7 +29,6 @@ const Ayah = () => {
       return parseInt(storedCounter);
     }
   });
-  console.log(counter);
   const getAyah = (RandomNumber) => {
     axios
       .get(`https://api.alquran.cloud/v1/ayah/${RandomNumber}/ar.husary`)
