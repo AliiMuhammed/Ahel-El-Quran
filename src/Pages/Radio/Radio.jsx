@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MainHeading from "../../Shared/components/MainHeading";
 import axios from "axios";
 import "./style/radio.css";
@@ -74,19 +74,28 @@ export const Radio = () => {
         return (
           <div key={channel.id} className="channel main-btn">
             {channel.name}
-            <button
-              onClick={() => {
-                handleAudio(channel.url, channel.id);
-              }}
-              className="play-btn"
-              title="الأستماع الي الاذاعة"
-            >
-              {radio.playingChannelId === channel.id && isPlaying ? (
+
+            {radio.playingChannelId === channel.id && isPlaying ? (
+              <button
+                onClick={() => {
+                  handlePause();
+                }}
+                className="play-btn"
+                title="إيقاف الأستماع الي الاذاعة"
+              >
                 <FaRegPauseCircle />
-              ) : (
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  handleAudio(channel.url, channel.id);
+                }}
+                className="play-btn"
+                title="الأستماع الي الاذاعة"
+              >
                 <FaRegPlayCircle />
-              )}
-            </button>
+              </button>
+            )}
           </div>
         );
       });
@@ -95,18 +104,23 @@ export const Radio = () => {
     setRadio({ ...radio, url: url, playingChannelId: channelId });
     setIsAudioVisible(true);
     setIsPlaying(true);
+    if (audioPlayerRef.current) {
+      audioPlayerRef.current.audio.current.play();
+    }
   };
+  const audioPlayerRef = useRef(null);
 
   const audioElement = () => {
     const audioSrc = radio.url;
     return isAudioVisible ? (
       <AudioPlayer
+        ref={audioPlayerRef}
         src={audioSrc}
         className="audio-element"
         autoPlay={isPlaying}
-        onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onEnded={() => setIsAudioVisible(false)}
+        playing={isPlaying}
       />
     ) : null;
   };
@@ -115,6 +129,14 @@ export const Radio = () => {
     const input = e.target.value;
     setSearchInput(input);
   };
+
+  const handlePause = () => {
+    setIsPlaying(false);
+    if (audioPlayerRef.current) {
+      audioPlayerRef.current.audio.current.pause();
+    }
+  };
+
   return (
     <section className="radio-section">
       <MainHeading breadcrumb={breadcrumb} title="الراديو" />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import MainHeading from "../../Shared/components/MainHeading";
 import Form from "react-bootstrap/Form";
@@ -132,9 +132,11 @@ const surahNamesArabicWithNumbers = [
 ];
 
 const Reader = () => {
+  const audioPlayerRef = useRef(null);
+
   const [searchInput, setSearchInput] = useState("");
 
-  const reader =  useSelector((state) => state.reader);
+  const reader = useSelector((state) => state.reader);
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
   const [selectedSurahClass, setSelectedSurahClass] = useState("");
@@ -142,7 +144,7 @@ const Reader = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingSurahIndex, setPlayingSurahIndex] = useState(null); // State to track which Surah is playing
 
-  if (reader ===null) {
+  if (reader === null) {
     return <section>Reader details not found.</section>;
   }
 
@@ -174,7 +176,10 @@ const Reader = () => {
     setSelectedSurahClass(`second-btn-${number}`);
     setIsAudioVisible(true);
     setIsPlaying(true);
-    setPlayingSurahIndex(number); // Set the current playing Surah
+    if (audioPlayerRef.current) {
+      audioPlayerRef.current.audio.current.play();
+    }
+    setPlayingSurahIndex(number); 
   };
 
   const surahElements = surahs_numbers
@@ -206,25 +211,43 @@ const Reader = () => {
           >
             <FaRegArrowAltCircleDown />
           </a>
-          <button
-            className="play-btn"
-            onClick={() => handleSurahClick(surah.split(" - ")[0])}
-            title="الأستماع الي السورة"
-          >
-            {playingSurahIndex === surah.split(" - ")[0] && isPlaying ? (
+
+          {playingSurahIndex === surah.split(" - ")[0] && isPlaying ? (
+            <button
+              onClick={() => {
+                handlePause();
+              }}
+              className="play-btn"
+              title="إيقاف الأستماع الي السورة"
+            >
               <FaRegPauseCircle />
-            ) : (
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                handleSurahClick(surah.split(" - ")[0]);
+              }}
+              className="play-btn"
+              title="الأستماع الي السورة"
+            >
               <FaRegPlayCircle />
-            )}
-          </button>
+            </button>
+          )}
         </div>
       );
     });
+  const handlePause = () => {
+    setIsPlaying(false);
+    if (audioPlayerRef.current) {
+      audioPlayerRef.current.audio.current.pause();
+    }
+  };
   const audioElement = () => {
     const audioSrc = `${reader.moshaf[selectedRwayaIndex].server}${selectedSurahIndex}.mp3`;
     return isAudioVisible ? (
       <AudioPlayer
         src={audioSrc}
+        ref={audioPlayerRef}
         className="audio-element"
         autoPlay={isPlaying}
         onPlay={() => setIsPlaying(true)}
@@ -238,7 +261,6 @@ const Reader = () => {
     const input = e.target.value;
     setSearchInput(input);
   };
-
 
   return (
     <section className="reader-section">
