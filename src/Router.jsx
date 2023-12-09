@@ -8,6 +8,7 @@ import Quran from "./Pages/Quran/Quran";
 import Reader from "./Pages/Single Reader/Reader";
 import ContactUs from "./Pages/Contact Us/ContactUs";
 import { Radio } from "./Pages/Radio/Radio";
+import { Azkar } from "./Pages/Azkar/Azkar";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,10 @@ export const routes = createBrowserRouter([
       {
         path: "/radio",
         element: <Radio />,
+      },
+      {
+        path: "/azkar",
+        element: <Azkar />,
       },
     ],
     errorElement: <NotFound />,

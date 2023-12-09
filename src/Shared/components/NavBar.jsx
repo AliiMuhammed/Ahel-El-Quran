@@ -90,7 +90,7 @@ const NavBar = () => {
                       </NavLink>
                     </li>
                     <li className="drop-link">
-                      <NavLink onClick={handelShow} to={""}>
+                      <NavLink onClick={handelShow} to={"/azkar"}>
                         الأذكار
                       </NavLink>
                     </li>
@@ -141,7 +141,7 @@ const NavBar = () => {
             className="toggle-btn"
             onClick={(e) => {
               handelShow();
-              e.stopPropagation(); // Prevent event propagation
+              e.stopPropagation(); 
             }}
           >
             {!show ? <FaBarsStaggered /> : <AiOutlineClose />}

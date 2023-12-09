@@ -49,7 +49,7 @@ const Footer = () => {
                 <Link to={"/quran"}>القرآن الكريم</Link>
               </li>
               <li>
-                <Link to={"/"}>الأذكار</Link>
+                <Link to={"/azkar"}>الأذكار</Link>
               </li>
               <li>
                 <Link to={"/radio"}>الراديو</Link>
@@ -89,7 +89,9 @@ const Footer = () => {
           </div>
           <div className="footer-col">
             تم تطويره بواسطة
-            <Link to="/aboutUs#about-me" className="developer-link">@على محمد</Link>
+            <Link to="/aboutUs#about-me" className="developer-link">
+              @على محمد
+            </Link>
           </div>
         </div>
       </div>
