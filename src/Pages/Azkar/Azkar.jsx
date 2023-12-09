@@ -141,7 +141,7 @@ export const Azkar = () => {
                   type="search"
                   name=""
                   id=""
-                  placeholder="ادخل اسم القارئ ..."
+                  placeholder="البحث..."
                   value={searchInput}
                   onChange={handleSearch}
                 />
