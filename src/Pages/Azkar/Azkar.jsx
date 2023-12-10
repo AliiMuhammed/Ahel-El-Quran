@@ -3,14 +3,14 @@ import "./style/azkar.css";
 import MainHeading from "./../../Shared/components/MainHeading";
 import MainHeader from "./../../Shared/components/MainHeader";
 import { FaSearch, FaPauseCircle } from "react-icons/fa";
-import { FaCirclePlay, FaRepeat } from "react-icons/fa6";
+import { FaCirclePlay, FaRepeat, FaBarsStaggered } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { BsHeadphones } from "react-icons/bs";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 import axios from "axios";
 import Loader from "./../../Shared/components/Loader";
 import Alert from "./../../Shared/components/Alert";
-import { TfiMenu } from "react-icons/tfi";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const Azkar = () => {
   const [showAzkarNames, setShowAzkarNames] = useState(false);
@@ -264,7 +264,7 @@ export const Azkar = () => {
             <div className="side-menu">
               <div className="search-box">
                 <button className="open-menu" onClick={handleOpenButtonClick}>
-                  <TfiMenu />
+                  {showAzkarNames ? <AiOutlineClose  /> : <FaBarsStaggered />}
                 </button>
                 <button className="search-btn">
                   <FaSearch />
