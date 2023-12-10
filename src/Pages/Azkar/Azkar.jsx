@@ -2,19 +2,23 @@ import React, { useEffect, useState, useRef } from "react";
 import "./style/azkar.css";
 import MainHeading from "./../../Shared/components/MainHeading";
 import MainHeader from "./../../Shared/components/MainHeader";
-import { FaSearch, FaRegPlayCircle, FaPauseCircle } from "react-icons/fa";
+import { FaSearch, FaPauseCircle } from "react-icons/fa";
 import { FaCirclePlay, FaRepeat } from "react-icons/fa6";
-
+import { Link } from "react-router-dom";
+import { BsHeadphones } from "react-icons/bs";
+import { HiMiniSpeakerWave } from "react-icons/hi2";
 import axios from "axios";
 import Loader from "./../../Shared/components/Loader";
-export const Azkar = () => {
-  const azkarSectionRef = useRef(null);
-  const [counters, setCounters] = useState([]);
+import Alert from "./../../Shared/components/Alert";
 
+export const Azkar = () => {
   const breadcrumb = {
     الرئيسية: "/",
     الأذكار: "/azkar",
   };
+  const azkarSectionRef = useRef(null);
+  const [counters, setCounters] = useState([]);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [singleZekr, setSingleZekr] = useState({
     audioUrl: "",
     textUrl: "",
@@ -47,6 +51,7 @@ export const Azkar = () => {
             title: firstZekr.TITLE,
           });
           setActiveIndex(0);
+          setSelectedZekrID(firstZekr.ID);
         }
       })
       .catch((err) => {
@@ -71,7 +76,6 @@ export const Azkar = () => {
               singleZekr.title && res.data && res.data[singleZekr.title]
                 ? res.data[singleZekr.title]
                 : [],
-
             errMsg: "",
           });
         })
@@ -96,14 +100,12 @@ export const Azkar = () => {
   }
 
   useEffect(() => {
-    // Initialize counters based on z.REPEAT values
     if (Array.isArray(singleZekr.data) && singleZekr.data.length > 0) {
       const initialCounters = singleZekr.data.map((z) => z.REPEAT);
       setCounters(initialCounters);
     }
   }, [singleZekr.data]);
 
-  // Function to handle individual counter button click
   const handleCounterClick = (index) => {
     if (counters[index] > 0) {
       const updatedCounters = [...counters];
@@ -112,7 +114,6 @@ export const Azkar = () => {
     }
   };
 
-  // Function to handle the repeat button click
   const handleRepeatClick = (index) => {
     if (Array.isArray(singleZekr.data) && singleZekr.data.length > 0) {
       const resetCounters = [...counters];
@@ -121,7 +122,111 @@ export const Azkar = () => {
     }
   };
 
-  console.log(singleZekr.data);
+  const [zekrAudio, setZekrAudio] = useState(null);
+  const [zekrAudios, setZekrAudios] = useState({});
+  const handleAudioClick = (audioId, audioUrl) => {
+    const audioPlayer = document.getElementById(audioId);
+
+    if (!audioPlayer) return;
+
+    const allAudioPlayers = document.getElementsByTagName("audio");
+    Array.from(allAudioPlayers).forEach((player) => {
+      if (player !== audioPlayer) {
+        player.pause();
+      }
+    });
+
+    if (audioPlayer.paused || audioPlayer.ended) {
+      audioPlayer.src = audioUrl;
+      audioPlayer.load();
+
+      if (zekrAudio && zekrAudio !== audioPlayer) {
+        zekrAudio.pause();
+        setIsAudioPlaying(false);
+        setZekrAudio(null);
+      }
+
+      audioPlayer.play();
+      setIsAudioPlaying(true);
+      setZekrAudio(audioPlayer);
+    } else {
+      audioPlayer.pause();
+      setIsAudioPlaying(false);
+      setZekrAudio(null);
+    }
+  };
+
+  const [isZekrAudioPlaying, setIsZekrAudioPlaying] = useState(false);
+
+  const [filteredIndices, setFilteredIndices] = useState([]);
+  const [previouslySelectedIndex, setPreviouslySelectedIndex] = useState(null);
+  const [selectedZekrID, setSelectedZekrID] = useState(null);
+
+  // ... (existing code remains the same)
+
+  useEffect(() => {
+    // Update the filtered indices when azkar or searchInput changes
+    if (!azkar.loading && azkar.azkar.length !== 0) {
+      const indices = azkar.azkar
+        .map((zker, index) => ({
+          index,
+          match: zker.TITLE.toLowerCase().includes(searchInput.toLowerCase()),
+        }))
+        .filter((item) => item.match)
+        .map((item) => item.index);
+
+      setFilteredIndices(indices);
+
+      // Check if the previously selected index is included in the filtered indices
+      const isSelectedIndexInFiltered =
+        previouslySelectedIndex !== null &&
+        indices.includes(previouslySelectedIndex);
+
+      // If the search input is empty and the previously selected index is in the filtered list, set it as active
+      if (searchInput === "" && isSelectedIndexInFiltered) {
+        setActiveIndex(previouslySelectedIndex);
+      } else {
+        setActiveIndex(null);
+      }
+    }
+  }, [azkar, searchInput, previouslySelectedIndex]);
+  const azkarNames =
+    !azkar.loading &&
+    azkar.azkar.length !== 0 &&
+    azkar.azkar
+      .filter((zker) =>
+        zker.TITLE.toLowerCase().includes(searchInput.toLowerCase())
+      )
+      .map((zker, index) => {
+        const isActive = activeIndex === index || zker.ID === selectedZekrID;
+
+        return (
+          <div
+            className={`zker ${isActive ? "active" : ""}`}
+            onClick={() => {
+              if (azkarSectionRef.current) {
+                azkarSectionRef.current.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+              if (index !== activeIndex) {
+                setSingleZekr({
+                  ...singleZekr,
+                  audioUrl: zker.AUDIO_URL,
+                  textUrl: zker.TEXT,
+                  title: zker.TITLE,
+                });
+                setActiveIndex(index);
+                setSelectedZekrID(zker.ID);
+              }
+            }}
+            key={zker.ID}
+          >
+            {zker.TITLE}
+          </div>
+        );
+      });
   return (
     <section className="azkar-section" ref={azkarSectionRef}>
       <MainHeading breadcrumb={breadcrumb} title="الأذكار" />
@@ -131,6 +236,23 @@ export const Azkar = () => {
             Header={"حِصْن اَلمسْلِم"}
             smHeader={"مِن أَذكَار الكتَاب والسُّنَّة"}
           />
+          <audio
+            id="playerZekr"
+            src={singleZekr.audioUrl}
+            onEnded={() => setIsZekrAudioPlaying(false)}
+            type="audio/mpeg"
+            preload="auto"
+          ></audio>
+          {azkar.azkar.map((zker) => (
+            <audio
+              key={zker.ID}
+              id={`player-${zker.ID}`}
+              src={zekrAudios[zker.ID]}
+              onEnded={() => setIsAudioPlaying(false)}
+              type="audio/mpeg"
+              preload="auto"
+            ></audio>
+          ))}
           <div className="azkar-container">
             <div className="side-menu">
               <div className="search-box">
@@ -147,45 +269,53 @@ export const Azkar = () => {
                 />
               </div>
               <div className="azkar-names">
-                {!azkar.loading &&
-                  azkar.azkar.length !== 0 &&
-                  azkar.azkar.map((zker, index) => {
-                    return (
-                      <div
-                        className={`zker ${
-                          index === activeIndex ? "active" : ""
-                        }`}
-                        onClick={() => {
-                          if (azkarSectionRef.current) {
-                            azkarSectionRef.current.scrollIntoView({
-                              behavior: "smooth",
-                              block: "start",
-                            });
-                          }
-                          if (index !== activeIndex) {
-                            setSingleZekr({
-                              ...singleZekr,
-                              audioUrl: zker.AUDIO_URL,
-                              textUrl: zker.TEXT,
-                              title: zker.TITLE,
-                            });
-                            setActiveIndex(index);
-                          }
-                        }}
-                        key={zker.ID}
-                      >
-                        {zker.TITLE}
-                      </div>
-                    );
-                  })}
+                {azkarNames.length === 0 && (
+                  <Alert
+                    msg={`لا يوجد أذكار بهذا الاسم "${searchInput}"`}
+                    variant={"warning"}
+                  />
+                )}
+                {azkarNames}
               </div>
             </div>
             <div className="azkar-body">
               <div className="title">
                 {singleZekr.title}
-                <button className="play-icon">
-                  <FaRegPlayCircle />
-                </button>
+                {isZekrAudioPlaying ? (
+                  <Link
+                    to=""
+                    className="play-icon"
+                    onClick={() => {
+                      const audioPlayer = document.getElementById("playerZekr");
+                      if (audioPlayer.paused) {
+                        audioPlayer.play();
+                        setIsZekrAudioPlaying(true);
+                      } else {
+                        audioPlayer.pause();
+                        setIsZekrAudioPlaying(false);
+                      }
+                    }}
+                  >
+                    <FaPauseCircle />
+                  </Link>
+                ) : (
+                  <Link
+                    to=""
+                    className="play-icon"
+                    onClick={() => {
+                      const audioPlayer = document.getElementById("playerZekr");
+                      if (audioPlayer.paused) {
+                        audioPlayer.play();
+                        setIsZekrAudioPlaying(true);
+                      } else {
+                        audioPlayer.pause();
+                        setIsZekrAudioPlaying(false);
+                      }
+                    }}
+                  >
+                    <FaCirclePlay />
+                  </Link>
+                )}
               </div>
               <div className="content">
                 {singleZekr.loading && <Loader />}
@@ -193,11 +323,31 @@ export const Azkar = () => {
                   singleZekr.data.length !== 0 &&
                   !singleZekr.loading &&
                   singleZekr.data.map((z, index) => {
+                    const audioPlayer = document.getElementById(
+                      `player-${z.ID}`
+                    );
+                    const isThisAudioPlaying =
+                      audioPlayer && !audioPlayer.paused && !audioPlayer.ended;
+
                     return (
                       <div key={z.ID} className="single-zekr">
-                        <button className="play-icon">
-                          <FaCirclePlay />
-                        </button>
+                        <Link
+                          to=""
+                          className="play-icon"
+                          onClick={() =>
+                            handleAudioClick(`player-${z.ID}`, z.AUDIO)
+                          }
+                        >
+                          {!zekrAudio ||
+                          zekrAudio.paused ||
+                          zekrAudio.ended ||
+                          zekrAudio.id !== `player-${z.ID}` ? (
+                            <BsHeadphones />
+                          ) : (
+                            <HiMiniSpeakerWave />
+                          )}
+                        </Link>
+
                         <span> {z.ARABIC_TEXT}</span>
                         <button
                           className="counter-btn"
