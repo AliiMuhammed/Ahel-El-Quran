@@ -10,8 +10,11 @@ import { HiMiniSpeakerWave } from "react-icons/hi2";
 import axios from "axios";
 import Loader from "./../../Shared/components/Loader";
 import Alert from "./../../Shared/components/Alert";
+import { TfiMenu } from "react-icons/tfi";
 
 export const Azkar = () => {
+  const [showAzkarNames, setShowAzkarNames] = useState(false);
+
   const breadcrumb = {
     الرئيسية: "/",
     الأذكار: "/azkar",
@@ -204,6 +207,7 @@ export const Azkar = () => {
           <div
             className={`zker ${isActive ? "active" : ""}`}
             onClick={() => {
+              setShowAzkarNames(!showAzkarNames);
               if (azkarSectionRef.current) {
                 azkarSectionRef.current.scrollIntoView({
                   behavior: "smooth",
@@ -227,6 +231,9 @@ export const Azkar = () => {
           </div>
         );
       });
+  const handleOpenButtonClick = () => {
+    setShowAzkarNames(!showAzkarNames);
+  };
   return (
     <section className="azkar-section" ref={azkarSectionRef}>
       <MainHeading breadcrumb={breadcrumb} title="الأذكار" />
@@ -256,6 +263,9 @@ export const Azkar = () => {
           <div className="azkar-container">
             <div className="side-menu">
               <div className="search-box">
+                <button className="open-menu" onClick={handleOpenButtonClick}>
+                  <TfiMenu />
+                </button>
                 <button className="search-btn">
                   <FaSearch />
                 </button>
@@ -268,7 +278,7 @@ export const Azkar = () => {
                   onChange={handleSearch}
                 />
               </div>
-              <div className="azkar-names">
+              <div className={`azkar-names ${showAzkarNames ? "show" : ""}`}>
                 {azkarNames.length === 0 && (
                   <Alert
                     msg={`لا يوجد أذكار بهذا الاسم "${searchInput}"`}

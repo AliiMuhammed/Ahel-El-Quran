@@ -1,6 +1,9 @@
-.azkar {}
+@media only screen and (min-width: 992px)and (max-width:1199px) {
+    .azkar .container {
+        width: 90%;
+    }
 
-.azkar .container {}
+}
 
 .azkar .container .azkar-container {
     display: grid;
@@ -9,14 +12,63 @@
     margin-top: 5rem;
 }
 
+@media only screen and (max-width: 991px) {
+    .azkar .container .azkar-container {
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+    }
+}
+
 .azkar .container .azkar-container .side-menu {
     padding-left: 1rem;
     border-left: 1px solid var(--main-color);
 }
 
+@media only screen and (max-width: 991px) {
+    .azkar .container .azkar-container .side-menu {
+        padding-left: 0rem;
+        border-left: none;
+    }
+}
+
 .azkar .container .azkar-container .side-menu .search-box {
     margin-top: 0;
     margin-bottom: 2rem;
+}
+
+.azkar .container .azkar-container .side-menu .search-box .open-menu {
+    background-color: transparent;
+    border: none;
+    color: #25855aa8;
+    font-size: 3rem;
+    font-weight: 700;
+
+    align-items: center;
+    justify-content: center;
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+    padding-left: 1rem;
+    display: none;
+}
+
+@media only screen and (max-width: 991px) {
+    .azkar .container .azkar-container .side-menu .search-box .open-menu {
+        display: flex;
+    }
+}
+
+.azkar .container .azkar-container .side-menu .search-box .open-menu:hover {
+    color: var(--main-color);
+}
+
+@media only screen and (max-width: 991px) {
+    .azkar .container .azkar-container .side-menu .search-box input {
+        width: 100%;
+    }
+
 
 }
 
@@ -34,6 +86,39 @@
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
     margin-bottom: 0.2rem;
+}
+
+
+
+
+@media only screen and (max-width: 991px) {
+    .azkar .container .azkar-container .side-menu .azkar-names {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.6s ease;
+        -webkit-transition: max-height 0.3s ease, opacity 0.6s ease;
+        -moz-transition: max-height 0.3s ease, opacity 0.6s ease;
+        -ms-transition: max-height 0.3s ease, opacity 0.6s ease;
+        -o-transition: max-height 0.3s ease, opacity 0.6s ease;
+}
+
+    .azkar .container .azkar-container .side-menu .azkar-names.show {
+        max-height: 8706px;
+        opacity: 1;
+        transition: max-height 0.2s ease, opacity 0.3 ease;
+        -webkit-transition: max-height 0.2s ease, opacity 0.3 ease;
+        -moz-transition: max-height 0.2s ease, opacity 0.3 ease;
+        -ms-transition: max-height 0.2s ease, opacity 0.3 ease;
+        -o-transition: max-height 0.2s ease, opacity 0.3 ease;
+}
+}
+
+@media only screen and (min-width: 992px)and (max-width:1199px) {
+    .azkar .container .azkar-container .side-menu .azkar-names .zker {
+        font-size: 1.1rem;
+        padding: 1rem 0.8rem;
+    }
 }
 
 .azkar .container .azkar-container .side-menu .azkar-names .zker:hover,
