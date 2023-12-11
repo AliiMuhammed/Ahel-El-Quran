@@ -231,6 +231,13 @@ export const Azkar = () => {
           </div>
         );
       });
+  useEffect(() => {
+    if (searchInput.length > 0) {
+      setShowAzkarNames(true);
+    } else {
+      setShowAzkarNames(false);
+    }
+  }, [searchInput]);
   const handleOpenButtonClick = () => {
     setShowAzkarNames(!showAzkarNames);
   };
@@ -264,7 +271,7 @@ export const Azkar = () => {
             <div className="side-menu">
               <div className="search-box">
                 <button className="open-menu" onClick={handleOpenButtonClick}>
-                  {showAzkarNames ? <AiOutlineClose  /> : <FaBarsStaggered />}
+                  {showAzkarNames ? <AiOutlineClose /> : <FaBarsStaggered />}
                 </button>
                 <button className="search-btn">
                   <FaSearch />
