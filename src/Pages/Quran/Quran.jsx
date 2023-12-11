@@ -139,7 +139,7 @@ const Quran = () => {
       reader.name
         .toLowerCase()
         .replace(/[إأ]/g, "ا")
-        .includes(searchInput.toLowerCase().replace(/[إأ]/g, "ا"))
+        .includes(searchInput.toLowerCase().trim().replace(/[إأ]/g, "ا"))
     );
     return acc;
   }, {});

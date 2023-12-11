@@ -173,7 +173,9 @@ export const Azkar = () => {
       const indices = azkar.azkar
         .map((zker, index) => ({
           index,
-          match: zker.TITLE.toLowerCase().includes(searchInput.toLowerCase()),
+          match: zker.TITLE.toLowerCase().includes(
+            searchInput.toLowerCase().trim()
+          ),
         }))
         .filter((item) => item.match)
         .map((item) => item.index);
@@ -198,7 +200,7 @@ export const Azkar = () => {
     azkar.azkar.length !== 0 &&
     azkar.azkar
       .filter((zker) =>
-        zker.TITLE.toLowerCase().includes(searchInput.toLowerCase())
+        zker.TITLE.toLowerCase().includes(searchInput.toLowerCase().trim())
       )
       .map((zker, index) => {
         const isActive = activeIndex === index || zker.ID === selectedZekrID;
@@ -366,19 +368,21 @@ export const Azkar = () => {
                         </Link>
 
                         <span> {z.ARABIC_TEXT}</span>
-                        <button
-                          className="counter-btn"
-                          onClick={() => handleCounterClick(index)}
-                          disabled={counters[index] === 0}
-                        >
-                          {englishToArabicNumbers(counters[index])}
-                        </button>
-                        <button
-                          className="counter-btn repeat-btn"
-                          onClick={() => handleRepeatClick(index)}
-                        >
-                          <FaRepeat />
-                        </button>
+                        <div className="azkar-btns">
+                          <button
+                            className="counter-btn"
+                            onClick={() => handleCounterClick(index)}
+                            disabled={counters[index] === 0}
+                          >
+                            {englishToArabicNumbers(counters[index])}
+                          </button>
+                          <button
+                            className="counter-btn repeat-btn"
+                            onClick={() => handleRepeatClick(index)}
+                          >
+                            <FaRepeat />
+                          </button>
+                        </div>
                       </div>
                     );
                   })}

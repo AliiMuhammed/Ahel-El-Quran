@@ -179,14 +179,14 @@ const Reader = () => {
     if (audioPlayerRef.current) {
       audioPlayerRef.current.audio.current.play();
     }
-    setPlayingSurahIndex(number); 
+    setPlayingSurahIndex(number);
   };
 
   const surahElements = surahs_numbers
     .filter((surahNumber) =>
       surahNamesArabicWithNumbers[surahNumber - 1]
         .toLowerCase()
-        .includes(searchInput.toLowerCase())
+        .includes(searchInput.toLowerCase().trim())
     )
     .map((surahNumber) => {
       const surah = surahNamesArabicWithNumbers[surahNumber - 1];
