@@ -24,7 +24,7 @@ export const Azkar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [singleZekr, setSingleZekr] = useState({
     audioUrl: "",
-    textUrl: "",
+    ID: "",
     title: "",
     data: [],
     loading: false,
@@ -50,7 +50,7 @@ export const Azkar = () => {
           const firstZekr = res.data.العربية[0];
           setSingleZekr({
             audioUrl: firstZekr.AUDIO_URL,
-            textUrl: firstZekr.TEXT,
+            ID: firstZekr.ID,
             title: firstZekr.TITLE,
           });
           setActiveIndex(0);
@@ -67,10 +67,10 @@ export const Azkar = () => {
       });
   }, []);
   useEffect(() => {
-    if (singleZekr.textUrl) {
+    if (singleZekr.ID) {
       setSingleZekr({ ...singleZekr, loading: true });
       axios
-        .get(singleZekr.textUrl)
+        .get(`https://www.hisnmuslim.com/api/ar/${singleZekr.ID}.json`)
         .then((res) => {
           setSingleZekr({
             ...singleZekr,
@@ -91,7 +91,7 @@ export const Azkar = () => {
           });
         });
     }
-  }, [singleZekr.textUrl]);
+  }, [singleZekr.ID]);
 
   const [activeIndex, setActiveIndex] = useState(null);
   function englishToArabicNumbers(number) {
@@ -218,7 +218,7 @@ export const Azkar = () => {
                 setSingleZekr({
                   ...singleZekr,
                   audioUrl: zker.AUDIO_URL,
-                  textUrl: zker.TEXT,
+                  ID: zker.ID,
                   title: zker.TITLE,
                 });
                 setActiveIndex(index);
