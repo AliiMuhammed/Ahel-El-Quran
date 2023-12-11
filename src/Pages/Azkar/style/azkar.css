@@ -53,7 +53,15 @@
     padding-left: 1rem;
     display: none;
 }
-
+@media only screen and (max-width: 767px) {
+    .azkar .container .azkar-container .side-menu .search-box .open-menu {
+        color: #25855aa8;
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding-left: 0.7rem;
+        display: none;
+    }
+}
 @media only screen and (max-width: 991px) {
     .azkar .container .azkar-container .side-menu .search-box .open-menu {
         display: flex;
@@ -137,7 +145,14 @@
     align-items: center;
     justify-content: space-between;
 }
+@media only screen and (max-width: 767px) {
+    .azkar-body .title {
+        margin-bottom: 1.4rem;
+        padding-bottom: 1rem;
+        font-size: 1.6rem;
 
+    }
+}
 .azkar-body .play-icon {
     background-color: transparent;
     border: none;
@@ -165,7 +180,17 @@
     line-height: 1.7;
 
 }
+@media only screen and (max-width: 767px) {
+    .single-zekr {
 
+        padding: 1.5rem 0;
+       
+        font-size: 1.3rem;
+     
+        
+    
+    }
+}
 .single-zekr .play-icon {
     margin: 0 0 0.5rem 0.5rem;
 }
@@ -191,7 +216,11 @@
     font-size: 1rem;
     font-weight: 700;
 }
-
+@media only screen and (max-width: 767px) {
+    .single-zekr .counter-btn {
+        padding: 0.36rem 1.3rem;
+    }
+}
 .single-zekr .counter-btn:hover {
     background-color: var(--second-font-color);
     border-color: var(--main-color);
