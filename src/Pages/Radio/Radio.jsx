@@ -68,7 +68,7 @@ export const Radio = () => {
     radio.channels.length !== 0 &&
     radio.channels
       .filter((channel) =>
-        channel.name.toLowerCase().includes(searchInput.toLowerCase())
+        channel.name.toLowerCase().includes(searchInput.trim().toLowerCase())
       )
       .map((channel) => {
         return (
