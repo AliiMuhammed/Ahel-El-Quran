@@ -26,9 +26,11 @@ const GoogleSignIn = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleSignInClick}>Login with Google</button>
-    </div>
+    <section>
+      <section>
+        <button className="m-5" onClick={handleSignInClick}>Login with Google</button>
+      </section>
+    </section>
   );
 };
 
