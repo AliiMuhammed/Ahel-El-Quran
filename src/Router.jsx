@@ -9,6 +9,7 @@ import Reader from "./Pages/Single Reader/Reader";
 import ContactUs from "./Pages/Contact Us/ContactUs";
 import { Radio } from "./Pages/Radio/Radio";
 import { Azkar } from "./Pages/Azkar/Azkar";
+import GoogleSignIn from "./Pages/GoogleSignIn";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ export const routes = createBrowserRouter([
       {
         path: "/azkar",
         element: <Azkar />,
+      },
+      {
+        path: "/sign",
+        element: <GoogleSignIn />,
       },
     ],
     errorElement: <NotFound />,
