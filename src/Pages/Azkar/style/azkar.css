@@ -99,6 +99,13 @@
 }
 
 
+.azkar .container .azkar-container .side-menu .azkar-names {
+    overflow-y: scroll;
+    direction: ltr;
+    text-align: right;
+    padding-right: 1rem;
+    height: 100vh;
+}
 
 
 @media only screen and (max-width: 991px) {
@@ -111,6 +118,9 @@
         -moz-transition: max-height 0.3s ease, opacity 0.6s ease;
         -ms-transition: max-height 0.3s ease, opacity 0.6s ease;
         -o-transition: max-height 0.3s ease, opacity 0.6s ease;
+        direction: rtl;
+        padding-right: 1rem;
+
     }
 
     .azkar .container .azkar-container .side-menu .azkar-names.show {

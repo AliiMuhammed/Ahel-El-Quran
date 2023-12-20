@@ -21,7 +21,7 @@ const Landing = () => {
             وتعزيز إيمانك.
           </p>
           <div className="left-btns">
-            <Link to={""} className="main-btn">
+            <Link to={"https://archive.org/embed/EQuran00001"} className="main-btn">
               قراءة القرآن
             </Link>
 
