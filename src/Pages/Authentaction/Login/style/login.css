@@ -1,0 +1,63 @@
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.login-section .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    height: 100%;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+
+    padding: 0;
+    overflow: hidden;
+}
+
+
+
+.login-section .container .img-login {
+    background-image: url(../../../../Assets/login/login2.jpg);
+    background-size: cover;
+
+}
+
+.login-section .container .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+}
+
+.login-section .container .form input {
+    font-size: 1.2rem;
+    background-color: transparent;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border: none;
+    border-bottom: 1px solid;
+    box-shadow: none;
+}
+
+.login-section .container .form input:focus {
+    color: var(--main-color);
+}
+
+.login-section .container .form input::placeholder {}
+
+.login-section .container .form div {
+    width: 100%;
+}
