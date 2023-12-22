@@ -125,12 +125,12 @@ const NavBar = () => {
           </div>
 
           <div className={`nav-btns ${show}`}>
-            <Link onClick={handelShow} to={""} className="main-btn sm">
+            <Link onClick={handelShow} to={"/login"} className="main-btn sm">
               تسجيل الدخول
             </Link>
             <Link
               onClick={handelShow}
-              to={""}
+              to={"/sign-up"}
               className="main-btn second-btn sm"
             >
               مستخدم جديد
@@ -141,7 +141,7 @@ const NavBar = () => {
             className="toggle-btn"
             onClick={(e) => {
               handelShow();
-              e.stopPropagation(); 
+              e.stopPropagation();
             }}
           >
             {!show ? <FaBarsStaggered /> : <AiOutlineClose />}
