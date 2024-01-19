@@ -6,58 +6,87 @@
 }
 
 .login-section .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     border-radius: var(--main-border-radius);
     -webkit-border-radius: var(--main-border-radius);
     -moz-border-radius: var(--main-border-radius);
     -ms-border-radius: var(--main-border-radius);
     -o-border-radius: var(--main-border-radius);
-
     padding: 0;
-    overflow: hidden;
 }
 
 
 
-.login-section .container .img-login {
-    background-image: url(../../../../Assets/login/login2.jpg);
-    background-size: cover;
 
-}
 
 .login-section .container .form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    padding: 1rem;
+    width: 50%;
+    padding: 3rem;
+    background-color: var(--main-color);
+    height: 80%;
 }
+
+.login-section .container .form .input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 2rem;
+    padding: 0.6rem 1rem;
+}
+
+.login-section .container .form .input-container svg {
+    font-size: 1.2rem;
+    transition: var(--main-transition);
+    color: #727272;
+}
+
 
 .login-section .container .form input {
     font-size: 1.2rem;
     background-color: transparent;
-    padding: 1rem;
-    margin-bottom: 2rem;
     border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
     border: none;
-    border-bottom: 1px solid;
     box-shadow: none;
+    color: #727272;
 }
 
 .login-section .container .form input:focus {
     color: var(--main-color);
 }
 
-.login-section .container .form input::placeholder {}
+.login-section .container .form input::placeholder {
+    color: #727272;
+    transition: var(--main-transition);
+}
 
-.login-section .container .form div {
-    width: 100%;
+.login-section .container .form input:focus::placeholder {
+    color: var(--main-color);
+}
+
+.form .form-title {
+    margin-bottom: 5rem;
+    color: white;
+    font-size: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.form .form-title::after {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background-color: white;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
