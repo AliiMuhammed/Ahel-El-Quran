@@ -1,0 +1,142 @@
+.signUp-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signUp-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+    padding: 0;
+}
+
+
+.signUp-section .container .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    padding: 3rem;
+    background-color: var(--main-color);
+    height: 90%;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+}
+
+.signUp-section .container .form .input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--second-font-color);
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--main-border-radius);
+
+}
+
+
+.signUp-section .container .form .input-container svg {
+    font-size: 1.2rem;
+    transition: var(--main-transition);
+    color: #727272;
+    margin-left: 0.7rem;
+
+}
+
+
+.signUp-section .container .form input {
+    font-size: 1.2rem;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    color: #727272;
+    padding: 0;
+}
+
+.signUp-section .container .form input:focus {
+    color: var(--main-color);
+}
+
+.signUp-section .container .form input::placeholder {
+    color: #727272;
+    transition: var(--main-transition);
+}
+
+.signUp-section .container .form input:focus::placeholder {
+    color: var(--main-color);
+}
+
+.names {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signUp-section .container .form .names .message-wrapper {
+    width: 49%;
+}
+
+.signUp-section .form-img {
+    width: 100%;
+}
+
+.signUp-section .container .form .form-img .input-container {
+    font-size: 1.2rem;
+    color: #727272;
+    justify-content: flex-start;
+}
+
+.signUp-section .container .form .form-img .input-container input {
+    display: none;
+}
+
+.signUp-section .container .form .form-img .input-container button {
+    color: var(--main-color);
+    border-left: 2px solid var(--main-color);
+    padding-left: 1rem;
+    font-weight: 700;
+}
+
+.signUp-section .container .form .form-img .input-container p {
+    margin-right: 1rem;
+}
+
+.form .error-message {
+    width: 100%;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+    color: #ebeb00;
+}
+
+.form .alert-div .alert-warning {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.container .form .already {
+    color: var(--second-font-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.container .form .already a {
+    color: #ebeb00;
+    margin-right: 5px;
+}

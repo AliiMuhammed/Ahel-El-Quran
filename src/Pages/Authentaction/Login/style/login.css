@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80vh;
 }
 
 .login-section .container {
@@ -30,7 +29,11 @@
     width: 50%;
     padding: 3rem;
     background-color: var(--main-color);
-    height: 80%;
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
 }
 
 .login-section .container .form .input-container {
@@ -38,15 +41,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--second-font-color);
     margin-bottom: 2rem;
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--main-border-radius);
+
 }
 
 .login-section .container .form .input-container svg {
     font-size: 1.2rem;
     transition: var(--main-transition);
     color: #727272;
+    margin-left: 0.7rem;
+
 }
 
 
@@ -57,6 +64,7 @@
     border: none;
     box-shadow: none;
     color: #727272;
+    padding: 0;
 }
 
 .login-section .container .form input:focus {
@@ -74,7 +82,7 @@
 
 .form .form-title {
     margin-bottom: 5rem;
-    color: white;
+    color: var(--second-font-color);
     font-size: 2rem;
     position: relative;
     text-align: center;
@@ -83,10 +91,43 @@
 .form .form-title::after {
     content: "";
     position: absolute;
-    width: 60%;
-    height: 3px;
-    background-color: white;
+    width: 150px;
+    height: 4px;
+    background-color: var(--second-font-color);
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    border-radius: var(--main-border-radius);
+    -webkit-border-radius: var(--main-border-radius);
+    -moz-border-radius: var(--main-border-radius);
+    -ms-border-radius: var(--main-border-radius);
+    -o-border-radius: var(--main-border-radius);
+}
+
+.main-btn.form-btn {
+    background-color: var(--second-font-color);
+    color: var(--main-color);
+    border-color: var(--second-font-color);
+    transition: var(--main-transition);
+    -webkit-transition: var(--main-transition);
+    -moz-transition: var(--main-transition);
+    -ms-transition: var(--main-transition);
+    -o-transition: var(--main-transition);
+}
+
+.main-btn.form-btn:hover {
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+.input-container button {
+    border: none;
+    background-color: transparent;
 }
