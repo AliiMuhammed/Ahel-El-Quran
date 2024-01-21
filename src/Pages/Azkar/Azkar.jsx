@@ -336,7 +336,7 @@ export const Azkar = () => {
                   </Link>
                 )}
               </div>
-              <div className="content">
+              <div className="azkar-content">
                 {singleZekr.loading && <Loader />}
                 {Array.isArray(singleZekr.data) &&
                   singleZekr.data.length !== 0 &&
