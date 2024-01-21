@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import { FaLock } from "react-icons/fa";
-import { IoEyeOff } from "react-icons/io5";
-import { IoEye } from "react-icons/io5";
+import { FaLock ,FaImage} from "react-icons/fa";
+import { IoEyeOff, IoEye } from "react-icons/io5";
 import { IoMdPerson } from "react-icons/io";
 import Form from "react-bootstrap/Form";
 import "./style/signUp.css";
@@ -65,11 +64,11 @@ const SignUp = () => {
     const extension = file.name.split(".").pop().toLowerCase();
 
     if (!allowedExtensions.includes(extension)) {
-      return "الصورة الشخصية يجب أن تكون: jpg, jpeg, png";
+      return "*الصورة الشخصية يجب أن تكون: jpg, jpeg, png";
     }
 
     if (file.size > 1024 * 1024) {
-      return "حجم الصورة الشخصية يجب أن يكون أقل من 1MB";
+      return "حجم الصورة الشخصية يجب أن يكون أقل من *1MB";
     }
 
     return null; // No error
@@ -81,26 +80,26 @@ const SignUp = () => {
     // Basic validation
     const newErrors = {};
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "الاسم الأول مطلوب";
+      newErrors.firstName = "*الاسم الأول مطلوب";
     }
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "الاسم الأخير مطلوب";
+      newErrors.lastName = "*الاسم الأخير مطلوب";
     }
     if (!formData.email.trim()) {
-      newErrors.email = "البريد الإلكتروني مطلوب";
+      newErrors.email = "*البريد الإلكتروني مطلوب";
     } else if (
       !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
         formData.email.trim()
       )
     ) {
-      newErrors.email = "البريد الإلكتروني غير صالح";
+      newErrors.email = "*البريد الإلكتروني غير صالح";
     }
     if (!formData.password.trim()) {
-      newErrors.password = "كلمة السر مطلوبة";
+      newErrors.password = "*كلمة السر مطلوبة";
     }
 
     if (!formData.profileImage) {
-      newErrors.profileImage = "صورة الملف الشخصي مطلوبة";
+      newErrors.profileImage = "*صورة الملف الشخصي مطلوبة";
     } else {
       const imageError = validateImage(formData.profileImage);
       if (imageError) {
@@ -109,7 +108,6 @@ const SignUp = () => {
     }
 
     if (Object.keys(newErrors).length === 0) {
-      // Convert the file to a data URL
       const reader = new FileReader();
       reader.onloadend = () => {
         const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -189,11 +187,12 @@ const SignUp = () => {
 
           <div className="form-img">
             <div className="input-container">
-              <button onClick={handleFileButtonClick}>اختر ملف</button>
+              <button onClick={handleFileButtonClick}>
+                <FaImage />
+                اختر ملف
+              </button>
 
-              <p>
-                {selectedFileName || "الصورة الشخصية"}
-              </p>
+              <p>{selectedFileName || "الصورة الشخصية"}</p>
               <Form.Control
                 id="getImage"
                 type="file"
