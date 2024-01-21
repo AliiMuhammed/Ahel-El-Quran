@@ -144,6 +144,7 @@ const NavBar = () => {
           {user && (
             <div className={`nav-btns ${show}`}>
               <Link
+                onClick={handelShow}
                 className="user-profile"
                 style={{ backgroundImage: `url(${user.profileImage})` }}
                 to={`/profile/${user.firstName} ${user.lastName}`}
