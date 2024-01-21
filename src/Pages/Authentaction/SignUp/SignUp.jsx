@@ -43,7 +43,6 @@ const SignUp = () => {
         profileImage: file,
       }));
 
-      // Clear previous error messages when a new file is selected
       setErrors((prevErrors) => ({
         ...prevErrors,
         profileImage: null,
