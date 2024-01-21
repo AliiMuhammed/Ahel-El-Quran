@@ -5,10 +5,14 @@ import logo from "../../Assets/logos/لوجو2.png";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa";
+import { getAuthUser, removeAuthUser } from "../../Helpers/Storage";
 
 const NavBar = () => {
   const [navScroll, setNavScroll] = useState(false);
-
+  const user = getAuthUser();
+  const logOut = () => {
+    removeAuthUser();
+  };
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= (10 * window.innerHeight) / 100) {
@@ -123,19 +127,39 @@ const NavBar = () => {
               </li>
             </ul>
           </div>
-
-          <div className={`nav-btns ${show}`}>
-            <Link onClick={handelShow} to={"/login"} className="main-btn sm">
-              تسجيل الدخول
-            </Link>
-            <Link
-              onClick={handelShow}
-              to={"/sign-up"}
-              className="main-btn second-btn sm"
-            >
-              مستخدم جديد
-            </Link>
-          </div>
+          {!user && (
+            <div className={`nav-btns ${show}`}>
+              <Link onClick={handelShow} to={"/login"} className="main-btn sm">
+                تسجيل الدخول
+              </Link>
+              <Link
+                onClick={handelShow}
+                to={"/sign-up"}
+                className="main-btn second-btn sm"
+              >
+                مستخدم جديد
+              </Link>
+            </div>
+          )}
+          {user && (
+            <div className={`nav-btns ${show}`}>
+              <Link
+                className="user-profile"
+                style={{ backgroundImage: `url(${user.profileImage})` }}
+                to={`/profile/${user.firstName} ${user.lastName}`}
+              ></Link>
+              <Link
+                onClick={() => {
+                  handelShow();
+                  logOut();
+                }}
+                to={"/"}
+                className="main-btn sm"
+              >
+                تسجيل الخروج
+              </Link>
+            </div>
+          )}
 
           <button
             className="toggle-btn"

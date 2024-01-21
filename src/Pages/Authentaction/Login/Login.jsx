@@ -64,6 +64,7 @@ const Login = () => {
 
         // Redirect to the home page
         navgate("/");
+        window.location.reload();
       } else {
         setShowAlert(true);
         setErrors(newErrors);

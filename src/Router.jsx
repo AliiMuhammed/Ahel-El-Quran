@@ -11,6 +11,10 @@ import { Radio } from "./Pages/Radio/Radio";
 import { Azkar } from "./Pages/Azkar/Azkar";
 import SignUp from "./Pages/Authentaction/SignUp/SignUp";
 import Login from "./Pages/Authentaction/Login/Login";
+import Guest from "./Middleware/Guest";
+import GuestProfile from "./Middleware/GuestProfile";
+import Profile from "./Pages/Profile/Profile";
+
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -49,12 +53,25 @@ export const routes = createBrowserRouter([
         element: <Azkar />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/sign-up",
-        element: <SignUp />,
+        element: <Guest />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/sign-up",
+            element: <SignUp />,
+          },
+        ],
+      },{
+        element: <GuestProfile />,
+        children: [
+          {
+            path: "/profile/:name",
+            element: <Profile/>,
+          },
+        ],
       },
     ],
     errorElement: <NotFound />,
