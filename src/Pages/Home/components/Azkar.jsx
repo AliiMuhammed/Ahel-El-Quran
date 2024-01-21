@@ -69,22 +69,23 @@ const Azkar = () => {
         .get(`https://www.hisnmuslim.com/api/ar/husn_ar.json`)
         .then((response) => {
           const allAzkar = response.data.العربية || [];
-  
+
           if (allAzkar.length > 0) {
             const today = new Date().toLocaleDateString();
-            const savedRandomNumbers = JSON.parse(localStorage.getItem("randomNumbers")) || {};
+            const savedRandomNumbers =
+              JSON.parse(localStorage.getItem("randomNumbers")) || {};
             const savedDataForToday = savedRandomNumbers[today];
-  
+
             if (!savedDataForToday) {
               const zekrCat = allAzkar[getRandomNumber(allAzkar.length)];
+              console.log(zekrCat);
               setTitle(zekrCat.TITLE);
-  
               axios
-                .get(`${zekrCat.TEXT}`)
+                .get(`https://www.hisnmuslim.com/api/ar/${zekrCat.ID}.json`)
                 .then((selectedZkerResponse) => {
                   const selectedZker =
                     selectedZkerResponse.data[zekrCat.TITLE] || [];
-  
+
                   // Save the selected zekr and other information to local storage
                   savedRandomNumbers[today] = {
                     singleZker: selectedZker,
@@ -95,7 +96,7 @@ const Azkar = () => {
                     "randomNumbers",
                     JSON.stringify(savedRandomNumbers)
                   );
-  
+
                   setSingleZker(selectedZker);
                 })
                 .catch((error) => {
@@ -112,7 +113,7 @@ const Azkar = () => {
           console.error(error);
         });
     };
-  
+
     fetchData();
   }, []);
 
