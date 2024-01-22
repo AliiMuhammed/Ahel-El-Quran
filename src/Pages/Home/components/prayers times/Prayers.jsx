@@ -16,14 +16,10 @@ const Prayers = ({ fetchLocation }) => {
     hijri: {},
     err: null,
   });
-  const [prayersTime, setParyersTime] = useState({});
+  const [prayersTime, setPrayersTime] = useState({});
   let location = useSelector((state) => state.location);
   useEffect(() => {
-    if (
-      location &&
-      location.latitude &&
-      location.longitude
-    ) {
+    if (location && location.latitude && location.longitude) {
       const currentDate = new Date();
       const day = currentDate.getDate().toString().padStart(2, "0");
       const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
@@ -45,7 +41,7 @@ const Prayers = ({ fetchLocation }) => {
             gregorian: res.data.data.date.gregorian,
             hijri: res.data.data.date.hijri,
           });
-          setParyersTime(res.data.data.timings);
+          setPrayersTime(res.data.data.timings);
         })
         .catch((err) => {
           console.log(err);

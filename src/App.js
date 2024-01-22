@@ -5,6 +5,7 @@ import MovetoTop from "./Shared/components/MovetoTop";
 import ScrollToTop from "react-scroll-to-top";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
+import Notifications from "./Shared/Notifications";
 function App() {
   return (
     <Provider store={store}>
@@ -12,6 +13,7 @@ function App() {
       <NavBar />
       <Outlet />
       <Footer />
+      <Notifications />
       <ScrollToTop
         smooth
         className="scrollToTop-btn"
