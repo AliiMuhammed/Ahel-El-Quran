@@ -69,13 +69,13 @@ const Azkar = () => {
         .get(`https://www.hisnmuslim.com/api/ar/husn_ar.json`)
         .then((response) => {
           const allAzkar = response.data.العربية || [];
-
+  
           if (allAzkar.length > 0) {
             const today = new Date().toLocaleDateString();
             const savedRandomNumbers =
               JSON.parse(localStorage.getItem("randomNumbers")) || {};
             const savedDataForToday = savedRandomNumbers[today];
-
+  
             if (!savedDataForToday) {
               const zekrCat = allAzkar[getRandomNumber(allAzkar.length)];
               console.log(zekrCat);
@@ -85,18 +85,19 @@ const Azkar = () => {
                 .then((selectedZkerResponse) => {
                   const selectedZker =
                     selectedZkerResponse.data[zekrCat.TITLE] || [];
-
+  
                   // Save the selected zekr and other information to local storage
-                  savedRandomNumbers[today] = {
+                  const newRandomNumbers = {
                     singleZker: selectedZker,
                     title: zekrCat.TITLE,
                     selectedZekrIndex: getRandomNumber(selectedZker.length),
                   };
+                  savedRandomNumbers[today] = newRandomNumbers;
                   localStorage.setItem(
                     "randomNumbers",
                     JSON.stringify(savedRandomNumbers)
                   );
-
+  
                   setSingleZker(selectedZker);
                 })
                 .catch((error) => {
@@ -113,9 +114,10 @@ const Azkar = () => {
           console.error(error);
         });
     };
-
+  
     fetchData();
   }, []);
+  
 
   const savedRandomNumbersForToday =
     JSON.parse(localStorage.getItem("randomNumbers")) || {};
