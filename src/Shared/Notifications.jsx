@@ -36,19 +36,18 @@ const Notifications = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  let times = ["16:26", "16:02", "16:00", "09:38", "11:38", "11:44"];
-  // let times = [];
-  // if (prayersTime.hasOwnProperty("Fajr")) {
-  //   const keysToExtract = [
-  //     "Fajr",
-  //     "Sunrise",
-  //     "Dhuhr",
-  //     "Asr",
-  //     "Maghrib",
-  //     "Isha",
-  //   ];
-  //   times = keysToExtract.map((key) => prayersTime[key]);
-  // }
+  let times = [];
+  if (prayersTime.hasOwnProperty("Fajr")) {
+    const keysToExtract = [
+      "Fajr",
+      "Sunrise",
+      "Dhuhr",
+      "Asr",
+      "Maghrib",
+      "Isha",
+    ];
+    times = keysToExtract.map((key) => prayersTime[key]);
+  }
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 
   console.log(times);
