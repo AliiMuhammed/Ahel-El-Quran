@@ -34,8 +34,8 @@ const Notifications = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  let times = ["10:53", "10:54", "10:58", "09:38", "10:38", "10:44"];
-
+  let times = ["11:16", "11:54", "10:58", "09:38", "11:38", "11:44"];
+  // let times = [];
   // if (prayersTime.hasOwnProperty("Fajr")) {
   //   const keysToExtract = [
   //     "Fajr",
@@ -126,8 +126,11 @@ const Notifications = ({ fetchLocation }) => {
   // ...
 
   // ...
+  
 
-  return <div>{/* Your component content */}</div>;
+  return <div>
+    
+  </div>;
 };
 
 const mapDispatchToProps = {
