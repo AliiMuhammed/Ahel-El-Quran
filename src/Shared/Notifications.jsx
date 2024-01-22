@@ -3,11 +3,13 @@ import { fetchLocation } from "../Redux/Actions/Location";
 import axios from "axios";
 import { connect, useSelector } from "react-redux";
 
+import azan from "../Assets/Azan.mp3";
+
 const Notifications = ({ fetchLocation }) => {
   const [notificationShown, setNotificationShown] = useState(false);
-
   const [prayersTime, setPrayersTime] = useState({});
   let location = useSelector((state) => state.location);
+
   useEffect(() => {
     if (location && location.latitude && location.longitude) {
       const currentDate = new Date();
@@ -34,7 +36,7 @@ const Notifications = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  let times = ["11:16", "11:54", "10:58", "09:38", "11:38", "11:44"];
+  let times = ["16:16", "16:02", "16:00", "09:38", "11:38", "11:44"];
   // let times = [];
   // if (prayersTime.hasOwnProperty("Fajr")) {
   //   const keysToExtract = [
@@ -54,7 +56,16 @@ const Notifications = ({ fetchLocation }) => {
   // ...
 
   // ...
+  const playAzan = () => {
+    const audioPlayer = document.getElementById("azan-player");
 
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      audioPlayer.volume = 0.2;
+    } else {
+      audioPlayer.pause();
+    }
+  };
   useEffect(() => {
     // Function to check if the current time matches any of the times in the array
     const isTargetTime = () => {
@@ -80,32 +91,37 @@ const Notifications = ({ fetchLocation }) => {
       // Check if the browser supports notifications
       if ("Notification" in window) {
         // Request permission to show notifications
-        Notification.requestPermission().then((permission) => {
-          if (permission === "granted") {
-            // Declare currentTime within the showNotification function
-            const currentTime = new Date();
+        Notification.requestPermission()
+          .then((permission) => {
+            if (permission === "granted") {
+              // Declare currentTime within the showNotification function
+              const currentTime = new Date();
+              playAzan();
 
-            // Get the index of the current time in the times array
-            const currentTimeIndex = times.findIndex((targetTime) => {
-              const [targetHour, targetMinute] = targetTime.split(":");
-              return (
-                currentTime.getHours() === parseInt(targetHour, 10) &&
-                currentTime.getMinutes() === parseInt(targetMinute, 10)
+              // Get the index of the current time in the times array
+              const currentTimeIndex = times.findIndex((targetTime) => {
+                const [targetHour, targetMinute] = targetTime.split(":");
+                return (
+                  currentTime.getHours() === parseInt(targetHour, 10) &&
+                  currentTime.getMinutes() === parseInt(targetMinute, 10)
+                );
+              });
+
+              // Display the notification with the corresponding prayer name
+              new Notification(
+                `حان الآن موعد أذان ${prayers[currentTimeIndex]}`,
+                {
+                  body: "This is a notification message",
+                }
               );
-            });
 
-            // Display the notification with the corresponding prayer name
-            new Notification(
-              `حان الآن موعد أذان ${prayers[currentTimeIndex]}`,
-              {
-                body: "This is a notification message",
-              }
-            );
-
-            // Set the state to indicate that the notification has been shown
-            setNotificationShown(true);
-          }
-        });
+              // Set the state to indicate that the notification has been shown
+              setNotificationShown(true);
+            }
+          })
+          .catch((error) => {
+            console.error("Notification permission error:", error);
+          });
       }
     };
 
@@ -119,6 +135,7 @@ const Notifications = ({ fetchLocation }) => {
     // Cleanup function to reset notification state and clear the interval when the component is unmounted
     return () => {
       setNotificationShown(false);
+
       clearInterval(timeoutId);
     };
   }, [notificationShown, times, prayers]);
@@ -126,11 +143,13 @@ const Notifications = ({ fetchLocation }) => {
   // ...
 
   // ...
-  
 
-  return <div>
-    
-  </div>;
+  return (
+    <div>
+      <audio src={azan} id="azan-player"></audio>
+      <button id="azan-btn">test</button>
+    </div>
+  );
 };
 
 const mapDispatchToProps = {
