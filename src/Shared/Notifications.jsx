@@ -40,7 +40,6 @@ const Notifications = ({ fetchLocation }) => {
   if (prayersTime.hasOwnProperty("Fajr")) {
     const keysToExtract = [
       "Fajr",
-      "Sunrise",
       "Dhuhr",
       "Asr",
       "Maghrib",
@@ -48,7 +47,7 @@ const Notifications = ({ fetchLocation }) => {
     ];
     times = keysToExtract.map((key) => prayersTime[key]);
   }
-  let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
+  let prayers = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 
 
   // ...
