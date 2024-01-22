@@ -50,7 +50,6 @@ const Notifications = ({ fetchLocation }) => {
   }
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
 
-  console.log(times);
 
   // ...
 
