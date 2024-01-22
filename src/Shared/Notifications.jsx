@@ -127,7 +127,7 @@ const Notifications = ({ fetchLocation }) => {
       if (!notificationShown && isTargetTime()) {
         showNotification();
       }
-    }, 60000); // Check every minute
+    }, 30000); // Check every 30 sec
 
     // Cleanup function to reset notification state and clear the interval when the component is unmounted
     return () => {
