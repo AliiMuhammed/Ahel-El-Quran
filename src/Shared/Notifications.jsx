@@ -36,7 +36,7 @@ const Notifications = ({ fetchLocation }) => {
     }
   }, [location]);
 
-  let times = ["16:16", "16:02", "16:00", "09:38", "11:38", "11:44"];
+  let times = ["16:19", "16:02", "16:00", "09:38", "11:38", "11:44"];
   // let times = [];
   // if (prayersTime.hasOwnProperty("Fajr")) {
   //   const keysToExtract = [
@@ -61,7 +61,6 @@ const Notifications = ({ fetchLocation }) => {
 
     if (audioPlayer.paused) {
       audioPlayer.play();
-      audioPlayer.volume = 0.2;
     } else {
       audioPlayer.pause();
     }
@@ -111,7 +110,7 @@ const Notifications = ({ fetchLocation }) => {
               new Notification(
                 `حان الآن موعد أذان ${prayers[currentTimeIndex]}`,
                 {
-                  body: "This is a notification message",
+                  body: `سأل النبي صلى الله عليه وسلم: أي العمل - أو أي الأعمال - أحب إلى الله؟ قال: "الصلاة على وقتها"`,
                 }
               );
 
@@ -147,7 +146,6 @@ const Notifications = ({ fetchLocation }) => {
   return (
     <div>
       <audio src={azan} id="azan-player"></audio>
-      <button id="azan-btn">test</button>
     </div>
   );
 };
