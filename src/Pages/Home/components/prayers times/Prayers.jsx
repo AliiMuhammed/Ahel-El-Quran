@@ -6,6 +6,8 @@ import { FaCalendarDay } from "react-icons/fa6";
 import ArabicDate from "./components/ArabicDate";
 import ArabicHijriDate from "./components/ArabicHijriDate";
 import "../../Style/prayers.css";
+import { BsSunriseFill, BsFillSunsetFill } from "react-icons/bs";
+import { FaCloudMoon, FaSun, FaCloudSun, FaMoon } from "react-icons/fa";
 
 import { connect, useSelector } from "react-redux";
 import { fetchLocation } from "../../../../Redux/Actions/Location";
@@ -94,6 +96,23 @@ const Prayers = ({ fetchLocation }) => {
 
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
   const [isLoading, setIsLoading] = useState(false);
+
+  const getPrayerIcon = (prayer) => {
+    switch (prayer) {
+      case "الفجر":
+        return <FaCloudMoon />;
+      case "الشروق":
+        return <BsSunriseFill />;
+      case "الظهر":
+        return <FaSun />;
+      case "العصر":
+        return <FaCloudSun />;
+      case "المغرب":
+        return <BsFillSunsetFill />;
+      default:
+        return <FaMoon />;
+    }
+  };
   return (
     <section className="prayers-section" name="prayers-time">
       <div className="container">
@@ -129,9 +148,13 @@ const Prayers = ({ fetchLocation }) => {
             {location.latitude !== "" &&
               location.longitude !== "" &&
               times.map((time, index) => {
+                const prayer = prayers[index];
+                const prayerIcon = getPrayerIcon(prayer);
+
                 return (
                   <div key={time} className="prayer-card">
-                    <h1>{prayers[index]}</h1>
+                    {prayerIcon}
+                    <h1>{prayer}</h1>
                     <span>{time}</span>
                   </div>
                 );

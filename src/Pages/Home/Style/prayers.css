@@ -205,3 +205,8 @@
   background-color: #c5dfcc;
   color: var(--main-color);
 }
+
+.prayer-card svg{
+  margin-bottom: 1rem ;
+  font-size: 2rem;
+}

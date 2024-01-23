@@ -60,3 +60,8 @@
 .profile-section .cover-profile .container .profile-detials button:hover {
     color: #18583b;
 }
+
+.profile-section .container iframe .w3-green,
+.w3-hover-pink:hover {
+    background-color: var(--main-color) !important;
+}

@@ -21,6 +21,28 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <div className="container">
+        <iframe
+          title="prayers"
+          id="iframe2"
+          style={{
+            background: "rgb(255, 255, 255)",
+            border: "0px solid rgb(238, 238, 238)",
+            width: "100%",
+            overflow: "hidden",
+            height: "445px",
+          }}
+          src="https://timesprayer.today/widget_frame.php?frame=2&amp;id=95&amp;sound=true&amp;prayerMethod=5&amp;theme=w3-green"
+          bis_size={JSON.stringify({
+            x: 493,
+            y: 782,
+            w: 305,
+            h: 150,
+            abs_x: 493,
+            abs_y: 782,
+          })}
+        ></iframe>
+      </div>
     </section>
   );
 };
