@@ -69,13 +69,19 @@ const Azkar = () => {
         .get(`https://www.hisnmuslim.com/api/ar/husn_ar.json`)
         .then((response) => {
           const allAzkar = response.data.العربية || [];
-  
+
           if (allAzkar.length > 0) {
             const today = new Date().toLocaleDateString();
             const savedRandomNumbers =
               JSON.parse(localStorage.getItem("randomNumbers")) || {};
             const savedDataForToday = savedRandomNumbers[today];
-  
+
+            // Clear the local storage if the day has changed
+            const lastSavedDate = Object.keys(savedRandomNumbers)[0];
+            if (lastSavedDate && lastSavedDate !== today) {
+              localStorage.removeItem("randomNumbers");
+            }
+
             if (!savedDataForToday) {
               const zekrCat = allAzkar[getRandomNumber(allAzkar.length)];
               console.log(zekrCat);
@@ -85,7 +91,7 @@ const Azkar = () => {
                 .then((selectedZkerResponse) => {
                   const selectedZker =
                     selectedZkerResponse.data[zekrCat.TITLE] || [];
-  
+
                   // Save the selected zekr and other information to local storage
                   const newRandomNumbers = {
                     singleZker: selectedZker,
@@ -97,7 +103,7 @@ const Azkar = () => {
                     "randomNumbers",
                     JSON.stringify(savedRandomNumbers)
                   );
-  
+
                   setSingleZker(selectedZker);
                 })
                 .catch((error) => {
@@ -114,10 +120,9 @@ const Azkar = () => {
           console.error(error);
         });
     };
-  
+
     fetchData();
   }, []);
-  
 
   const savedRandomNumbersForToday =
     JSON.parse(localStorage.getItem("randomNumbers")) || {};
