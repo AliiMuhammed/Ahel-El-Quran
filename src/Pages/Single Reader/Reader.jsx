@@ -205,7 +205,7 @@ const Reader = () => {
       const index = arabicNumbers.indexOf(match);
       return englishNumbers.charAt(index);
     });
-  };
+  }
 
   const handleSurahClick = (number) => {
     setSelectedSurahIndex(arabicToEnglish(number).toString().padStart(3, "0"));
