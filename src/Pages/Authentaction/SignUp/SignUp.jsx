@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import { FaLock ,FaImage} from "react-icons/fa";
+import { FaLock, FaImage } from "react-icons/fa";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 import { IoMdPerson } from "react-icons/io";
 import Form from "react-bootstrap/Form";
@@ -22,6 +22,7 @@ const SignUp = () => {
     email: "",
     password: "",
     profileImage: null,
+    fav: {},
   });
   const [errors, setErrors] = useState({});
   const [selectedFileName, setSelectedFileName] = useState("");
@@ -116,6 +117,7 @@ const SignUp = () => {
           email: formData.email,
           password: formData.password,
           profileImage: reader.result, // Store the data URL
+          fav: {},
         };
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));

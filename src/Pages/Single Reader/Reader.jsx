@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MainHeading from "../../Shared/components/MainHeading";
 import Form from "react-bootstrap/Form";
@@ -10,9 +10,12 @@ import {
   FaRegPlayCircle,
   FaRegArrowAltCircleDown,
   FaRegPauseCircle,
+  FaRegHeart,
+  FaHeart,
 } from "react-icons/fa";
 
 import Alert from "./../../Shared/components/Alert";
+import { getAuthUser } from "./../../Helpers/Storage";
 
 const surahNamesArabicWithNumbers = [
   "١ - الفاتحة",
@@ -132,17 +135,50 @@ const surahNamesArabicWithNumbers = [
 ];
 
 const Reader = () => {
+  const user = getAuthUser();
   const audioPlayerRef = useRef(null);
 
   const [searchInput, setSearchInput] = useState("");
-
+  const [favStatus, setFavStatus] = useState(user.fav);
   const reader = useSelector((state) => state.reader);
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
   const [selectedSurahClass, setSelectedSurahClass] = useState("");
   const [isAudioVisible, setIsAudioVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [playingSurahIndex, setPlayingSurahIndex] = useState(null); // State to track which Surah is playing
+  const [playingSurahIndex, setPlayingSurahIndex] = useState(null);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+    setFavStatus(storedUser.fav || {});
+  }, []);
+
+  // Save favorite status to local storage whenever it changes
+  useEffect(() => {
+    // Update user's fav property
+    // Update user's fav property
+    const updatedUser = {
+      ...user,
+      fav: favStatus,
+    };
+
+    // Retrieve the users array from local storage
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Find the index of the user in the array
+    const userIndex = storedUsers.findIndex(
+      (storedUser) => storedUser.email === user.email
+    );
+
+    // If the user is found, update the fav property
+    if (userIndex !== -1) {
+      storedUsers[userIndex] = updatedUser;
+
+      // Save the updated users array back to local storage
+      localStorage.setItem("users", JSON.stringify(storedUsers));
+    }
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+  }, [favStatus, user]);
 
   if (reader === null) {
     return <section>Reader details not found.</section>;
@@ -182,6 +218,47 @@ const Reader = () => {
     setPlayingSurahIndex(number);
   };
 
+  const favSurah = (id, readerName, surahName) => {
+    let surahNumber = arabicToEnglish(id).toString().padStart(3, "0");
+
+    setFavStatus((prevFavStatus) => {
+      const newFavStatus = { ...prevFavStatus };
+
+      // Create a unique key based on surah number, surah name, reader name, and selectedRwayaIndex
+      const uniqueKey = `${surahNumber}-${surahName}-${readerName}-${selectedRwayaIndex}`;
+
+      if (newFavStatus[uniqueKey]) {
+        // If the entry already exists, remove it
+        delete newFavStatus[uniqueKey];
+      } else {
+        // Add the surah to favStatus with additional information
+        newFavStatus[uniqueKey] = {
+          isFav: true,
+          surahName: surahName,
+          readerName: readerName,
+          selectedRwayaIndex: selectedRwayaIndex,
+          surahLink:`${reader.moshaf[selectedRwayaIndex].server}${surahNumber}.mp3`
+        };
+      }
+
+      return newFavStatus;
+    });
+  };
+
+  const isSurahFavorite = (id, currentReaderName, surahName) => {
+    let surahNumber = arabicToEnglish(id).toString().padStart(3, "0");
+
+    const uniqueKey = `${surahNumber}-${surahName}-${currentReaderName}-${selectedRwayaIndex}`;
+    const favInfo = favStatus[uniqueKey];
+
+    return (
+      favInfo &&
+      favInfo.isFav &&
+      favInfo.readerName === currentReaderName &&
+      favInfo.selectedRwayaIndex === selectedRwayaIndex
+    );
+  };
+
   const surahElements = surahs_numbers
     .filter((surahNumber) =>
       surahNamesArabicWithNumbers[surahNumber - 1]
@@ -190,6 +267,9 @@ const Reader = () => {
     )
     .map((surahNumber) => {
       const surah = surahNamesArabicWithNumbers[surahNumber - 1];
+      const surahNumberString = arabicToEnglish(surah.split(" - ")[0])
+        .toString()
+        .padStart(3, "0");
       return (
         <div
           className={`surah main-btn ${
@@ -200,39 +280,53 @@ const Reader = () => {
           key={surahNumber}
         >
           {surah}
-          <a
-            href={`${reader.moshaf[selectedRwayaIndex].server}${surahNumber
-              .toString()
-              .padStart(3, "0")}.mp3`}
-            download={`${selectedSurahIndex}.mp3`}
-            title="تحميل السورة"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaRegArrowAltCircleDown />
-          </a>
+          <div className="btns">
+            <a
+              href={`${reader.moshaf[selectedRwayaIndex].server}${surahNumberString}.mp3`}
+              download={`${selectedSurahIndex}.mp3`}
+              title="تحميل السورة"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaRegArrowAltCircleDown />
+            </a>
 
-          {playingSurahIndex === surah.split(" - ")[0] && isPlaying ? (
-            <button
-              onClick={() => {
-                handlePause();
-              }}
-              className="play-btn"
-              title="إيقاف الأستماع الي السورة"
-            >
-              <FaRegPauseCircle />
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                handleSurahClick(surah.split(" - ")[0]);
-              }}
-              className="play-btn"
-              title="الأستماع الي السورة"
-            >
-              <FaRegPlayCircle />
-            </button>
-          )}
+            {playingSurahIndex === surahNumberString && isPlaying ? (
+              <button
+                onClick={() => {
+                  handlePause();
+                }}
+                className="play-btn"
+                title="إيقاف الأستماع الي السورة"
+              >
+                <FaRegPauseCircle />
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  handleSurahClick(surahNumberString);
+                }}
+                className="play-btn"
+                title="الأستماع الي السورة"
+              >
+                <FaRegPlayCircle />
+              </button>
+            )}
+            {user && (
+              <button
+                className="fav-btn"
+                onClick={() => {
+                  favSurah(surah.split(" - ")[0], reader.name, surah);
+                }}
+              >
+                {isSurahFavorite(surah.split(" - ")[0], reader.name, surah) ? (
+                  <FaHeart />
+                ) : (
+                  <FaRegHeart />
+                )}
+              </button>
+            )}
+          </div>
         </div>
       );
     });
