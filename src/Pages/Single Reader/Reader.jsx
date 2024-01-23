@@ -139,7 +139,7 @@ const Reader = () => {
   const audioPlayerRef = useRef(null);
 
   const [searchInput, setSearchInput] = useState("");
-  const [favStatus, setFavStatus] = useState(user ? user.fav : {});
+  const [favStatus, setFavStatus] = useState(user?.fav || {});
   const reader = useSelector((state) => state.reader);
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
@@ -150,7 +150,7 @@ const Reader = () => {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("currentUser")) || {};
-    setFavStatus(storedUser.fav || {});
+    setFavStatus(storedUser?.fav || {});
   }, []);
 
   // Save favorite status to local storage whenever it changes
