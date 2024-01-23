@@ -244,10 +244,10 @@ export const Azkar = () => {
     setShowAzkarNames(!showAzkarNames);
   };
   return (
-    <section className="azkar-section" ref={azkarSectionRef}>
+    <section className="azkar-section">
       <MainHeading breadcrumb={breadcrumb} title="الأذكار" />
       <section className="azkar">
-        <div className="container">
+        <div className="container" ref={azkarSectionRef}>
           <MainHeader
             Header={"حِصْن اَلمسْلِم"}
             smHeader={"مِن أَذكَار الكتَاب والسُّنَّة"}
