@@ -139,7 +139,7 @@ const Reader = () => {
   const audioPlayerRef = useRef(null);
 
   const [searchInput, setSearchInput] = useState("");
-  const [favStatus, setFavStatus] = useState(user.fav);
+  const [favStatus, setFavStatus] = useState(user ? user.fav : {});
   const reader = useSelector((state) => state.reader);
   const [selectedRwayaIndex, setSelectedRwayaIndex] = useState(0);
   const [selectedSurahIndex, setSelectedSurahIndex] = useState("001");
@@ -155,29 +155,29 @@ const Reader = () => {
 
   // Save favorite status to local storage whenever it changes
   useEffect(() => {
-    // Update user's fav property
-    // Update user's fav property
-    const updatedUser = {
-      ...user,
-      fav: favStatus,
-    };
+    if (user) {
+      const updatedUser = {
+        ...user,
+        fav: favStatus,
+      };
 
-    // Retrieve the users array from local storage
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      // Retrieve the users array from local storage
+      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Find the index of the user in the array
-    const userIndex = storedUsers.findIndex(
-      (storedUser) => storedUser.email === user.email
-    );
+      // Find the index of the user in the array
+      const userIndex = storedUsers.findIndex(
+        (storedUser) => storedUser.email === user.email
+      );
 
-    // If the user is found, update the fav property
-    if (userIndex !== -1) {
-      storedUsers[userIndex] = updatedUser;
+      // If the user is found, update the fav property
+      if (userIndex !== -1) {
+        storedUsers[userIndex] = updatedUser;
 
-      // Save the updated users array back to local storage
-      localStorage.setItem("users", JSON.stringify(storedUsers));
+        // Save the updated users array back to local storage
+        localStorage.setItem("users", JSON.stringify(storedUsers));
+      }
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
     }
-    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
   }, [favStatus, user]);
 
   if (reader === null) {
@@ -205,7 +205,7 @@ const Reader = () => {
       const index = arabicNumbers.indexOf(match);
       return englishNumbers.charAt(index);
     });
-  }
+  };
 
   const handleSurahClick = (number) => {
     setSelectedSurahIndex(arabicToEnglish(number).toString().padStart(3, "0"));
@@ -237,7 +237,7 @@ const Reader = () => {
           surahName: surahName,
           readerName: readerName,
           selectedRwayaIndex: selectedRwayaIndex,
-          surahLink:`${reader.moshaf[selectedRwayaIndex].server}${surahNumber}.mp3`
+          surahLink: `${reader.moshaf[selectedRwayaIndex].server}${surahNumber}.mp3`,
         };
       }
 
