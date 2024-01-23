@@ -5,7 +5,7 @@ import MovetoTop from "./Shared/components/MovetoTop";
 import ScrollToTop from "react-scroll-to-top";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-import Notifications from "./Shared/Notifications";
+import Notifications from "./Shared/components/Notifications";
 function App() {
   return (
     <Provider store={store}>

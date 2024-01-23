@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { fetchLocation } from "../Redux/Actions/Location";
+import { fetchLocation } from "../../Redux/Actions/Location";
 import axios from "axios";
 import { connect, useSelector } from "react-redux";
 
-import azan from "../Assets/Azan.mp3";
+import azan from "../../Assets/Azan.mp3";
 
 const Notifications = ({ fetchLocation }) => {
   const [notificationShown, setNotificationShown] = useState(false);
