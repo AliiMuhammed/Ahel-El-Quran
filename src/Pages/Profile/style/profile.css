@@ -43,6 +43,7 @@
     background-size: cover;
     margin-bottom: 2rem;
     background-color: var(--third-color);
+    margin-inline: auto;
 }
 
 .profile-section .cover-profile .container .profile-detials button {
@@ -64,4 +65,32 @@
 .profile-section .container iframe .w3-green,
 .w3-hover-pink:hover {
     background-color: var(--main-color) !important;
+}
+
+
+
+
+.fav-section .container h1 svg {
+    margin-left: 20px;
+    font-size: 2rem;
+}
+
+.fav-section .container .rwaya-collection {
+    display: flex;
+ 
+    flex-direction: column;
+}
+
+.fav-section .container .rwaya-collection h2 {
+    margin: 4rem 0;
+    font-size: 2rem;
+
+}
+
+.fav-section .container .rwaya-collection .rwaya-kind {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
 }

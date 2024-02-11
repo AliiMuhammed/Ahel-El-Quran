@@ -147,6 +147,9 @@ const Reader = () => {
   const [isAudioVisible, setIsAudioVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingSurahIndex, setPlayingSurahIndex] = useState(null);
+  const [rwayaName, setRwayaName] = useState(
+    reader.moshaf[selectedRwayaIndex].name
+  );
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("currentUser")) || {};
@@ -191,7 +194,8 @@ const Reader = () => {
   };
 
   const handleSurahSelect = (e) => {
-    setSelectedRwayaIndex(parseInt(e.target.value, 10)); // Update selected Surah index
+    setRwayaName(reader.moshaf[e.target.value].name);
+    setSelectedRwayaIndex(parseInt(e.target.value, 10));
   };
 
   let surahs_numbers = reader.moshaf[selectedRwayaIndex].surah_list
@@ -237,6 +241,8 @@ const Reader = () => {
           surahName: surahName,
           readerName: readerName,
           selectedRwayaIndex: selectedRwayaIndex,
+          selectedRwayaName: rwayaName,
+          surahNumber: surahNumber,
           surahLink: `${reader.moshaf[selectedRwayaIndex].server}${surahNumber}.mp3`,
         };
       }
