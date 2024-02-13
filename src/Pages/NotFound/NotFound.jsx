@@ -7,7 +7,7 @@ const NotFound = () => {
     <div className="notfound">
       <div className="container">
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <img loading="lazy" src={logo} alt="logo" />
         </div>
         <h1>عذراً لم يتم العثور علي هذة الصفحة!</h1>
         <Link to={"/"} className="main-btn">

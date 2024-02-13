@@ -10,7 +10,7 @@ const Landing = () => {
       <div className="container">
         <div className="right">
           <div className="landing-img">
-            <img src={landingImg} alt="" />
+            <img src={landingImg} loading="lazy" alt="" />
           </div>
         </div>
         <div className="left">
@@ -21,7 +21,10 @@ const Landing = () => {
             وتعزيز إيمانك.
           </p>
           <div className="left-btns">
-            <Link to={"https://archive.org/embed/EQuran00001"} className="main-btn">
+            <Link
+              to={"https://archive.org/embed/EQuran00001"}
+              className="main-btn"
+            >
               قراءة القرآن
             </Link>
 

@@ -20,31 +20,31 @@ const Pillars = () => {
         <div className="Pillars-cards">
           <div className="Pillar-card">
             <div className="Pillar-img">
-              <img src={img1} alt="" />
+              <img loading="lazy" src={img1} alt="" />
             </div>
             <h1>الشَّهادتيْنِ</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
-              <img src={img2} alt="" />
+              <img  loading="lazy"src={img2} alt="" />
             </div>
             <h1>إِقامة الصَّلَاة</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
-              <img src={img3} alt="" />
+              <img loading="lazy" src={img3} alt="" />
             </div>
             <h1>إِيتَاء الزَّكَاة</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
-              <img src={img4} alt="" />
+              <img  loading="lazy" src={img4} alt="" />
             </div>
             <h1>صَوْم رَمَضان</h1>
           </div>
           <div className="Pillar-card">
             <div className="Pillar-img">
-              <img src={img5} alt="" />
+              <img  loading="lazy" src={img5} alt="" />
             </div>
             <h1>حجُّ البيْتِ</h1>
           </div>

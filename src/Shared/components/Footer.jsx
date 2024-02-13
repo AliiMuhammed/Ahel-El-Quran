@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-col">
             <div className="logo">
-              <img src={logo} alt="logo" />
+              <img loading="lazy" src={logo} alt="logo" />
             </div>
             <div className="bref">
               <p>

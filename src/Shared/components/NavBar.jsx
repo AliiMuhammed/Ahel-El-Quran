@@ -71,7 +71,7 @@ const NavBar = () => {
             }}
             className="logo-link"
           >
-            <img src={logo} alt="logo" />
+            <img loading="lazy" src={logo} alt="logo" />
           </Link>
           <div className={`nav-links ${show}`}>
             <ul className="links">

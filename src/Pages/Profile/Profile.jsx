@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./style/profile.css";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { getAuthUser } from "./../../Helpers/Storage";
+import { getAuthUser, setAuthUser } from "./../../Helpers/Storage"; // Assuming setAuthUser is a function to update user in local storage
 import {
   FaEdit,
   FaRegPlayCircle,
@@ -14,8 +14,8 @@ import {
 import MainHeader from "./../../Shared/components/MainHeader";
 
 const Profile = () => {
-  const user = getAuthUser();
-  const { fav: userFav } = user;
+  const auth = getAuthUser();
+  const { fav: userFav } = auth;
 
   const surahsByRwaya = Object.values(userFav).reduce((acc, surah) => {
     const { selectedRwayaName: rwayaName } = surah;
@@ -28,7 +28,8 @@ const Profile = () => {
   const [isAudioVisible, setIsAudioVisible] = useState(false);
   const [selectedSurah, setSelectedSurah] = useState("");
   const [nowPlayingSurah, setNowPlayingSurah] = useState("");
-  const [reload, setReload] = useState(1);
+  const [favStatus, setFavStatus] = useState(userFav || {});
+  const [rerenderKey, setRerenderKey] = useState(0); // This key will be changed to force re-render
   const audioPlayerRef = useRef(null);
 
   const handleSurahDownload = (surahLink) => {
@@ -53,56 +54,36 @@ const Profile = () => {
     }
   };
 
-  const [favStatus, setFavStatus] = useState(userFav || {});
   const favSurah = (surah) => {
-    setFavStatus(prevFavStatus => {
-      const newFavStatus = { ...prevFavStatus };
-      const uniqueKey = `${surah.surahNumber}-${surah.surahName}-${surah.readerName}-${surah.selectedRwayaIndex}`;
+    const newFavStatus = { ...favStatus };
+    const uniqueKey = `${surah.surahNumber}-${surah.surahName}-${surah.readerName}-${surah.selectedRwayaIndex}`;
 
-      if (newFavStatus[uniqueKey]) {
-        delete newFavStatus[uniqueKey];
-      } else {
-        newFavStatus[uniqueKey] = surah;
-      }
+    if (newFavStatus[uniqueKey]) {
+      delete newFavStatus[uniqueKey];
+    } else {
+      newFavStatus[uniqueKey] = surah;
+    }
 
-      return newFavStatus;
-    });
-  };
+    setFavStatus(newFavStatus);
 
-  const reloadFavoriteSurah = () => {
-    setReload(reload + 1);
+    // Update user in local storage
+    const updatedUser = {
+      ...auth,
+      fav: newFavStatus,
+    };
+    setAuthUser(updatedUser);
+
+    // Force re-render by changing the key
+    setRerenderKey(prevKey => prevKey + 1);
   };
 
   useEffect(() => {
-    console.log(favStatus, "from use 1");
-
-    const storedUser = JSON.parse(localStorage.getItem("currentUser")) || {};
-    setFavStatus(storedUser?.fav || {});
+    const storedUser = getAuthUser();
+    const { fav: storedFav } = storedUser;
+    setFavStatus(storedFav || {});
   }, []);
 
-  useEffect(() => {
-    console.log(favStatus, "from use 2");
-    if (user) {
-      const updatedUser = {
-        ...user,
-        fav: favStatus,
-      };
-
-      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-      const userIndex = storedUsers.findIndex(
-        (storedUser) => storedUser.email === user.email
-      );
-
-      if (userIndex !== -1) {
-        storedUsers[userIndex] = updatedUser;
-        localStorage.setItem("users", JSON.stringify(storedUsers));
-      }
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-    }
-  }, [favStatus, user]);
-
   const audioElement = (audioSrc) => {
-    console.log(audioSrc);
     return isAudioVisible ? (
       <AudioPlayer
         src={audioSrc}
@@ -126,13 +107,13 @@ const Profile = () => {
             </button>
             <div
               className="user-img"
-              style={{ backgroundImage: `url(${user.profileImage})` }}
+              style={{ backgroundImage: `url(${auth.profileImage})` }}
             ></div>
-            <h1>{`${user.firstName} ${user.lastName}`}</h1>
+            <h1>{`${auth.firstName} ${auth.lastName}`}</h1>
           </div>
         </div>
       </div>
-      <section className="fav-section">
+      <section className="fav-section" key={rerenderKey}>
         <div className="surah-audio">{audioElement(selectedSurah)}</div>
 
         <div className="container">
@@ -145,8 +126,8 @@ const Profile = () => {
             <div key={index} className="rwaya-collection">
               <h2>{rwayaName}</h2>
               <div key={rwayaName} className="rwaya-kind">
-                {surahs.map((surah) => (
-                  <div key={surah} className=" surah main-btn">
+                {surahs.map((surah, index) => (
+                  <div key={index} className=" surah main-btn">
                     {`${surah.surahName} - ${surah.readerName}`}
                     <div className="btns">
                       <button
@@ -180,7 +161,13 @@ const Profile = () => {
                         onClick={() => favSurah(surah)}
                         className="fav-btn"
                       >
-                        {surah.isFav ? <FaHeart /> : <FaRegHeart />}
+                        {favStatus[
+                          `${surah.surahNumber}-${surah.surahName}-${surah.readerName}-${surah.selectedRwayaIndex}`
+                        ] ? (
+                          <FaHeart />
+                        ) : (
+                          <FaRegHeart />
+                        )}
                       </button>
                     </div>
                   </div>

@@ -19,7 +19,7 @@ const AboutUs = () => {
       <section className="about-website">
         <div className="container">
           <div className="left">
-            <img src={infoSection} alt="info photoSection" />
+            <img src={infoSection} loading="lazy" alt="info photoSection" />
           </div>
           <div className="right">
             <h1>استمتع بتلاوة القرآن والأذكار في أي وقت ومكان</h1>
@@ -77,7 +77,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="right">
-              <img src={developer} alt="developerImg" />
+              <img src={developer} loading="lazy" alt="developerImg" />
             </div>
           </div>
         </div>
