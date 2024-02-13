@@ -12,3 +12,11 @@ export const removeAuthUser = () => {
     localStorage.removeItem("currentUser");
   }
 };
+
+export const updatePrayerTable = (newPrayerTable) => {
+  const user = getAuthUser();
+  if (user) {
+    user.prayerTable = newPrayerTable;
+    setAuthUser(user);
+  }
+};

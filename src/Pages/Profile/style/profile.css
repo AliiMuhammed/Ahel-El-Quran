@@ -77,14 +77,54 @@
 
 .fav-section .container .rwaya-collection {
     display: flex;
- 
+
+    margin-bottom: 8rem;
     flex-direction: column;
+}
+
+@media only screen and (max-width: 767px) {
+    .fav-section .container .rwaya-collection {
+        margin-bottom: 4rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .fav-section .container .rwaya-collection {
+        margin-bottom: 5rem;
+    }
 }
 
 .fav-section .container .rwaya-collection h2 {
     margin: 4rem 0;
-    font-size: 2rem;
+    font-size: 1.7rem;
+}
 
+@media only screen and (max-width: 767px) {
+    .fav-section .container .rwaya-collection h2 {
+        text-align: center;
+    }
+
+}
+
+.fav-section .container .rwaya-collection .header {
+    display: flex;
+    align-items: center;
+}
+
+.fav-section .container .rwaya-collection .header .one-letter {
+    background-color: var(--background-color);
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-bottom-left-radius: 0px;
+    font-size: 1.3rem;
+    color: var(--second-font-color);
+    font-weight: bold;
+    margin-left: 1rem;
 }
 
 .fav-section .container .rwaya-collection .rwaya-kind {
@@ -93,4 +133,20 @@
     gap: 2rem;
     width: 100%;
     text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .fav-section .container .rwaya-collection .rwaya-kind {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .fav-section .container .rwaya-collection .rwaya-kind {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+
+    }
 }

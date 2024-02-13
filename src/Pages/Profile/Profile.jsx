@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import "./style/profile.css";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import { FaBookQuran } from "react-icons/fa6";
+
 import { getAuthUser, setAuthUser } from "./../../Helpers/Storage"; // Assuming setAuthUser is a function to update user in local storage
 import {
   FaEdit,
@@ -12,6 +14,8 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import MainHeader from "./../../Shared/components/MainHeader";
+import Alert from "./../../Shared/components/Alert";
+// import PrayerTable from "./components/PrayerTable";
 
 const Profile = () => {
   const auth = getAuthUser();
@@ -74,14 +78,8 @@ const Profile = () => {
     setAuthUser(updatedUser);
 
     // Force re-render by changing the key
-    setRerenderKey(prevKey => prevKey + 1);
+    setRerenderKey((prevKey) => prevKey + 1);
   };
-
-  useEffect(() => {
-    const storedUser = getAuthUser();
-    const { fav: storedFav } = storedUser;
-    setFavStatus(storedFav || {});
-  }, []);
 
   const audioElement = (audioSrc) => {
     return isAudioVisible ? (
@@ -122,9 +120,23 @@ const Profile = () => {
             smHeader={"المفضَّلة"}
           />
 
+          {Object.entries(surahsByRwaya).length === 0 ? (
+            <Alert msg={"لم تقم باضافة أي سور للمفضّلة"} variant={"success"} />
+          ) : null}
           {Object.entries(surahsByRwaya).map(([rwayaName, surahs], index) => (
             <div key={index} className="rwaya-collection">
-              <h2>{rwayaName}</h2>
+              <div className="header">
+                <span className="one-letter">
+                  <FaBookQuran />
+                </span>
+                <h2>
+                  {rwayaName === "المصحف المعلم - المصحف المعلم"
+                    ? "المصحف المعلم"
+                    : rwayaName === "المصحف المجود - المصحف المجود"
+                    ? "المصحف المجود"
+                    : rwayaName}
+                </h2>
+              </div>
               <div key={rwayaName} className="rwaya-kind">
                 {surahs.map((surah, index) => (
                   <div key={index} className=" surah main-btn">
@@ -175,6 +187,8 @@ const Profile = () => {
               </div>
             </div>
           ))}
+
+          {/* <PrayerTable /> */}
         </div>
       </section>
     </section>
