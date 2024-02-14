@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import MainHeader from "./../../Shared/components/MainHeader";
 import Alert from "./../../Shared/components/Alert";
-// import PrayerTable from "./components/PrayerTable";
+import PrayerTable from "./components/PrayerTable";
 
 const Profile = () => {
   const auth = getAuthUser();
@@ -188,7 +188,7 @@ const Profile = () => {
             </div>
           ))}
 
-          {/* <PrayerTable /> */}
+          <PrayerTable />
         </div>
       </section>
     </section>

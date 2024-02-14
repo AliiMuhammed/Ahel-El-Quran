@@ -118,6 +118,15 @@ const SignUp = () => {
           password: formData.password,
           profileImage: reader.result, // Store the data URL
           fav: {},
+          PrayerTable: [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+          ],
         };
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
