@@ -31,7 +31,7 @@ export const fetchLocation = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
           dispatch(receiveLocation({ latitude, longitude }));
-          localStorage.setItem(
+          sessionStorage.setItem(
             "location",
             JSON.stringify({ latitude, longitude })
           );
@@ -48,9 +48,10 @@ export const fetchLocation = () => {
 
 export const loadLocationFromStorage = () => {
   return (dispatch) => {
-    const storedLocation = JSON.parse(localStorage.getItem("location"));
+    const storedLocation = JSON.parse(sessionStorage.getItem("location"));
     if (storedLocation) {
       dispatch(setLocation(storedLocation));
     }
   };
 };
+

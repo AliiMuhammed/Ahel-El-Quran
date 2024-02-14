@@ -5,6 +5,7 @@ import Prayers from "./components/prayers times/Prayers";
 import Pillars from "./components/Pillars";
 import Ayah from "./components/Ayah";
 import Azkar from "./components/Azkar";
+import HomeSlider from "./components/HomeSlider";
 const Home = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ const Home = () => {
       <Ayah />
       <Pillars />
       <Azkar />
+      <HomeSlider />
     </div>
   );
 };

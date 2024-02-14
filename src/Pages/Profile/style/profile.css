@@ -30,6 +30,13 @@
 
 }
 
+.profile-section .cover-profile .container .profile-detials button {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-section .cover-profile .container .profile-detials .user-img {
     width: 200px;
     height: 200px;
