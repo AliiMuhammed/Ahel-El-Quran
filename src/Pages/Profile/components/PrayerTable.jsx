@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAuthUser, setAuthUser } from "../../../Helpers/Storage";
+import "../style/prayerTable.css";
+import MainHeader from "../../../Shared/components/MainHeader";
 
 const PrayerTable = () => {
   // Initialize state to keep track of marks for each day
@@ -37,7 +39,6 @@ const PrayerTable = () => {
     setMarks(getDefaultMarks());
     user.PrayerTable = getDefaultMarks();
     setAuthUser(user);
-
   };
 
   // Clear local storage when component unmounts
@@ -70,34 +71,45 @@ const PrayerTable = () => {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>اليوم</th>
-          <th>الصلاة 1</th>
-          <th>الصلاة 2</th>
-          <th>الصلاة 3</th>
-          <th>الصلاة 4</th>
-          <th>الصلاة 5</th>
-        </tr>
-      </thead>
-      <tbody>
-        {marks.map((day, dayIndex) => (
-          <tr key={dayIndex}>
-            <td>{arabicDays[dayIndex]}</td>
-            {day.map((mark, prayerIndex) => (
-              <td key={prayerIndex}>
-                <input
-                  type="checkbox"
-                  checked={mark}
-                  onChange={() => toggleMark(dayIndex, prayerIndex)}
-                />
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <section className="table-section">
+      <div className="container">
+        <MainHeader
+          Header={"قُم بِتتبُّع صَلاتِك على مَدَار الأسْبوع"}
+          smHeader={"صلاتيْ"}
+        />
+
+        <div className="table-res">
+          <table>
+            <thead>
+              <tr>
+                <th>اليوم</th>
+                <th>الفجر</th>
+                <th>الظهر</th>
+                <th>العصر</th>
+                <th>المغرب</th>
+                <th>العشاء</th>
+              </tr>
+            </thead>
+            <tbody>
+              {marks.map((day, dayIndex) => (
+                <tr key={dayIndex}>
+                  <td>{arabicDays[dayIndex]}</td>
+                  {day.map((mark, prayerIndex) => (
+                    <td key={prayerIndex}>
+                      <input
+                        type="checkbox"
+                        checked={mark}
+                        onChange={() => toggleMark(dayIndex, prayerIndex)}
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   );
 };
 

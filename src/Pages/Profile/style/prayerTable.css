@@ -1,0 +1,48 @@
+.table-section {
+    width: 100%;
+}
+
+.table-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.table-section .container table {
+    width: 100%;
+    overflow-x: auto;
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+.table-section .container table th,
+.table-section .container table td {
+    padding: 1rem 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.table-section .container table thead tr {
+    background-color: var(--main-color);
+    color: var(--second-font-color);
+}
+
+.table-section .container table tbody {
+    font-weight: 600;
+}
+
+.table-section .container table input {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    accent-color: var(--main-color);
+    margin: auto ;
+    display: block;
+}
+
+.table-res {
+    width: 100%;
+    overflow: auto;
+}
+

@@ -187,10 +187,9 @@ const Profile = () => {
               </div>
             </div>
           ))}
-
-          <PrayerTable />
         </div>
       </section>
+      <PrayerTable />
     </section>
   );
 };
