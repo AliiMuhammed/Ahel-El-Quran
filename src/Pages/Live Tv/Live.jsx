@@ -19,7 +19,7 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube.com/embed/G-TIrBQggTM?si=6X0gNcOXFT2CPDot"
+            src="https://www.youtube.com/embed/HWokZCTiR88?si=g6NylftDTtaYBndw"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -34,7 +34,7 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube.com/embed/sWKfArq_TJI?si=oIyyqEayl_kTeMYF"
+            src="https://www.youtube.com/embed/-mr6TD6YxR8?si=zbp3ruAaNYdhOXQm"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
