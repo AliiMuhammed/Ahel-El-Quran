@@ -15,8 +15,20 @@ import img6 from "../../../Assets/Home/doa2 6.jpg";
 import img7 from "../../../Assets/Home/doa2 7.jpg";
 import img8 from "../../../Assets/Home/doa2 8.jpg";
 import img9 from "../../../Assets/Home/doa2 9.jpg";
+import img10 from "../../../Assets/Home/doa2 10.jpg";
 const HomeSlider = () => {
-  const imgsDoaa = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+  const imgsDoaa = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+  ];
   return (
     <section className="HomeSlider">
       <div className="container">

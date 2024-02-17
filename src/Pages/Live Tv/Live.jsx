@@ -19,7 +19,7 @@ const Live = () => {
         />
         <div className="container">
           <iframe
-            src="https://www.youtube.com/embed/HWokZCTiR88?si=g6NylftDTtaYBndw"
+            src="https://www.youtube.com/embed/AgFUuN3wiOA?si=MsKxPCN_ZbbSiFrE"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
