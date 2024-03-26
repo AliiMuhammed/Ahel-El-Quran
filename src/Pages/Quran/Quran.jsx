@@ -40,9 +40,10 @@ const Quran = () => {
       setLetters(uniqueCachedLetters);
     } else {
       axios
-        .get("https://mp3quran.net/api/v3/recent_reads")
+        .get("https://mp3quran.net/api/v3/reciters")
         .then((res) => {
-          const sortedReaders = res.data.reads.sort((a, b) =>
+          console.log(res);
+          const sortedReaders = res.data.reciters.sort((a, b) =>
             a.name.localeCompare(b.name)
           );
           setReaders({ ...readers, data: sortedReaders, loading: false });
@@ -148,10 +149,10 @@ const Quran = () => {
       <MainHeading breadcrumb={breadcrumb} title="القرآن الكريم" />
       <section className="readers">
         <div className="container">
-        <MainHeader
-          Header={"اِستمَع إِلى اَلقُرآن اَلكرِيم بِصَوت"}
-          smHeader={"قُرَّاء اَلقُرآن اَلكرِيم"}
-        />
+          <MainHeader
+            Header={"اِستمَع إِلى اَلقُرآن اَلكرِيم بِصَوت"}
+            smHeader={"قُرَّاء اَلقُرآن اَلكرِيم"}
+          />
           <div className="search-box">
             <button className="search-btn">
               <FaSearch />
