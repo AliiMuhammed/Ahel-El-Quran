@@ -35,9 +35,14 @@ The Ahl Al-Quran website offers many features, such as:
 ## Demo
 
 - For Mobile screens:
-     ![mobile](https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137622/mobile_z8mbxl.gif)
+  
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPhone-12-PRO-ahel-el-quran.netlify.app_xafywx.png" alt="mobile" width="400"/>
+    
 - For Tablet screens:
-    <img src="https://i.ibb.co/0YP1Txw/2.png" alt="Tablet" width="400"/>
-
+  
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPad-Air-4-ahel-el-quran.netlify.app_eajjoo.png" alt="Tablet" width="400"/>
+    
 - For Large screens:
-    <img src="https://i.ibb.co/0YP1Txw/2.png" alt="Large" width="800"/>
+  
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/Macbook-Air-ahel-el-quran.netlify.app_cz3zm6.png" alt="Large" width="800"/>
+    
