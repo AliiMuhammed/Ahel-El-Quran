@@ -1,4 +1,4 @@
-![Logo](https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137043/%D9%84%D9%88%D8%AC%D9%882_cnlsuu.png)
+![Logo](https://res.cloudinary.com/dvkl6un7x/image/upload/%D9%84%D9%88%D8%AC%D9%882_a4unn8.png)
 
 # Welcome to Ahl al-Qur'an 
 
@@ -19,8 +19,9 @@ The Ahl Al-Quran website offers many features, such as:
 - Watching live broadcasts from Al-Haram Al-Makki and Al-Masjid Al-Nabawi.
 - The website is fully responsive.
 
-## Technologies
+## Tech Stack
 
+**This is a Fornt-end Project made using:** 
 <div style="text-align: center;">
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 badge"/>
     <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3 badge"/>
@@ -31,6 +32,7 @@ The Ahl Al-Quran website offers many features, such as:
 </div>
 
 ## Screens View
+
  - Mobile View:
    
     <div style="text-align: center;">
@@ -57,4 +59,41 @@ The Ahl Al-Quran website offers many features, such as:
 | Secondary Color | ![#f0fff4](https://via.placeholder.com/10/f0fff4?text=+) #f0fff4 |
 | Background Color | ![#1f714c](https://via.placeholder.com/10/1f714c?text=+) #1f714c |
 | Font Color | ![#000](https://via.placeholder.com/10/000?text=+) #000 |
+
+## Deployment
+
+To run this project locally, follow these steps:
+
+1. Clone the repository to your local machine using the following command:
+   ```bash
+   git clone https://github.com/AliiMuhammed/Ahel-El-Quran.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd Ahel-El-Quran
+   ```
+3. Install the dependencies using npm or yarn:
+   ```bash
+    npm install
+    # or
+    yarn install
+   ```
+4. Start the development server:
+   ```bash
+    npm start
+    # or
+    yarn start
+   ```
+5. Open http://localhost:3000 in your browser to view the app.
+6. To build the project for production, use:
+   ```bash
+    npm run build
+    # or
+    yarn build
+   ```
+
+## Feedback
+
+If you have any feedback, please reach out to me at ali.muhammed.dev@gmail.com
+
 
