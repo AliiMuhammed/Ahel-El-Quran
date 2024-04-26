@@ -1,70 +1,43 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo](https://i.ibb.co/0YP1Txw/2.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+# Welcome to Ahl al-Qur'an 
 
-### `npm start`
+Welcome to Ahl al-Qur'an, the website that makes accessing and benefiting from the Quran easy. It offers various services like diverse recitations, interpretations, daily remembrances, and accurate prayer times to help you connect with the Quran and organize your worship.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Ahl Al-Quran website offers many features, such as:
 
-### `npm test`
+- Reading the Quran from the Madinah Mushaf, with automatic bookmarking of the last page you read.
+- Knowing prayer times based on your current location, with Adhan notifications.
+- Daily reflections with a random verse from the Quran, changing daily, along with its interpretation.
+- Daily random remembrance with its count, changeable daily.
+- Listening to the Quran recited by over 255 different reciters in more than 3 different recitations.
+- Listening to, downloading, and marking specific surahs recited by specific reciters in favorites that appear in your profile.
+- Listening to over 140 different radio stations, including Quran recitations by different reciters and various programs like Sunnah and Hadith.
+- Reading the complete Hisn Al-Muslim (Fortress of the Muslim) supplications, with the option to listen to them as well.
+- Watching live broadcasts from Al-Haram Al-Makki and Al-Masjid Al-Nabawi.
+- The website is fully responsive.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+<div style="text-align: center;">
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 badge"/>
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3 badge"/>
+    <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript badge"/>
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React badge"/>
+    <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux badge"/>
+    <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify badge"/>
+</div>
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- For Mobile screens:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ![Image](https://i.ibb.co/2637mND/mobile.gif)
+- For Tablet screens:
+    <img src="https://i.ibb.co/0YP1Txw/2.png" alt="Tablet" width="400"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- For Large screens:
+    <img src="https://i.ibb.co/0YP1Txw/2.png" alt="Large" width="800"/>
