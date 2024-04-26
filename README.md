@@ -1,6 +1,4 @@
-
 ![Logo](https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137043/%D9%84%D9%88%D8%AC%D9%882_cnlsuu.png)
-
 
 # Welcome to Ahl al-Qur'an 
 
@@ -34,15 +32,8 @@ The Ahl Al-Quran website offers many features, such as:
 
 ## Demo
 
-- For Mobile screens:
-  
-    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPhone-12-PRO-ahel-el-quran.netlify.app_xafywx.png" alt="mobile" width="400"/>
-    
-- For Tablet screens:
-  
-    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPad-Air-4-ahel-el-quran.netlify.app_eajjoo.png" alt="Tablet" width="400"/>
-    
-- For Large screens:
-  
-    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/Macbook-Air-ahel-el-quran.netlify.app_cz3zm6.png" alt="Large" width="800"/>
-    
+<div style="text-align: center;">
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPhone-12-PRO-ahel-el-quran.netlify.app_xafywx.png" alt="mobile" width="200px"/>
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPad-Air-4-ahel-el-quran.netlify.app_eajjoo.png" alt="Tablet" width="200px"/>
+    <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/Macbook-Air-ahel-el-quran.netlify.app_cz3zm6.png" alt="Large" width="200px"/>
+</div>
