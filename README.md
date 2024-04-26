@@ -1,5 +1,5 @@
 
-![Logo](https://i.ibb.co/0YP1Txw/2.png)
+![Logo](https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137043/%D9%84%D9%88%D8%AC%D9%882_cnlsuu.png)
 
 
 # Welcome to Ahl al-Qur'an 
