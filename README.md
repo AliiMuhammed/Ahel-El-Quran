@@ -31,6 +31,7 @@ The Ahl Al-Quran website offers many features, such as:
     <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux badge"/>
     <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify badge"/>
 </div>
+
 ## Demo
 
 - For Mobile screens:
