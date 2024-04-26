@@ -35,7 +35,7 @@ The Ahl Al-Quran website offers many features, such as:
 ## Demo
 
 - For Mobile screens:
-     <img src="[https://i.ibb.co/2637mND/mobile.gif](https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137622/mobile_z8mbxl.gif)" alt="mobile"/>
+     <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/v1714137622/mobile_z8mbxl.gif" alt="mobile"/>
 - For Tablet screens:
     <img src="https://i.ibb.co/0YP1Txw/2.png" alt="Tablet" width="400"/>
 
