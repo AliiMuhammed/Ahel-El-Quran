@@ -30,7 +30,7 @@ The Ahl Al-Quran website offers many features, such as:
     <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify badge"/>
 </div>
 
-## Demo
+## Screens View
  - Mobile View:
    
     <div style="text-align: center;">
@@ -49,4 +49,12 @@ The Ahl Al-Quran website offers many features, such as:
         <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/Macbook-Air-ahel-el-quran.netlify.app_cz3zm6.png" alt="Large" width="600px"/>
     </div>
 
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Main Color | ![#25855a](https://via.placeholder.com/10/25855a?text=+) #25855a |
+| Secondary Color | ![#f0fff4](https://via.placeholder.com/10/f0fff4?text=+) #f0fff4 |
+| Background Color | ![#1f714c](https://via.placeholder.com/10/1f714c?text=+) #1f714c |
+| Font Color | ![#000](https://via.placeholder.com/10/000?text=+) #000 |
 
