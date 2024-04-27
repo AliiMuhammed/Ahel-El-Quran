@@ -36,7 +36,9 @@ The Ahl Al-Quran website offers many features, such as:
  - Mobile View:
    
     <div style="text-align: center;">
-        <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPhone-12-PRO-ahel-el-quran.netlify.app_xafywx.png" alt="mobile" width="250px"/>
+<!--         <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPhone-12-PRO-ahel-el-
+quran.netlify.app_xafywx.png" alt="mobile" width="250px"/> -->
+![mobile](https://github.com/AliiMuhammed/Ahel-El-Quran/assets/93393629/b977fbf9-7956-4324-98dc-25334d36e70a)
     </div>
 
 - Tablet View:
