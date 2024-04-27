@@ -8,14 +8,14 @@ Welcome to Ahl al-Qur'an, the website that makes accessing and benefiting from t
 
 The Ahl Al-Quran website offers many features, such as:
 
-- Reading the Quran from the Madinah Mushaf, with automatic bookmarking of the last page you read.
+- Reading the Holy Qur’an from the Madinah Mushaf, with automatic bookmarking of the last page you read.
 - Knowing prayer times based on your current location, with Adhan notifications.
-- Daily reflections with a random verse from the Quran, changing daily, along with its interpretation.
-- Daily random remembrance with its count, changeable daily.
-- Listening to the Quran recited by over 255 different reciters in more than 3 different recitations.
+- Daily warad with a random verse from the Quran, changing daily, along with its interpretation.
+- Daily random zeker with its count, changeable daily.
+- Listening to the Holy Qur’an in the voice of more than 255 different reciters with more than 3 different narrations.
 - Listening to, downloading, and marking specific surahs recited by specific reciters in favorites that appear in your profile.
 - Listening to over 140 different radio stations, including Quran recitations by different reciters and various programs like Sunnah and Hadith.
-- Reading the complete Hisn Al-Muslim (Fortress of the Muslim) supplications, with the option to listen to them as well.
+- You can read the complete Azkar of Hisn al-Muslim, and you can also listen to them.
 - Watching live broadcasts from Al-Haram Al-Makki and Al-Masjid Al-Nabawi.
 - The website is fully responsive.
 
