@@ -42,13 +42,14 @@ The Ahl Al-Quran website offers many features, such as:
 - Tablet View:
 
     <div style="text-align: center;">
-        <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/iPad-Air-4-ahel-el-quran.netlify.app_eajjoo.png" alt="Tablet" width="330px"/>
+        <img src="https://github.com/AliiMuhammed/Ahel-El-Quran/assets/93393629/521949a3-a8cc-42ba-9db9-d566ad93942a" alt="Tablet" width="330px"/>
     </div>
     
+
 - Large Screen View:
 
     <div style="text-align: center;">
-        <img src="https://res.cloudinary.com/dvkl6un7x/image/upload/Macbook-Air-ahel-el-quran.netlify.app_cz3zm6.png" alt="Large" width="600px"/>
+        <img src="https://github.com/AliiMuhammed/Ahel-El-Quran/assets/93393629/b3b70264-740f-4996-a22a-15e2de22f0c2" alt="Large" width="600px"/>
     </div>
 
 ## Demo
