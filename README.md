@@ -3,7 +3,7 @@
 # Welcome to Ahl al-Qur'an 
 
 Welcome to Ahl al-Qur'an, the website that makes accessing and benefiting from the Quran easy. It offers various services like diverse recitations, interpretations, daily remembrances, and accurate prayer times to help you connect with the Quran and organize your worship.
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fe70a263-e765-4067-a0e2-d13d6dc689c3/deploy-status)](https://app.netlify.com/sites/ahel-el-quran/deploys)
 ## Features
 
 The Ahl Al-Quran website offers many features, such as:
