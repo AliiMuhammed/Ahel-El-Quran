@@ -3,7 +3,8 @@
 # Welcome to Ahl al-Qur'an 
 
 Welcome to Ahl al-Qur'an, the website that makes accessing and benefiting from the Quran easy. It offers various services like diverse recitations, interpretations, daily remembrances, and accurate prayer times to help you connect with the Quran and organize your worship.
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fe70a263-e765-4067-a0e2-d13d6dc689c3/deploy-status)](https://app.netlify.com/sites/ahel-el-quran/deploys)
+
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/ahel-el-quran)
 ## Features
 
 The Ahl Al-Quran website offers many features, such as:
@@ -28,7 +29,7 @@ The Ahl Al-Quran website offers many features, such as:
     <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript badge"/>
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React badge"/>
     <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux badge"/>
-    <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify badge"/>
+    <img src="https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white" alt='vercel'>
 </div>
 
 ## Screens View
