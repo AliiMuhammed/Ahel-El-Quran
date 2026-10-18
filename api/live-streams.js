@@ -4,6 +4,8 @@ const CHANNELS = {
   makkah: 'UCos52azQNBgW63_9uDJoPDA',
   madinah: 'UCROKYPep-UuODNwyipe6JMw',
 };
+// Search can omit long-running broadcasts; these candidates still require live API validation.
+const KNOWN_IDS = { makkah: 'eC4LfEVxvKg', madinah: 'Rs7St51oDDc' };
 const CHECK_MS = 5 * 60 * 1000;
 const SEARCH_MS = 60 * 60 * 1000;
 const VIDEO_ID = /^[A-Za-z0-9_-]{11}$/;
@@ -38,7 +40,7 @@ function createResolver({ cache, apiKey, fetcher = fetch, now = Date.now }) {
     try {
       record = await cache.get(key) || { videoIds: [], searchedAt: 0, checkedAt: 0 };
       if (timestamp - record.checkedAt < CHECK_MS) return record;
-      let videoIds = await activeVideos(record.videoIds, channelId);
+      let videoIds = await activeVideos([...new Set([...record.videoIds, KNOWN_IDS[name]])], channelId);
       if (!videoIds.length && timestamp - record.searchedAt >= SEARCH_MS) {
         record = { videoIds: [], searchedAt: timestamp, checkedAt: timestamp, state: 'unavailable' };
         // Reserve the search cooldown before calling YouTube, including failed requests.
