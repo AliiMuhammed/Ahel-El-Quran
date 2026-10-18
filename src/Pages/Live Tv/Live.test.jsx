@@ -24,13 +24,13 @@ beforeEach(() => {
 });
 afterEach(() => jest.restoreAllMocks());
 
-test("loads both official sections and provides their official direct links", async () => {
+test("hides app fallback actions when both broadcasts are available", async () => {
  axios.get.mockResolvedValue(response()); open();
  await waitFor(() => expect(players.length).toBe(2));
- expect(screen.getAllByRole("link", { name: /الموقع الرسمي/ }).map(a => a.href)).toEqual([
-   "https://aloula.sba.sa/live/quran", "https://aloula.sba.sa/live/sunna",
- ]);
  expect(players.map(p => p.videoId)).toEqual(["makkahlive1", "madinahliv1"]);
+ await act(async () => players.forEach(p => p.events.onReady({ target: { getIframe: () => document.createElement("iframe") } })));
+ expect(screen.queryByRole("button", { name: "إعادة المحاولة" })).toBeNull();
+ expect(screen.queryByRole("link", { name: /الموقع الرسمي|YouTube/ })).toBeNull();
 });
 
 test("replaces a terminated broadcast and destroys the previous player", async () => {
@@ -75,4 +75,27 @@ test("a playback error can be retried and late ready events are ignored", async 
  expect(screen.getByText(/تعذر تشغيل البث/)).toBeTruthy();
  fireEvent.click(screen.getAllByRole("button", { name: "إعادة المحاولة" })[0]);
  await waitFor(() => expect(players.filter(p => p.videoId === "makkahlive1")).toHaveLength(2));
+});
+
+
+test("shows fallback only for the failed channel and hides it again after recovery", async () => {
+ axios.get.mockResolvedValue(response()); open();
+ await waitFor(() => expect(players.length).toBe(2));
+ await act(async () => players.forEach(p => p.events.onReady({ target: { getIframe: () => document.createElement("iframe") } })));
+ await act(async () => players[0].events.onError({ data: 5 }));
+ expect(screen.getAllByRole("button", { name: "إعادة المحاولة" })).toHaveLength(1);
+ expect(screen.getByRole("link", { name: /الموقع الرسمي/ }).href).toBe("https://aloula.sba.sa/live/quran");
+ expect(screen.getAllByRole("link", { name: /YouTube/ })).toHaveLength(1);
+ fireEvent.click(screen.getByRole("button", { name: "إعادة المحاولة" }));
+ await waitFor(() => expect(players).toHaveLength(3));
+ await act(async () => players[2].events.onReady({ target: { getIframe: () => document.createElement("iframe") } }));
+ expect(screen.queryByRole("button", { name: "إعادة المحاولة" })).toBeNull();
+ expect(screen.queryByRole("link", { name: /الموقع الرسمي|YouTube/ })).toBeNull();
+});
+
+test("initial loading shows a status without premature error actions", async () => {
+ axios.get.mockReturnValue(new Promise(() => {})); open();
+ expect(screen.getAllByRole("status")).toHaveLength(2);
+ expect(screen.queryByRole("button", { name: "إعادة المحاولة" })).toBeNull();
+ expect(screen.queryByRole("link", { name: /الموقع الرسمي|YouTube/ })).toBeNull();
 });

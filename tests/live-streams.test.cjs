@@ -10,14 +10,15 @@ function setup() {
  const live = (id, channelId) => ({ id, snippet: { channelId, liveBroadcastContent: 'live', title: 'Official live' }, status: { embeddable: true, privacyStatus: 'public' }, liveStreamingDetails: { actualStartTime: '2026-01-01T00:00:00Z' } });
  const videos = new Map(Object.entries(CHANNELS).map(([name, channelId]) => [ids[name], live(ids[name], channelId)]));
  let failure = false;
+ let emptySearch = false;
  const fetcher = async url => {
   const u = new URL(url); calls.push(u);
   if (failure) return { ok: false, status: 403 };
-  const items = u.pathname.endsWith('/search') ? [...videos.values()].filter(v => v.snippet.channelId === u.searchParams.get('channelId')).map(v => ({ id: { videoId: v.id } })) : u.searchParams.get('id').split(',').map(id => videos.get(id)).filter(Boolean);
+  const items = u.pathname.endsWith('/search') ? [...videos.values()].filter(v => !emptySearch && v.snippet.channelId === u.searchParams.get('channelId')).map(v => ({ id: { videoId: v.id } })) : u.searchParams.get('id').split(',').map(id => videos.get(id)).filter(Boolean);
   return { ok: true, json: async () => ({ items }) };
  };
  const resolve = createResolver({ cache, fetcher, now: () => time, apiKey: 'test-server-secret' });
- return { resolve, cache, calls, videos, live, advance: ms => { time += ms; }, fail: () => { failure = true; } };
+ return { resolve, cache, calls, videos, live, advance: ms => { time += ms; }, fail: () => { failure = true; }, emptySearch: () => { emptySearch = true; } };
 }
 
 test('discovers only official live, public, embeddable videos and caches requests', async () => {
@@ -27,9 +28,9 @@ test('discovers only official live, public, embeddable videos and caches request
  const [data] = await Promise.all([s.resolve(), s.resolve(), s.resolve()]);
  assert.deepEqual(data.channels.makkah.videoIds, [ids.makkah]);
  assert.deepEqual(data.channels.madinah.videoIds, [ids.madinah]);
- assert.equal(s.calls.length, 4);
+ assert.equal(s.calls.length, 6);
  await Promise.all([s.resolve(), s.resolve()]);
- assert.equal(s.calls.length, 4);
+ assert.equal(s.calls.length, 6);
  const search = s.calls.find(u => u.pathname.endsWith('/search'));
  assert.equal(search.searchParams.get('part'), 'snippet');
  assert.equal(search.searchParams.get('eventType'), 'live');
@@ -46,9 +47,9 @@ test('checks ended broadcasts and discovers a replacement after the search coold
 });
 
 test('offline discovery and API failures respect the search cooldown', async () => {
- const s = setup(); s.videos.clear(); await s.resolve(); const count = s.calls.length;
+ const s = setup(); s.videos.clear(); await s.resolve(); const count = s.calls.filter(u => u.pathname.endsWith('/search')).length;
  s.advance(300001); await s.resolve();
- assert.equal(s.calls.length, count);
+ assert.equal(s.calls.filter(u => u.pathname.endsWith('/search')).length, count);
  s.advance(3600001); s.fail(); const result = await s.resolve();
  assert.equal(result.channels.makkah.state, 'unavailable');
  const searches = s.calls.filter(u => u.pathname.endsWith('/search')).length;
@@ -73,4 +74,39 @@ test('rejects arbitrary discovery parameters and handles an unconfigured key wit
  const oldKey = process.env.YOUTUBE_API_KEY; delete process.env.YOUTUBE_API_KEY;
  try { const res = response(); await handler({ method: 'GET', url: '/api/live-streams' }, res); assert.equal(res.code, 200); assert.equal(res.body.channels.makkah.state, 'unavailable'); }
  finally { if (oldKey !== undefined) process.env.YOUTUBE_API_KEY = oldKey; }
+});
+
+
+test('recovers an empty search result inside the hourly cooldown using validated official IDs', async () => {
+ const s = setup(); s.videos.clear(); s.emptySearch();
+ assert.equal((await s.resolve()).channels.makkah.state, 'offline');
+ const searches = s.calls.filter(u => u.pathname.endsWith('/search')).length;
+ s.videos.set('eC4LfEVxvKg', s.live('eC4LfEVxvKg', CHANNELS.makkah));
+ s.videos.set('Rs7St51oDDc', s.live('Rs7St51oDDc', CHANNELS.madinah));
+ s.advance(300001);
+ const result = await s.resolve();
+ assert.deepEqual(result.channels.makkah.videoIds, ['eC4LfEVxvKg']);
+ assert.deepEqual(result.channels.madinah.videoIds, ['Rs7St51oDDc']);
+ assert.equal(s.calls.filter(u => u.pathname.endsWith('/search')).length, searches);
+ const calls = s.calls.length; await s.resolve(); assert.equal(s.calls.length, calls);
+ assert(!JSON.stringify(result).includes('test-server-secret'));
+});
+
+test('known candidates never bypass official ownership, live status or embedding restrictions', async () => {
+ const cases = [
+  v => { v.snippet.channelId = 'attacker'; },
+  v => { v.status.embeddable = false; },
+  v => { v.status.privacyStatus = 'private'; },
+  v => { v.snippet.liveBroadcastContent = 'upcoming'; },
+  v => { delete v.liveStreamingDetails.actualStartTime; },
+  v => { v.liveStreamingDetails.actualEndTime = '2026-10-18'; },
+ ];
+ for (const invalidate of cases) {
+  const s = setup(); s.videos.clear(); s.emptySearch();
+  const candidate = s.live('eC4LfEVxvKg', CHANNELS.makkah); invalidate(candidate);
+  s.videos.set(candidate.id, candidate);
+  const result = await s.resolve();
+  assert.deepEqual(result.channels.makkah.videoIds, []);
+  assert(s.calls.some(u => u.pathname.endsWith('/videos') && u.searchParams.get('id').includes(candidate.id)));
+ }
 });
