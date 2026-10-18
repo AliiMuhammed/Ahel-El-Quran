@@ -38,7 +38,8 @@ export const fetchLocation = () => {
         },
         (error) => {
           dispatch(locationError(error.message));
-        }
+        },
+        { timeout: 10000 }
       );
     } else {
       dispatch(locationError("Geolocation is not supported by this browser."));

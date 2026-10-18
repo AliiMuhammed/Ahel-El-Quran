@@ -11,16 +11,14 @@ const initialState = storedLocation || { latitude: "", longitude: "" };
 const locationReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_LOCATION:
-      // Handle request action
-      return state;
+      return { ...state, isLoading: true, error: null };
 
     case RECEIVE_LOCATION:
       // Handle receive action
       return action.payload;
 
     case LOCATION_ERROR:
-      // Handle error action
-      return state;
+      return { ...state, isLoading: false, error: action.payload };
 
     case SET_LOCATION:
       // Set location from localStorage

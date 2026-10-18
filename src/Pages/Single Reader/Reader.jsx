@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { setReader } from "../../Redux/Actions/Reader";
+import Loader from "../../Shared/components/Loader";
 import MainHeading from "../../Shared/components/MainHeading";
 import Form from "react-bootstrap/Form";
 import AudioPlayer from "react-h5-audio-player";
@@ -409,4 +413,40 @@ const Reader = () => {
   );
 };
 
-export default Reader;
+const ReaderPage = () => {
+  const { readerName } = useParams();
+  const reader = useSelector((state) => state.reader);
+  const dispatch = useDispatch();
+  const [error, setError] = useState("");
+  const ready = reader?.name === readerName && reader?.moshaf?.length > 0;
+
+  useEffect(() => {
+    if (ready) return;
+    let active = true;
+    setError("");
+    const loadReader = async () => {
+      try {
+        const cached = JSON.parse(localStorage.getItem("recentReadersData")) || [];
+        let match = cached.find((item) => item.name === readerName);
+        if (!match) {
+          const { data } = await axios.get("https://mp3quran.net/api/v3/reciters", { timeout: 15000 });
+          match = data.reciters.find((item) => item.name === readerName);
+        }
+        if (!active) return;
+        if (match?.moshaf?.length) dispatch(setReader(match));
+        else setError("لم يتم العثور على القارئ المطلوب.");
+      } catch {
+        if (active) setError("تعذر تحميل القارئ، يرجى إعادة المحاولة لاحقاً.");
+      }
+    };
+    loadReader();
+    return () => { active = false; };
+  }, [readerName, ready, dispatch]);
+
+  if (ready) return <Reader key={readerName} />;
+  return <section className="reader-section"><div className="container">
+    {error ? <Alert msg={error} variant="danger" /> : <Loader />}
+  </div></section>;
+};
+
+export default ReaderPage;
