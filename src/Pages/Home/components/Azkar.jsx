@@ -163,7 +163,7 @@ const Azkar = () => {
                     <audio
                       id="player-zekr"
                       ref={audioPlayerRef}
-                      src={zekr.AUDIO}
+                      src={zekr.AUDIO?.replace(/^http:/, "https:")}
                       onEnded={() => setIsAudioPlaying(false)}
                     ></audio>
                     <Link to="" onClick={handlePlayPause}>

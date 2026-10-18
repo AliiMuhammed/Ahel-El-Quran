@@ -140,7 +140,7 @@ export const Azkar = () => {
     });
 
     if (audioPlayer.paused || audioPlayer.ended) {
-      audioPlayer.src = audioUrl;
+      audioPlayer.src = audioUrl.replace(/^http:/, "https:");
       audioPlayer.load();
 
       if (zekrAudio && zekrAudio !== audioPlayer) {
@@ -254,7 +254,7 @@ export const Azkar = () => {
           />
           <audio
             id="playerZekr"
-            src={singleZekr.audioUrl}
+            src={singleZekr.audioUrl?.replace(/^http:/, "https:")}
             onEnded={() => setIsZekrAudioPlaying(false)}
             type="audio/mpeg"
             preload="auto"
@@ -263,7 +263,7 @@ export const Azkar = () => {
             <audio
               key={zker.ID}
               id={`player-${zker.ID}`}
-              src={zekrAudios[zker.ID]}
+              src={zekrAudios[zker.ID]?.replace(/^http:/, "https:")}
               onEnded={() => setIsAudioPlaying(false)}
               type="audio/mpeg"
               preload="auto"

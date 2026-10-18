@@ -39,14 +39,14 @@ const Prayers = ({ fetchLocation }) => {
         })
         .then((res) => {
           setTodayDate({
-            ...todayDate,
+            err: null,
             gregorian: res.data.data.date.gregorian,
             hijri: res.data.data.date.hijri,
           });
           setPrayersTime(res.data.data.timings);
         })
         .catch((err) => {
-          console.log(err);
+          setTodayDate((previous) => ({ ...previous, err: "تعذر تحميل مواقيت الصلاة، يرجى المحاولة لاحقاً." }));
         });
     }
   }, [location]);
@@ -95,7 +95,7 @@ const Prayers = ({ fetchLocation }) => {
   }
 
   let prayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = location.isLoading || false;
 
   const getPrayerIcon = (prayer) => {
     switch (prayer) {
@@ -141,6 +141,9 @@ const Prayers = ({ fetchLocation }) => {
             </div>
           </div>
           <div className="prayers-cards">
+            {(location.error || todayDate.err) && (
+              <p role="alert">{todayDate.err || "تعذر الحصول على الموقع. يرجى السماح بالوصول إلى الموقع ثم إعادة المحاولة."}</p>
+            )}
             {location.latitude === "" &&
               location.longitude === "" &&
               isLoading && <Loader />}
@@ -168,7 +171,6 @@ const Prayers = ({ fetchLocation }) => {
                   <button
                     onClick={() => {
                       fetchLocation();
-                      setIsLoading(true);
                     }}
                     className="main-btn second-btn location-btn"
                   >
